@@ -152,7 +152,9 @@ SimulationConfig initialize_config(json config) {
   return parsed_config;
 }
 
-uint32_t ceil_div(uint32_t src, uint32_t div) { return (src+div-1)/div; }
+uint32_t ceil_div(uint32_t src, uint32_t div) { 
+  return (src+div-1)/div; 
+}
 
 std::vector<uint32_t> parse_dims(const std::string &str) {
   std::vector<uint32_t> dims;

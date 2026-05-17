@@ -143,6 +143,13 @@ void Core::cycle() {
     }
     if (issued) {
       _tiles[i]->instructions.pop_front();
+
+      // Start for avg instruction per tile
+
+      _total_runtime_insts ++;
+
+      // end of avg instruction per tile
+
       tile_rr = i;
       break;
     }
@@ -153,6 +160,13 @@ void Core::cycle() {
       (*tile)->stat.cycles = _core_cycle - (*tile)->stat.start_cycle;
       (*tile)->stat.memory_stall =
           (*tile)->stat.cycles - (*tile)->stat.compute_cycles;
+      
+      // for Avg instruction per Tile
+
+      _total_finished_tiles++;
+
+      // end for avg instrction per tile 
+
       _finished_tiles.push(std::move(*tile));
       _tiles.erase(tile);
       break;
@@ -217,6 +231,26 @@ bool Core::can_issue_compute(std::unique_ptr<Instruction>& inst) {
 
 void Core::print_stats() {
   update_stats();
+
+
+  // actual logic to get avg instruction per tile
+
+  double avg_inst_per_tile = 0.0;
+
+  if (_total_finished_tiles > 0) {
+    avg_inst_per_tile =
+        (double)_total_runtime_insts /
+        _total_finished_tiles;
+  }
+
+  spdlog::info(
+    "Runtime Instructions [{}] Avg Instructions Per Finished Tile [{:.2f}]",
+    _total_runtime_insts,
+    avg_inst_per_tile
+  ); 
+
+  // end of actual logic to get avg instrction per tile 
+
   spdlog::info(
       "Core [{}] : MatMul active cycle {} Vector active cycle {} ",
       _id, _stat_tot_matmul_cycle, _stat_tot_vec_compute_cycle);
@@ -230,6 +264,32 @@ void Core::print_stats() {
       _id, static_cast<float>(_stat_tot_systolic_active_cycle * 100) / _core_cycle,
       static_cast<float>(_stat_tot_matmul_cycle * 100) / _core_cycle,
       static_cast<float>(_stat_tot_vec_compute_cycle * 100) / _core_cycle, _core_cycle);
+  
+  // NEW: Calculate and print SRAM hit rates
+  uint64_t spad_hits = _spad.get_hit_count();
+  uint64_t spad_misses = _spad.get_miss_count();
+  uint64_t acc_hits = _acc_spad.get_hit_count();
+  uint64_t acc_misses = _acc_spad.get_miss_count();
+  
+  uint64_t total_spad_accesses = spad_hits + spad_misses;
+  uint64_t total_acc_accesses = acc_hits + acc_misses;
+  
+  double spad_hit_rate = 0.0;
+  double acc_hit_rate = 0.0;
+  
+  if (total_spad_accesses > 0) {
+    spad_hit_rate = (double)spad_hits / total_spad_accesses * 100.0;
+  }
+  
+  if (total_acc_accesses > 0) {
+    acc_hit_rate = (double)acc_hits / total_acc_accesses * 100.0;
+  }
+  
+  spdlog::info("[Core {}] Input SRAM Hit Rate: {:.2f}% ({} hits, {} misses)", 
+               _id, spad_hit_rate, spad_hits, spad_misses);
+  
+  spdlog::info("[Core {}] Accumulator SRAM Hit Rate: {:.2f}% ({} hits, {} misses)", 
+               _id, acc_hit_rate, acc_hits, acc_misses);
 }
 
 void Core::print_current_stats() {

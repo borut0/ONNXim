@@ -91,4 +91,9 @@ class Core {
   uint32_t _current_fused_op_id;
   Sram _spad;
   Sram _acc_spad;
+
+
+  //For Avg instruction per Tile
+  uint64_t _total_runtime_insts = 0;
+  uint64_t _total_finished_tiles = 0;
 };

@@ -265,7 +265,19 @@ void DedicatedCPUScheduler::refresh_status() {
         req = _request_queue.erase(req);
         if (finished_model->check_regressive()) {
           finished_model->prepare_regressive();
-          static_cast<Simulator*>(_simulator)->register_model(std::move(finished_model));
+          static_cast<Simulator*>(_simulator)->rprint:
+
+total systolic instructions
+
+total vector instructions
+
+total preload instructions
+
+total tiles
+
+Then compute average.
+
+VERY easy.egister_model(std::move(finished_model));
         }
         --req;
       }

@@ -19,7 +19,16 @@ bool Sram::check_hit(addr_type address, int buffer_id) {
   if (_cache_table[buffer_id].find(address) == _cache_table[buffer_id].end())
     return false;
   _cache_table[buffer_id].at(address).timestamp = _core_cycle;
-  return _cache_table[buffer_id].at(address).valid;
+  bool hit = _cache_table[buffer_id].at(address).valid;
+
+  // INSTRUMENT: Count hits and misses
+  if (hit) {
+    _hit_count++;
+  } else {
+    _miss_count++;
+  }
+
+  return hit;
 }
 
 bool Sram::check_full(int buffer_id) {
