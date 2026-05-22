@@ -98,7 +98,7 @@
   "dram_print_interval": 9600,
   "dram_config_path" : "../configs/ramulator2_configs/HBM2.yaml",
 
-  "icnt_type" : "simple",
+  "icnt_type" : "booksim2",
   "icnt_latency" : 1,
   "icnt_freq" : 1000,
   "icnt_injection_ports_per_core" : 16,

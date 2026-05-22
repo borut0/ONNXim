@@ -1,0 +1,17 @@
+sequence_length,phase,component,cycles,pct,total_layer_cycles
+1,generation,Attention,1094,16.7074,6548
+1,generation,Attn Projection,985,15.0428,6548
+1,generation,Concat/KV Cache,3,0.0458155,6548
+1,generation,FFN Act,47,0.717776,6548
+1,generation,FFN FC1,1196,18.2651,6548
+1,generation,FFN FC2,1551,23.6866,6548
+1,generation,LayerNorm,99,1.51191,6548
+1,generation,QKV Projection,1573,24.0226,6548
+3,generation,Attention,1100,16.9335,6496
+3,generation,Attn Projection,940,14.4704,6496
+3,generation,Concat/KV Cache,4,0.0615764,6496
+3,generation,FFN Act,47,0.723522,6496
+3,generation,FFN FC1,1210,18.6268,6496
+3,generation,FFN FC2,1542,23.7377,6496
+3,generation,LayerNorm,98,1.50862,6496
+3,generation,QKV Projection,1555,23.9378,6496

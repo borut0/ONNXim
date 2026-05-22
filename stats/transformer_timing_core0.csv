@@ -1,0 +1,2 @@
+sequence_length,phase,core_id,cycle,layer,memory_idle_pct,core_idle_pct,pe_util_pct,vector_util_pct,systolic_bubble_pct,systolic_active_pct
+3,generation,0,8000,layer0.attn.QKVgen,94.8125,36.0125,0.0375,0.1875,0,23.2
