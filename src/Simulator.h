@@ -69,6 +69,8 @@ class Simulator {
   cycle_type _icnt_cycle=0;
   uint64_t _icnt_interval=0;
 
+  // Total memory footprint requested to L2/DRAM
+  uint64_t _total_mem_requests_ever = 0;
   struct CompareModel {
     bool operator()(const std::unique_ptr<Model>& a, const std::unique_ptr<Model>& b) const {
         return a->get_request_time() > b->get_request_time();

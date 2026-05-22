@@ -1,0 +1,935 @@
+[2026-05-22 23:01:03.710] [info] CPU 0: Partition 0
+[2026-05-22 23:01:03.710] [info] CPU 1: Partition 0
+[2026-05-22 23:01:03.710] [info] CPU 2: Partition 0
+[2026-05-22 23:01:03.710] [info] CPU 3: Partition 0
+[2026-05-22 23:01:03.710] [info] Running in language mode
+[2026-05-22 23:01:03.710] [info] Simulator Configuration:
+[2026-05-22 23:01:03.710] [info] [Core 0] Systolic Array Throughput: 131072 GFLOPS, Spad size: 32768 KB, Accumulator size: 4096 KB
+[2026-05-22 23:01:03.710] [info] [Core 1] Systolic Array Throughput: 131072 GFLOPS, Spad size: 32768 KB, Accumulator size: 4096 KB
+[2026-05-22 23:01:03.710] [info] [Core 2] Systolic Array Throughput: 131072 GFLOPS, Spad size: 32768 KB, Accumulator size: 4096 KB
+[2026-05-22 23:01:03.710] [info] [Core 3] Systolic Array Throughput: 131072 GFLOPS, Spad size: 32768 KB, Accumulator size: 4096 KB
+[2026-05-22 23:01:03.710] [info] DRAM Bandwidth 614 GB/s
+[2026-05-22 23:01:03.710] [info] Ramulator2 config: /workspace/ONNXim/configs/../configs/ramulator2_configs/HBM2.yaml
+[2026-05-22 23:01:03.727] [info] Initialize Booksim2
+[2026-05-22 23:01:03.727] [info] Config path : /workspace/ONNXim/configs/../configs/booksim2_configs/fly_c64_m16.icnt
+[2026-05-22 23:01:03.731] [info] Register Language Model: tiny_transformer
+[2026-05-22 23:01:03.731] [info] Tensor Parallelsim 1, Pipeline Parallelism 1
+[2026-05-22 23:01:03.731] [info] Weight size: 0.01 GB
+[2026-05-22 23:01:03.731] [info] Simple Language scheduler selected
+[2026-05-22 23:01:03.731] [info] num layer 1 num sim layer 1
+[2026-05-22 23:01:03.731] [info] ======Start Simulation=====
+[2026-05-22 23:01:03.731] [info] Total Memory Usage: 0.01 GB
+[2026-05-22 23:01:03.731] [info] Weight Memory Usage: 0.01 GB
+[2026-05-22 23:01:03.731] [info] KV Memory Usage: 0.00 GB
+[2026-05-22 23:01:03.731] [info] Activation Memory Usage: 0.00 GB
+[2026-05-22 23:01:03.731] [debug] [Gemm] input_shape: [8, 232]
+[2026-05-22 23:01:03.731] [debug] [Gemm] output_shape : [8, 696]
+[2026-05-22 23:01:03.731] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-22 23:01:03.731] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-22 23:01:03.731] [info] [GEMM] Used mapping: Total N:8 C:232 M:696 | Outer N:1 C:1 M:6 | Inner N:128 C:256 M:128
+[2026-05-22 23:01:03.733] [info] [GemmWs] Keys K = 232, N = 8, M = 696
+[2026-05-22 23:01:03.733] [info] [GemmWS]: total 0.00258912 GFLOPs, 0.00033918401 GB
+[2026-05-22 23:01:03.733] [info] [GemmWS]: Theoretical time(ms): 0.0005524169637283194 Compute time: 1.9753418456502914e-05 Memory time: 0.0005524169637283194
+[2026-05-22 23:01:03.733] [debug] [KVCacheConcat] input_token_lengths: [8]
+[2026-05-22 23:01:03.733] [debug] [KVCacheConcat] number of tiles: 1
+[2026-05-22 23:01:03.733] [info] [Attention] total_spad_size_per_head: 240352 B
+[2026-05-22 23:01:03.733] [info] [Attention] total_acc_size_per_head: 16512 B
+[2026-05-22 23:01:03.733] [info] [Attention] q_len: 8, seq_len: 1032, dk: 58, heads per tile 1
+[2026-05-22 23:01:03.733] [info] [Attention] Spad size 16777216
+[2026-05-22 23:01:03.733] [info] [Attention] Accum spad size 2097152
+[2026-05-22 23:01:03.733] [info] Mapping info Total Loop: N32 C58 M1032 S1 R1 Q1 P1 Tile Out Loop: N4 C1 M1 S1 R1 Q1 P1 Tile In Loop: N8 C58 M1032 S1 R1 Q1 P1
+[2026-05-22 23:01:03.746] [info] [Attention] QK 0.003830784 GFLOPs
+[2026-05-22 23:01:03.746] [info] [Attention] total 0.007991808 GFLOPs, 0.00096512 GB
+[2026-05-22 23:01:03.746] [info] [Attention] Theoretical time(ms): 0.0015718567 Compute time: 9.8765624e-05 Memory time: 0.0015718567
+[2026-05-22 23:01:03.746] [info] [Attention] QK compute 0.0000ms Softmax compute 0.0000ms SV compute 0.0000ms
+[2026-05-22 23:01:03.746] [debug] [Gemm] input_shape: [8, 232]
+[2026-05-22 23:01:03.746] [debug] [Gemm] output_shape : [8, 232]
+[2026-05-22 23:01:03.746] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-22 23:01:03.746] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-22 23:01:03.746] [info] [GEMM] Used mapping: Total N:8 C:232 M:232 | Outer N:1 C:1 M:2 | Inner N:128 C:256 M:128
+[2026-05-22 23:01:03.747] [info] [GemmWs] Keys K = 232, N = 8, M = 232
+[2026-05-22 23:01:03.747] [info] [GemmWS]: total 0.0008630399 GFLOPs, 0.000115536 GB
+[2026-05-22 23:01:03.747] [info] [GemmWS]: Theoretical time(ms): 0.00018816938052168553 Compute time: 6.5844720786856215e-06 Memory time: 0.00018816938052168553
+[2026-05-22 23:01:03.747] [info] [SkipLayerNorm] tokens_per_tile: 1
+[2026-05-22 23:01:03.747] [debug] [Gemm] input_shape: [8, 232]
+[2026-05-22 23:01:03.747] [debug] [Gemm] output_shape : [8, 512]
+[2026-05-22 23:01:03.747] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-22 23:01:03.747] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-22 23:01:03.747] [info] [GEMM] Used mapping: Total N:8 C:232 M:512 | Outer N:1 C:1 M:4 | Inner N:128 C:256 M:128
+[2026-05-22 23:01:03.748] [info] [GemmWs] Keys K = 232, N = 8, M = 512
+[2026-05-22 23:01:03.748] [info] [GemmWS]: total 0.001900544 GFLOPs, 0.000249472 GB
+[2026-05-22 23:01:03.748] [info] [GemmWS]: Theoretical time(ms): 0.000406306213562857 Compute time: 1.450000031155696e-05 Memory time: 0.000406306213562857
+[2026-05-22 23:01:03.748] [info] [BiasAct] tokens_per_tile: 1
+[2026-05-22 23:01:03.748] [debug] [Gemm] input_shape: [8, 512]
+[2026-05-22 23:01:03.748] [debug] [Gemm] output_shape : [8, 232]
+[2026-05-22 23:01:03.748] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-22 23:01:03.748] [info] [GEMM] required_sram_size: 262144 required_accum_size: 32768
+[2026-05-22 23:01:03.748] [info] [GEMM] Used mapping: Total N:8 C:512 M:232 | Outer N:1 C:1 M:2 | Inner N:128 C:512 M:128
+[2026-05-22 23:01:03.749] [info] [GemmWs] Keys K = 512, N = 8, M = 232
+[2026-05-22 23:01:03.749] [info] [GemmWS]: total 0.0019023999 GFLOPs, 0.000249936 GB
+[2026-05-22 23:01:03.749] [info] [GemmWS]: Theoretical time(ms): 0.000407061918394902 Compute time: 1.451415965192382e-05 Memory time: 0.000407061918394902
+[2026-05-22 23:01:03.749] [info] [SkipLayerNorm] tokens_per_tile: 1
+[2026-05-22 23:01:03.749] [debug] runnable op, 
+[2026-05-22 23:01:03.749] [info]  Model initialization time: 0.017810 seconds
+[2026-05-22 23:01:03.749] [info] Schedule model: tiny_transformer at 1000 us
+[2026-05-22 23:01:03.749] [info] MODEL tiny_transformer Scheduled, Total Request: 1
+[2026-05-22 23:01:03.749] [info] executable layer count 1
+[2026-05-22 23:01:03.749] [info] Start layer layer0.attn.QKVgen
+[2026-05-22 23:01:03.749] [debug] Layer layer0.attn.QKVgen Core 0 Get Tile at 0
+[2026-05-22 23:01:03.749] [debug] Layer layer0.attn.QKVgen Core 1 Get Tile at 0
+[2026-05-22 23:01:03.749] [debug] Layer layer0.attn.QKVgen Core 2 Get Tile at 0
+[2026-05-22 23:01:03.749] [debug] Layer layer0.attn.QKVgen Core 3 Get Tile at 0
+[2026-05-22 23:01:03.749] [info] HBM2-CH_0: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_1: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_2: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_3: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_4: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_5: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_6: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_7: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_8: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_9: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_10: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_11: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_12: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_13: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_14: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] HBM2-CH_15: BW utilization 0% (0 reads, 0 writes)
+[2026-05-22 23:01:03.749] [debug] Layer layer0.attn.QKVgen Core 1 Get Tile at 1
+[2026-05-22 23:01:03.749] [debug] Layer layer0.attn.QKVgen Core 2 Get Tile at 1
+[2026-05-22 23:01:03.897] [debug] Layer 18 Core 0 Finish Tile at 1306 Remain tile 6
+[2026-05-22 23:01:03.897] [debug] Layer 18 Core 1 Finish Tile at 1315 Remain tile 5
+[2026-05-22 23:01:03.897] [debug] Layer 18 Core 3 Finish Tile at 1318 Remain tile 4
+[2026-05-22 23:01:03.899] [debug] Layer 18 Core 2 Finish Tile at 1366 Remain tile 3
+[2026-05-22 23:01:03.901] [debug] Layer 18 Core 1 Finish Tile at 1571 Remain tile 2
+[2026-05-22 23:01:03.901] [debug] Layer 18 Core 2 Finish Tile at 1622 Remain tile 1
+[2026-05-22 23:01:03.901] [info] Layer layer0.attn.QKVgen finish at 1622
+[2026-05-22 23:01:03.901] [info] Total compute time 1622
+[2026-05-22 23:01:03.901] [info] executable layer count 1
+[2026-05-22 23:01:03.901] [info] Start layer layer0.attn.KVccat
+[2026-05-22 23:01:03.901] [debug] Layer layer0.attn.KVccat Core 0 Get Tile at 1623
+[2026-05-22 23:01:03.901] [debug] Layer 20 Core 0 Finish Tile at 1624 Remain tile 1
+[2026-05-22 23:01:03.901] [info] Layer layer0.attn.KVccat finish at 1624
+[2026-05-22 23:01:03.901] [info] Total compute time 2
+[2026-05-22 23:01:03.901] [info] executable layer count 1
+[2026-05-22 23:01:03.901] [info] Start layer layer0.attn.Attention.0
+[2026-05-22 23:01:03.901] [debug] Layer layer0.attn.Attention.0 Core 0 Get Tile at 1624
+[2026-05-22 23:01:03.901] [debug] Layer layer0.attn.Attention.0 Core 1 Get Tile at 1624
+[2026-05-22 23:01:03.901] [debug] Layer layer0.attn.Attention.0 Core 2 Get Tile at 1624
+[2026-05-22 23:01:03.901] [debug] Layer layer0.attn.Attention.0 Core 3 Get Tile at 1624
+[2026-05-22 23:01:04.385] [info] HBM2-CH_0: BW utilization 26% (2552 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_1: BW utilization 26% (2560 reads, 21 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_2: BW utilization 26% (2556 reads, 21 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_3: BW utilization 26% (2552 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_4: BW utilization 26% (2556 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_5: BW utilization 26% (2556 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_6: BW utilization 26% (2552 reads, 23 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_7: BW utilization 26% (2556 reads, 21 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_8: BW utilization 26% (2554 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_9: BW utilization 26% (2555 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_10: BW utilization 26% (2555 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_11: BW utilization 26% (2554 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_12: BW utilization 26% (2555 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_13: BW utilization 26% (2554 reads, 22 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_14: BW utilization 26% (2554 reads, 23 writes)
+[2026-05-22 23:01:04.385] [debug] HBM2-CH_15: BW utilization 26% (2555 reads, 23 writes)
+[2026-05-22 23:01:04.385] [info] Core [0] : MatMul active cycle 56 Vector active cycle 35 
+[2026-05-22 23:01:04.385] [info] Core [0] : issued tile 1 
+[2026-05-22 23:01:04.385] [info] Core [0] : Memory unit idle cycle 7401 Systolic bubble cycle 0 Core idle cycle 278 
+[2026-05-22 23:01:04.385] [info] Core [0] : Systolic Array Utilization(%) 40.91 (0.70% PE util), Vector Unit Utilization(%) 0.44, Total cycle: 8000
+[2026-05-22 23:01:04.385] [debug] Core [1] : MatMul active cycle 70 Vector active cycle 35 
+[2026-05-22 23:01:04.385] [debug] Core [1] : issued tile 1 
+[2026-05-22 23:01:04.385] [debug] Core [1] : Memory unit idle cycle 7274 Systolic bubble cycle 0 Core idle cycle 28 
+[2026-05-22 23:01:04.385] [debug] Core [1] : Systolic Array Utilization(%) 44.90 (0.88% PE util), Vector Unit Utilization(%) 0.44, Total cycle: 8000
+[2026-05-22 23:01:04.385] [debug] Core [2] : MatMul active cycle 61 Vector active cycle 35 
+[2026-05-22 23:01:04.385] [debug] Core [2] : issued tile 1 
+[2026-05-22 23:01:04.385] [debug] Core [2] : Memory unit idle cycle 7341 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-22 23:01:04.385] [debug] Core [2] : Systolic Array Utilization(%) 45.16 (0.76% PE util), Vector Unit Utilization(%) 0.44, Total cycle: 8000
+[2026-05-22 23:01:04.385] [debug] Core [3] : MatMul active cycle 56 Vector active cycle 35 
+[2026-05-22 23:01:04.385] [debug] Core [3] : issued tile 1 
+[2026-05-22 23:01:04.385] [debug] Core [3] : Memory unit idle cycle 7401 Systolic bubble cycle 0 Core idle cycle 273 
+[2026-05-22 23:01:04.385] [debug] Core [3] : Systolic Array Utilization(%) 42.25 (0.70% PE util), Vector Unit Utilization(%) 0.44, Total cycle: 8000
+[2026-05-22 23:01:04.393] [debug] Layer 24 Core 3 Finish Tile at 9170 Remain tile 4
+[2026-05-22 23:01:04.393] [debug] Layer 24 Core 2 Finish Tile at 9193 Remain tile 3
+[2026-05-22 23:01:04.394] [debug] Layer 24 Core 1 Finish Tile at 9214 Remain tile 2
+[2026-05-22 23:01:04.395] [debug] Layer 24 Core 0 Finish Tile at 9277 Remain tile 1
+[2026-05-22 23:01:04.395] [info] Layer layer0.attn.Attention.0 finish at 9277
+[2026-05-22 23:01:04.395] [info] Total compute time 7653
+[2026-05-22 23:01:04.395] [info] executable layer count 1
+[2026-05-22 23:01:04.395] [info] Start layer layer0.attn.Atccat
+[2026-05-22 23:01:04.395] [debug] Layer layer0.attn.Atccat Core 1 Get Tile at 9277
+[2026-05-22 23:01:04.395] [debug] Layer 26 Core 1 Finish Tile at 9278 Remain tile 1
+[2026-05-22 23:01:04.395] [info] Layer layer0.attn.Atccat finish at 9278
+[2026-05-22 23:01:04.395] [info] Total compute time 1
+[2026-05-22 23:01:04.395] [info] executable layer count 1
+[2026-05-22 23:01:04.395] [info] Start layer layer0.attn.proj
+[2026-05-22 23:01:04.395] [debug] Layer layer0.attn.proj Core 1 Get Tile at 9278
+[2026-05-22 23:01:04.395] [debug] Layer layer0.attn.proj Core 2 Get Tile at 9278
+[2026-05-22 23:01:04.439] [debug] Layer 28 Core 2 Finish Tile at 10240 Remain tile 2
+[2026-05-22 23:01:04.439] [debug] Layer 28 Core 1 Finish Tile at 10244 Remain tile 1
+[2026-05-22 23:01:04.439] [info] Layer layer0.attn.proj finish at 10244
+[2026-05-22 23:01:04.439] [info] Total compute time 966
+[2026-05-22 23:01:04.439] [info] executable layer count 1
+[2026-05-22 23:01:04.439] [info] Start layer layer0.attn.ln
+[2026-05-22 23:01:04.439] [debug] Layer layer0.attn.ln Core 1 Get Tile at 10244
+[2026-05-22 23:01:04.439] [debug] Layer layer0.attn.ln Core 2 Get Tile at 10244
+[2026-05-22 23:01:04.439] [debug] Layer layer0.attn.ln Core 3 Get Tile at 10244
+[2026-05-22 23:01:04.440] [debug] Layer layer0.attn.ln Core 0 Get Tile at 10245
+[2026-05-22 23:01:04.440] [debug] Layer layer0.attn.ln Core 1 Get Tile at 10245
+[2026-05-22 23:01:04.440] [debug] Layer layer0.attn.ln Core 2 Get Tile at 10245
+[2026-05-22 23:01:04.440] [debug] Layer layer0.attn.ln Core 3 Get Tile at 10245
+[2026-05-22 23:01:04.440] [debug] Layer layer0.attn.ln Core 0 Get Tile at 10246
+[2026-05-22 23:01:04.443] [debug] Layer 30 Core 2 Finish Tile at 10308 Remain tile 8
+[2026-05-22 23:01:04.443] [debug] Layer 30 Core 0 Finish Tile at 10311 Remain tile 7
+[2026-05-22 23:01:04.443] [debug] Layer 30 Core 1 Finish Tile at 10313 Remain tile 6
+[2026-05-22 23:01:04.443] [debug] Layer 30 Core 3 Finish Tile at 10313 Remain tile 5
+[2026-05-22 23:01:04.444] [debug] Layer 30 Core 0 Finish Tile at 10320 Remain tile 4
+[2026-05-22 23:01:04.444] [debug] Layer 30 Core 2 Finish Tile at 10320 Remain tile 3
+[2026-05-22 23:01:04.444] [debug] Layer 30 Core 1 Finish Tile at 10322 Remain tile 2
+[2026-05-22 23:01:04.444] [debug] Layer 30 Core 3 Finish Tile at 10322 Remain tile 1
+[2026-05-22 23:01:04.444] [info] Layer layer0.attn.ln finish at 10322
+[2026-05-22 23:01:04.444] [info] Total compute time 78
+[2026-05-22 23:01:04.444] [info] executable layer count 1
+[2026-05-22 23:01:04.444] [info] Start layer layer0.ffn.fc1
+[2026-05-22 23:01:04.444] [debug] Layer layer0.ffn.fc1 Core 3 Get Tile at 10322
+[2026-05-22 23:01:04.444] [debug] Layer layer0.ffn.fc1 Core 0 Get Tile at 10323
+[2026-05-22 23:01:04.444] [debug] Layer layer0.ffn.fc1 Core 1 Get Tile at 10323
+[2026-05-22 23:01:04.444] [debug] Layer layer0.ffn.fc1 Core 2 Get Tile at 10323
+[2026-05-22 23:01:04.573] [debug] Layer 32 Core 1 Finish Tile at 11589 Remain tile 4
+[2026-05-22 23:01:04.573] [debug] Layer 32 Core 3 Finish Tile at 11590 Remain tile 3
+[2026-05-22 23:01:04.574] [debug] Layer 32 Core 0 Finish Tile at 11600 Remain tile 2
+[2026-05-22 23:01:04.574] [debug] Layer 32 Core 2 Finish Tile at 11601 Remain tile 1
+[2026-05-22 23:01:04.574] [info] Layer layer0.ffn.fc1 finish at 11601
+[2026-05-22 23:01:04.574] [info] Total compute time 1279
+[2026-05-22 23:01:04.574] [info] executable layer count 1
+[2026-05-22 23:01:04.574] [info] Start layer layer0.ffn.act
+[2026-05-22 23:01:04.574] [debug] Layer layer0.ffn.act Core 2 Get Tile at 11601
+[2026-05-22 23:01:04.574] [debug] Layer layer0.ffn.act Core 3 Get Tile at 11601
+[2026-05-22 23:01:04.574] [debug] Layer layer0.ffn.act Core 0 Get Tile at 11602
+[2026-05-22 23:01:04.574] [debug] Layer layer0.ffn.act Core 1 Get Tile at 11602
+[2026-05-22 23:01:04.574] [debug] Layer layer0.ffn.act Core 2 Get Tile at 11602
+[2026-05-22 23:01:04.574] [debug] Layer layer0.ffn.act Core 3 Get Tile at 11602
+[2026-05-22 23:01:04.574] [debug] Layer layer0.ffn.act Core 0 Get Tile at 11603
+[2026-05-22 23:01:04.574] [debug] Layer layer0.ffn.act Core 1 Get Tile at 11603
+[2026-05-22 23:01:04.583] [debug] Layer 34 Core 1 Finish Tile at 11694 Remain tile 8
+[2026-05-22 23:01:04.583] [debug] Layer 34 Core 0 Finish Tile at 11697 Remain tile 7
+[2026-05-22 23:01:04.583] [debug] Layer 34 Core 2 Finish Tile at 11701 Remain tile 6
+[2026-05-22 23:01:04.583] [debug] Layer 34 Core 3 Finish Tile at 11704 Remain tile 5
+[2026-05-22 23:01:04.583] [debug] Layer 34 Core 0 Finish Tile at 11706 Remain tile 4
+[2026-05-22 23:01:04.583] [debug] Layer 34 Core 2 Finish Tile at 11710 Remain tile 3
+[2026-05-22 23:01:04.584] [debug] Layer 34 Core 1 Finish Tile at 11712 Remain tile 2
+[2026-05-22 23:01:04.584] [debug] Layer 34 Core 3 Finish Tile at 11712 Remain tile 1
+[2026-05-22 23:01:04.584] [info] Layer layer0.ffn.act finish at 11712
+[2026-05-22 23:01:04.584] [info] Total compute time 111
+[2026-05-22 23:01:04.584] [info] executable layer count 1
+[2026-05-22 23:01:04.584] [info] Start layer layer0.ffn.fc2
+[2026-05-22 23:01:04.584] [debug] Layer layer0.ffn.fc2 Core 1 Get Tile at 11713
+[2026-05-22 23:01:04.584] [debug] Layer layer0.ffn.fc2 Core 2 Get Tile at 11713
+[2026-05-22 23:01:04.682] [debug] Layer 36 Core 2 Finish Tile at 13234 Remain tile 2
+[2026-05-22 23:01:04.683] [debug] Layer 36 Core 1 Finish Tile at 13291 Remain tile 1
+[2026-05-22 23:01:04.683] [info] Layer layer0.ffn.fc2 finish at 13291
+[2026-05-22 23:01:04.683] [info] Total compute time 1579
+[2026-05-22 23:01:04.683] [info] executable layer count 1
+[2026-05-22 23:01:04.683] [info] Start layer layer0.ffn.ln
+[2026-05-22 23:01:04.683] [debug] Layer layer0.ffn.ln Core 1 Get Tile at 13291
+[2026-05-22 23:01:04.683] [debug] Layer layer0.ffn.ln Core 2 Get Tile at 13291
+[2026-05-22 23:01:04.683] [debug] Layer layer0.ffn.ln Core 3 Get Tile at 13291
+[2026-05-22 23:01:04.683] [debug] Layer layer0.ffn.ln Core 0 Get Tile at 13292
+[2026-05-22 23:01:04.683] [debug] Layer layer0.ffn.ln Core 1 Get Tile at 13292
+[2026-05-22 23:01:04.683] [debug] Layer layer0.ffn.ln Core 2 Get Tile at 13292
+[2026-05-22 23:01:04.683] [debug] Layer layer0.ffn.ln Core 3 Get Tile at 13292
+[2026-05-22 23:01:04.683] [debug] Layer layer0.ffn.ln Core 0 Get Tile at 13293
+[2026-05-22 23:01:04.686] [debug] Layer 38 Core 2 Finish Tile at 13352 Remain tile 8
+[2026-05-22 23:01:04.687] [debug] Layer 38 Core 3 Finish Tile at 13356 Remain tile 7
+[2026-05-22 23:01:04.687] [debug] Layer 38 Core 0 Finish Tile at 13359 Remain tile 6
+[2026-05-22 23:01:04.687] [debug] Layer 38 Core 1 Finish Tile at 13361 Remain tile 5
+[2026-05-22 23:01:04.687] [debug] Layer 38 Core 2 Finish Tile at 13361 Remain tile 4
+[2026-05-22 23:01:04.687] [debug] Layer 38 Core 3 Finish Tile at 13365 Remain tile 3
+[2026-05-22 23:01:04.687] [debug] Layer 38 Core 0 Finish Tile at 13368 Remain tile 2
+[2026-05-22 23:01:04.687] [debug] Layer 38 Core 1 Finish Tile at 13370 Remain tile 1
+[2026-05-22 23:01:04.687] [info] Layer layer0.ffn.ln finish at 13370
+[2026-05-22 23:01:04.687] [info] Total compute time 79
+[2026-05-22 23:01:04.687] [info] Model[tiny_transformer] Request: 0 us, Start: 0 us, finish:13 us, Current Cycle:13370
+[2026-05-22 23:01:04.687] [info] No total_seq_len!
+[2026-05-22 23:01:04.687] [info] Total Memory Usage: 0.01 GB
+[2026-05-22 23:01:04.687] [info] Weight Memory Usage: 0.01 GB
+[2026-05-22 23:01:04.687] [info] KV Memory Usage: 0.00 GB
+[2026-05-22 23:01:04.687] [info] Activation Memory Usage: 0.00 GB
+[2026-05-22 23:01:04.687] [debug] [Gemm] input_shape: [1, 232]
+[2026-05-22 23:01:04.687] [debug] [Gemm] output_shape : [1, 696]
+[2026-05-22 23:01:04.687] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-22 23:01:04.687] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-22 23:01:04.687] [info] [GEMM] Used mapping: Total N:1 C:232 M:696 | Outer N:1 C:1 M:6 | Inner N:128 C:256 M:128
+[2026-05-22 23:01:04.689] [info] [GemmWs] Keys K = 232, N = 1, M = 696
+[2026-05-22 23:01:04.689] [info] [GemmWS]: total 0.00032364 GFLOPs, 0.000326192 GB
+[2026-05-22 23:01:04.689] [info] [GemmWS]: Theoretical time(ms): 0.0005312573421178968 Compute time: 2.469177307062864e-06 Memory time: 0.0005312573421178968
+[2026-05-22 23:01:04.689] [debug] [KVCacheConcat] input_token_lengths: [1]
+[2026-05-22 23:01:04.689] [debug] [KVCacheConcat] number of tiles: 1
+[2026-05-22 23:01:04.689] [info] [Attention] total_spad_size_per_head: 240004 B
+[2026-05-22 23:01:04.689] [info] [Attention] total_acc_size_per_head: 2068 B
+[2026-05-22 23:01:04.689] [info] [Attention] q_len: 1, seq_len: 1034, dk: 58, heads per tile 1
+[2026-05-22 23:01:04.689] [info] [Attention] Spad size 16777216
+[2026-05-22 23:01:04.689] [info] [Attention] Accum spad size 2097152
+[2026-05-22 23:01:04.689] [info] Mapping info Total Loop: N4 C58 M1034 S1 R1 Q1 P1 Tile Out Loop: N4 C1 M1 S1 R1 Q1 P1 Tile In Loop: N1 C58 M1034 S1 R1 Q1 P1
+[2026-05-22 23:01:04.702] [info] [Attention] QK 0.000479776 GFLOPs
+[2026-05-22 23:01:04.702] [info] [Attention] total 0.0010009119 GFLOPs, 0.00096048 GB
+[2026-05-22 23:01:04.702] [info] [Attention] Theoretical time(ms): 0.0015642997 Compute time: 1.2369629e-05 Memory time: 0.0015642997
+[2026-05-22 23:01:04.702] [info] [Attention] QK compute 0.0000ms Softmax compute 0.0000ms SV compute 0.0000ms
+[2026-05-22 23:01:04.702] [debug] [Gemm] input_shape: [1, 232]
+[2026-05-22 23:01:04.702] [debug] [Gemm] output_shape : [1, 232]
+[2026-05-22 23:01:04.702] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-22 23:01:04.702] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-22 23:01:04.702] [info] [GEMM] Used mapping: Total N:1 C:232 M:232 | Outer N:1 C:1 M:2 | Inner N:128 C:256 M:128
+[2026-05-22 23:01:04.703] [info] [GemmWs] Keys K = 232, N = 1, M = 232
+[2026-05-22 23:01:04.703] [info] [GemmWS]: total 0.00010787999 GFLOPs, 0.000109040004 GB
+[2026-05-22 23:01:04.703] [info] [GemmWS]: Theoretical time(ms): 0.00017758958392732893 Compute time: 8.230590098357027e-07 Memory time: 0.00017758958392732893
+[2026-05-22 23:01:04.703] [info] [SkipLayerNorm] tokens_per_tile: 1
+[2026-05-22 23:01:04.703] [debug] [Gemm] input_shape: [1, 232]
+[2026-05-22 23:01:04.703] [debug] [Gemm] output_shape : [1, 512]
+[2026-05-22 23:01:04.703] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-22 23:01:04.703] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-22 23:01:04.703] [info] [GEMM] Used mapping: Total N:1 C:232 M:512 | Outer N:1 C:1 M:4 | Inner N:128 C:256 M:128
+[2026-05-22 23:01:04.704] [info] [GemmWs] Keys K = 232, N = 1, M = 512
+[2026-05-22 23:01:04.704] [info] [GemmWS]: total 0.000237568 GFLOPs, 0.000239056 GB
+[2026-05-22 23:01:04.704] [info] [GemmWS]: Theoretical time(ms): 0.0003893420057465846 Compute time: 1.81250003894462e-06 Memory time: 0.0003893420057465846
+[2026-05-22 23:01:04.704] [info] [BiasAct] tokens_per_tile: 1
+[2026-05-22 23:01:04.704] [debug] [Gemm] input_shape: [1, 512]
+[2026-05-22 23:01:04.704] [debug] [Gemm] output_shape : [1, 232]
+[2026-05-22 23:01:04.704] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-22 23:01:04.704] [info] [GEMM] required_sram_size: 262144 required_accum_size: 32768
+[2026-05-22 23:01:04.704] [info] [GEMM] Used mapping: Total N:1 C:512 M:232 | Outer N:1 C:1 M:2 | Inner N:128 C:512 M:128
+[2026-05-22 23:01:04.705] [info] [GemmWs] Keys K = 512, N = 1, M = 232
+[2026-05-22 23:01:04.705] [info] [GemmWS]: total 0.00023779999 GFLOPs, 0.00023952 GB
+[2026-05-22 23:01:04.705] [info] [GemmWS]: Theoretical time(ms): 0.00039009771057862963 Compute time: 1.8142699564904774e-06 Memory time: 0.00039009771057862963
+[2026-05-22 23:01:04.705] [info] [SkipLayerNorm] tokens_per_tile: 1
+[2026-05-22 23:01:04.705] [debug] runnable op, 
+[2026-05-22 23:01:04.705] [info]  Model initialization time: 0.017353 seconds
+[2026-05-22 23:01:04.705] [info] Schedule model: tiny_transformer at 13372000 us
+[2026-05-22 23:01:04.705] [info] MODEL tiny_transformer Scheduled, Total Request: 1
+[2026-05-22 23:01:04.705] [info] executable layer count 1
+[2026-05-22 23:01:04.705] [info] Start layer layer0.attn.QKVgen
+[2026-05-22 23:01:04.705] [debug] Layer layer0.attn.QKVgen Core 0 Get Tile at 13371
+[2026-05-22 23:01:04.705] [debug] Layer layer0.attn.QKVgen Core 1 Get Tile at 13371
+[2026-05-22 23:01:04.705] [debug] Layer layer0.attn.QKVgen Core 2 Get Tile at 13371
+[2026-05-22 23:01:04.705] [debug] Layer layer0.attn.QKVgen Core 3 Get Tile at 13371
+[2026-05-22 23:01:04.705] [debug] Layer layer0.attn.QKVgen Core 0 Get Tile at 13372
+[2026-05-22 23:01:04.705] [debug] Layer layer0.attn.QKVgen Core 3 Get Tile at 13372
+[2026-05-22 23:01:04.855] [debug] Layer 43 Core 2 Finish Tile at 14625 Remain tile 6
+[2026-05-22 23:01:04.856] [debug] Layer 43 Core 3 Finish Tile at 14648 Remain tile 5
+[2026-05-22 23:01:04.856] [debug] Layer 43 Core 1 Finish Tile at 14675 Remain tile 4
+[2026-05-22 23:01:04.856] [debug] Layer 43 Core 0 Finish Tile at 14699 Remain tile 3
+[2026-05-22 23:01:04.858] [debug] Layer 43 Core 3 Finish Tile at 14904 Remain tile 2
+[2026-05-22 23:01:04.858] [debug] Layer 43 Core 0 Finish Tile at 14955 Remain tile 1
+[2026-05-22 23:01:04.858] [info] Layer layer0.attn.QKVgen finish at 14955
+[2026-05-22 23:01:04.858] [info] Total compute time 1584
+[2026-05-22 23:01:04.858] [info] executable layer count 1
+[2026-05-22 23:01:04.858] [info] Start layer layer0.attn.KVccat
+[2026-05-22 23:01:04.858] [debug] Layer layer0.attn.KVccat Core 2 Get Tile at 14955
+[2026-05-22 23:01:04.858] [debug] Layer 45 Core 2 Finish Tile at 14956 Remain tile 1
+[2026-05-22 23:01:04.858] [info] Layer layer0.attn.KVccat finish at 14956
+[2026-05-22 23:01:04.858] [info] Total compute time 1
+[2026-05-22 23:01:04.858] [info] executable layer count 1
+[2026-05-22 23:01:04.858] [info] Start layer layer0.attn.Attention.0
+[2026-05-22 23:01:04.858] [debug] Layer layer0.attn.Attention.0 Core 2 Get Tile at 14956
+[2026-05-22 23:01:04.858] [debug] Layer layer0.attn.Attention.0 Core 3 Get Tile at 14956
+[2026-05-22 23:01:04.858] [debug] Layer layer0.attn.Attention.0 Core 0 Get Tile at 14957
+[2026-05-22 23:01:04.858] [debug] Layer layer0.attn.Attention.0 Core 1 Get Tile at 14957
+[2026-05-22 23:01:05.104] [info] HBM2-CH_0: BW utilization 30% (2850 reads, 75 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_1: BW utilization 30% (2867 reads, 76 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_2: BW utilization 30% (2864 reads, 74 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_3: BW utilization 30% (2851 reads, 74 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_4: BW utilization 30% (2871 reads, 75 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_5: BW utilization 30% (2850 reads, 74 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_6: BW utilization 30% (2859 reads, 76 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_7: BW utilization 30% (2868 reads, 72 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_8: BW utilization 30% (2850 reads, 73 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_9: BW utilization 30% (2851 reads, 73 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_10: BW utilization 30% (2849 reads, 72 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_11: BW utilization 30% (2862 reads, 74 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_12: BW utilization 30% (2828 reads, 72 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_13: BW utilization 30% (2861 reads, 76 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_14: BW utilization 30% (2856 reads, 74 writes)
+[2026-05-22 23:01:05.104] [debug] HBM2-CH_15: BW utilization 30% (2852 reads, 70 writes)
+[2026-05-22 23:01:05.106] [info] Core [0] : MatMul active cycle 21 Vector active cycle 30 
+[2026-05-22 23:01:05.106] [info] Core [0] : issued tile 1 
+[2026-05-22 23:01:05.106] [info] Core [0] : Memory unit idle cycle 7204 Systolic bubble cycle 0 Core idle cycle 1569 
+[2026-05-22 23:01:05.106] [info] Core [0] : Systolic Array Utilization(%) 22.41 (0.26% PE util), Vector Unit Utilization(%) 0.38, Total cycle: 16000
+[2026-05-22 23:01:05.106] [debug] Core [1] : MatMul active cycle 67 Vector active cycle 30 
+[2026-05-22 23:01:05.106] [debug] Core [1] : issued tile 1 
+[2026-05-22 23:01:05.106] [debug] Core [1] : Memory unit idle cycle 6851 Systolic bubble cycle 0 Core idle cycle 306 
+[2026-05-22 23:01:05.106] [debug] Core [1] : Systolic Array Utilization(%) 31.38 (0.84% PE util), Vector Unit Utilization(%) 0.38, Total cycle: 16000
+[2026-05-22 23:01:05.106] [debug] Core [2] : MatMul active cycle 56 Vector active cycle 30 
+[2026-05-22 23:01:05.106] [debug] Core [2] : issued tile 1 
+[2026-05-22 23:01:05.106] [debug] Core [2] : Memory unit idle cycle 6921 Systolic bubble cycle 0 Core idle cycle 390 
+[2026-05-22 23:01:05.106] [debug] Core [2] : Systolic Array Utilization(%) 31.11 (0.70% PE util), Vector Unit Utilization(%) 0.38, Total cycle: 16000
+[2026-05-22 23:01:05.106] [debug] Core [3] : MatMul active cycle 22 Vector active cycle 30 
+[2026-05-22 23:01:05.106] [debug] Core [3] : issued tile 1 
+[2026-05-22 23:01:05.106] [debug] Core [3] : Memory unit idle cycle 7138 Systolic bubble cycle 0 Core idle cycle 1993 
+[2026-05-22 23:01:05.106] [debug] Core [3] : Systolic Array Utilization(%) 21.08 (0.28% PE util), Vector Unit Utilization(%) 0.38, Total cycle: 16000
+[2026-05-22 23:01:05.356] [debug] Layer 49 Core 0 Finish Tile at 22404 Remain tile 4
+[2026-05-22 23:01:05.357] [debug] Layer 49 Core 3 Finish Tile at 22438 Remain tile 3
+[2026-05-22 23:01:05.357] [debug] Layer 49 Core 1 Finish Tile at 22485 Remain tile 2
+[2026-05-22 23:01:05.357] [debug] Layer 49 Core 2 Finish Tile at 22486 Remain tile 1
+[2026-05-22 23:01:05.357] [info] Layer layer0.attn.Attention.0 finish at 22486
+[2026-05-22 23:01:05.357] [info] Total compute time 7530
+[2026-05-22 23:01:05.357] [info] executable layer count 1
+[2026-05-22 23:01:05.357] [info] Start layer layer0.attn.Atccat
+[2026-05-22 23:01:05.357] [debug] Layer layer0.attn.Atccat Core 3 Get Tile at 22486
+[2026-05-22 23:01:05.357] [debug] Layer 51 Core 3 Finish Tile at 22487 Remain tile 1
+[2026-05-22 23:01:05.357] [info] Layer layer0.attn.Atccat finish at 22487
+[2026-05-22 23:01:05.357] [info] Total compute time 1
+[2026-05-22 23:01:05.357] [info] executable layer count 1
+[2026-05-22 23:01:05.357] [info] Start layer layer0.attn.proj
+[2026-05-22 23:01:05.357] [debug] Layer layer0.attn.proj Core 3 Get Tile at 22487
+[2026-05-22 23:01:05.357] [debug] Layer layer0.attn.proj Core 0 Get Tile at 22488
+[2026-05-22 23:01:05.399] [debug] Layer 53 Core 0 Finish Tile at 23418 Remain tile 2
+[2026-05-22 23:01:05.399] [debug] Layer 53 Core 3 Finish Tile at 23427 Remain tile 1
+[2026-05-22 23:01:05.399] [info] Layer layer0.attn.proj finish at 23427
+[2026-05-22 23:01:05.399] [info] Total compute time 940
+[2026-05-22 23:01:05.399] [info] executable layer count 1
+[2026-05-22 23:01:05.399] [info] Start layer layer0.attn.ln
+[2026-05-22 23:01:05.399] [debug] Layer layer0.attn.ln Core 0 Get Tile at 23428
+[2026-05-22 23:01:05.400] [debug] Layer 55 Core 0 Finish Tile at 23472 Remain tile 1
+[2026-05-22 23:01:05.400] [info] Layer layer0.attn.ln finish at 23472
+[2026-05-22 23:01:05.400] [info] Total compute time 45
+[2026-05-22 23:01:05.400] [info] executable layer count 1
+[2026-05-22 23:01:05.400] [info] Start layer layer0.ffn.fc1
+[2026-05-22 23:01:05.400] [debug] Layer layer0.ffn.fc1 Core 0 Get Tile at 23472
+[2026-05-22 23:01:05.400] [debug] Layer layer0.ffn.fc1 Core 1 Get Tile at 23472
+[2026-05-22 23:01:05.400] [debug] Layer layer0.ffn.fc1 Core 2 Get Tile at 23472
+[2026-05-22 23:01:05.400] [debug] Layer layer0.ffn.fc1 Core 3 Get Tile at 23472
+[2026-05-22 23:01:05.518] [info] HBM2-CH_0: BW utilization 16% (1624 reads, 4 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_1: BW utilization 16% (1605 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_2: BW utilization 16% (1598 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_3: BW utilization 16% (1617 reads, 2 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_4: BW utilization 16% (1600 reads, 4 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_5: BW utilization 16% (1618 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_6: BW utilization 16% (1611 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_7: BW utilization 16% (1607 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_8: BW utilization 16% (1619 reads, 2 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_9: BW utilization 16% (1605 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_10: BW utilization 16% (1615 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_11: BW utilization 16% (1610 reads, 2 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_12: BW utilization 17% (1639 reads, 4 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_13: BW utilization 16% (1606 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_14: BW utilization 16% (1614 reads, 3 writes)
+[2026-05-22 23:01:05.518] [debug] HBM2-CH_15: BW utilization 16% (1614 reads, 3 writes)
+[2026-05-22 23:01:05.518] [info] Core [0] : MatMul active cycle 0 Vector active cycle 15 
+[2026-05-22 23:01:05.518] [info] Core [0] : issued tile 1 
+[2026-05-22 23:01:05.518] [info] Core [0] : Memory unit idle cycle 7781 Systolic bubble cycle 0 Core idle cycle 67 
+[2026-05-22 23:01:05.518] [info] Core [0] : Systolic Array Utilization(%) 49.88 (0.00% PE util), Vector Unit Utilization(%) 0.19, Total cycle: 24000
+[2026-05-22 23:01:05.518] [debug] Core [1] : MatMul active cycle 0 Vector active cycle 9 
+[2026-05-22 23:01:05.518] [debug] Core [1] : issued tile 1 
+[2026-05-22 23:01:05.518] [debug] Core [1] : Memory unit idle cycle 7882 Systolic bubble cycle 0 Core idle cycle 970 
+[2026-05-22 23:01:05.518] [debug] Core [1] : Systolic Array Utilization(%) 45.05 (0.00% PE util), Vector Unit Utilization(%) 0.11, Total cycle: 24000
+[2026-05-22 23:01:05.518] [debug] Core [2] : MatMul active cycle 0 Vector active cycle 9 
+[2026-05-22 23:01:05.518] [debug] Core [2] : issued tile 1 
+[2026-05-22 23:01:05.518] [debug] Core [2] : Memory unit idle cycle 7882 Systolic bubble cycle 0 Core idle cycle 968 
+[2026-05-22 23:01:05.518] [debug] Core [2] : Systolic Array Utilization(%) 45.05 (0.00% PE util), Vector Unit Utilization(%) 0.11, Total cycle: 24000
+[2026-05-22 23:01:05.518] [debug] Core [3] : MatMul active cycle 1 Vector active cycle 9 
+[2026-05-22 23:01:05.518] [debug] Core [3] : issued tile 1 
+[2026-05-22 23:01:05.518] [debug] Core [3] : Memory unit idle cycle 7763 Systolic bubble cycle 0 Core idle cycle 60 
+[2026-05-22 23:01:05.518] [debug] Core [3] : Systolic Array Utilization(%) 49.88 (0.01% PE util), Vector Unit Utilization(%) 0.11, Total cycle: 24000
+[2026-05-22 23:01:05.523] [debug] Layer 57 Core 3 Finish Tile at 24656 Remain tile 4
+[2026-05-22 23:01:05.523] [debug] Layer 57 Core 1 Finish Tile at 24665 Remain tile 3
+[2026-05-22 23:01:05.523] [debug] Layer 57 Core 0 Finish Tile at 24666 Remain tile 2
+[2026-05-22 23:01:05.523] [debug] Layer 57 Core 2 Finish Tile at 24669 Remain tile 1
+[2026-05-22 23:01:05.523] [info] Layer layer0.ffn.fc1 finish at 24669
+[2026-05-22 23:01:05.523] [info] Total compute time 1197
+[2026-05-22 23:01:05.523] [info] executable layer count 1
+[2026-05-22 23:01:05.523] [info] Start layer layer0.ffn.act
+[2026-05-22 23:01:05.523] [debug] Layer layer0.ffn.act Core 1 Get Tile at 24670
+[2026-05-22 23:01:05.524] [debug] Layer 59 Core 1 Finish Tile at 24711 Remain tile 1
+[2026-05-22 23:01:05.524] [info] Layer layer0.ffn.act finish at 24711
+[2026-05-22 23:01:05.524] [info] Total compute time 42
+[2026-05-22 23:01:05.524] [info] executable layer count 1
+[2026-05-22 23:01:05.524] [info] Start layer layer0.ffn.fc2
+[2026-05-22 23:01:05.524] [debug] Layer layer0.ffn.fc2 Core 3 Get Tile at 24711
+[2026-05-22 23:01:05.524] [debug] Layer layer0.ffn.fc2 Core 0 Get Tile at 24712
+[2026-05-22 23:01:05.616] [debug] Layer 61 Core 0 Finish Tile at 26189 Remain tile 2
+[2026-05-22 23:01:05.616] [debug] Layer 61 Core 3 Finish Tile at 26226 Remain tile 1
+[2026-05-22 23:01:05.616] [info] Layer layer0.ffn.fc2 finish at 26226
+[2026-05-22 23:01:05.616] [info] Total compute time 1515
+[2026-05-22 23:01:05.616] [info] executable layer count 1
+[2026-05-22 23:01:05.616] [info] Start layer layer0.ffn.ln
+[2026-05-22 23:01:05.616] [debug] Layer layer0.ffn.ln Core 2 Get Tile at 26227
+[2026-05-22 23:01:05.617] [debug] Layer 63 Core 2 Finish Tile at 26271 Remain tile 1
+[2026-05-22 23:01:05.617] [info] Layer layer0.ffn.ln finish at 26271
+[2026-05-22 23:01:05.617] [info] Total compute time 45
+[2026-05-22 23:01:05.617] [info] Model[tiny_transformer] Request: 13 us, Start: 13 us, finish:26 us, Current Cycle:26271
+[2026-05-22 23:01:05.617] [info] Request 0 completed in 26271 cycles
+[2026-05-22 23:01:05.617] [info] No total_seq_len!
+[2026-05-22 23:01:05.617] [info] Simulation Finished at 26288 cycle 26 us
+[2026-05-22 23:01:05.617] [info] [MEMORY_FOOTPRINT] Total Core->L2/DRAM Request Bytes: 3895936
+[2026-05-22 23:01:05.617] [info] Runtime Instructions [139] Avg Instructions Per Finished Tile [8.69]
+[2026-05-22 23:01:05.617] [info] Core [0] : MatMul active cycle 78 Vector active cycle 80 
+[2026-05-22 23:01:05.617] [info] Core [0] : Memory unit idle cycle 24461 Systolic bubble cycle 0 Core idle cycle 2010 
+[2026-05-22 23:01:05.617] [info] Core [0] : Systolic Array Utilization(%) 38.36 (0.30% PE util), Vector Unit Utilization(%) 0.30, Total cycle: 26288
+[2026-05-22 23:01:05.617] [info] [Core 0] Input SRAM Hit Rate: 30.58% (9195 hits, 20870 misses)
+[2026-05-22 23:01:05.617] [info] [Core 0] Accumulator SRAM Hit Rate: 0.64% (111 hits, 17338 misses)
+[2026-05-22 23:01:05.617] [info] [Core 0] Average Core->L2 Request Size: 16909.96 bytes
+[2026-05-22 23:01:05.617] [info] [Core 0] Object Histogram: Top-1 size 119968 B (25.80%), Top-2 size 119712 B (25.74%)
+[2026-05-22 23:01:05.617] [info] Core [0] : Systolic Inst Issue Count : 52
+[2026-05-22 23:01:05.617] [info] Core [0] : Systolic PRELOAD Issue Count : 52
+[2026-05-22 23:01:05.617] [info] Runtime Instructions [139] Avg Instructions Per Finished Tile [8.69]
+[2026-05-22 23:01:05.617] [info] Core [1] : MatMul active cycle 138 Vector active cycle 76 
+[2026-05-22 23:01:05.617] [info] Core [1] : Memory unit idle cycle 24288 Systolic bubble cycle 0 Core idle cycle 2282 
+[2026-05-22 23:01:05.617] [info] Core [1] : Systolic Array Utilization(%) 38.39 (0.52% PE util), Vector Unit Utilization(%) 0.29, Total cycle: 26288
+[2026-05-22 23:01:05.617] [info] [Core 1] Input SRAM Hit Rate: 29.34% (9006 hits, 21690 misses)
+[2026-05-22 23:01:05.617] [info] [Core 1] Accumulator SRAM Hit Rate: 0.64% (111 hits, 17238 misses)
+[2026-05-22 23:01:05.617] [info] [Core 1] Average Core->L2 Request Size: 18547.78 bytes
+[2026-05-22 23:01:05.617] [info] [Core 1] Object Histogram: Top-1 size 59392 B (34.93%), Top-2 size 119968 B (23.52%)
+[2026-05-22 23:01:05.617] [info] Core [1] : Systolic Inst Issue Count : 52
+[2026-05-22 23:01:05.617] [info] Core [1] : Systolic PRELOAD Issue Count : 52
+[2026-05-22 23:01:05.617] [info] Runtime Instructions [139] Avg Instructions Per Finished Tile [8.69]
+[2026-05-22 23:01:05.617] [info] Core [2] : MatMul active cycle 118 Vector active cycle 80 
+[2026-05-22 23:01:05.617] [info] Core [2] : Memory unit idle cycle 24428 Systolic bubble cycle 0 Core idle cycle 2885 
+[2026-05-22 23:01:05.617] [info] Core [2] : Systolic Array Utilization(%) 38.39 (0.45% PE util), Vector Unit Utilization(%) 0.30, Total cycle: 26288
+[2026-05-22 23:01:05.618] [info] [Core 2] Input SRAM Hit Rate: 29.88% (9095 hits, 21340 misses)
+[2026-05-22 23:01:05.618] [info] [Core 2] Accumulator SRAM Hit Rate: 0.64% (111 hits, 17325 misses)
+[2026-05-22 23:01:05.618] [info] [Core 2] Average Core->L2 Request Size: 17231.13 bytes
+[2026-05-22 23:01:05.618] [info] [Core 2] Object Histogram: Top-1 size 119968 B (25.32%), Top-2 size 119712 B (25.26%)
+[2026-05-22 23:01:05.618] [info] Core [2] : Systolic Inst Issue Count : 52
+[2026-05-22 23:01:05.618] [info] Core [2] : Systolic PRELOAD Issue Count : 52
+[2026-05-22 23:01:05.618] [info] Runtime Instructions [134] Avg Instructions Per Finished Tile [8.93]
+[2026-05-22 23:01:05.618] [info] Core [3] : MatMul active cycle 84 Vector active cycle 74 
+[2026-05-22 23:01:05.618] [info] Core [3] : Memory unit idle cycle 24329 Systolic bubble cycle 0 Core idle cycle 2409 
+[2026-05-22 23:01:05.618] [info] Core [3] : Systolic Array Utilization(%) 38.36 (0.32% PE util), Vector Unit Utilization(%) 0.28, Total cycle: 26288
+[2026-05-22 23:01:05.618] [info] [Core 3] Input SRAM Hit Rate: 30.46% (9129 hits, 20846 misses)
+[2026-05-22 23:01:05.618] [info] [Core 3] Accumulator SRAM Hit Rate: 0.64% (111 hits, 17230 misses)
+[2026-05-22 23:01:05.618] [info] [Core 3] Average Core->L2 Request Size: 19193.23 bytes
+[2026-05-22 23:01:05.618] [info] [Core 3] Object Histogram: Top-1 size 59392 B (35.70%), Top-2 size 119968 B (24.04%)
+[2026-05-22 23:01:05.618] [info] Core [3] : Systolic Inst Issue Count : 52
+[2026-05-22 23:01:05.618] [info] Core [3] : Systolic PRELOAD Issue Count : 52
+Class 0:
+Packet latency average = 248.025
+	minimum = 7
+	maximum = 1666
+Network latency average = 248.025
+	minimum = 7
+	maximum = 1666
+Slowest packet = 50352
+Flit latency average = 248.025
+	minimum = 7
+	maximum = 1666
+Slowest flit = 50352
+Fragmentation average = 0
+	minimum = 0
+	maximum = 0
+Injected packet rate average = 0.115783
+	minimum = 0.0682441 (at node 15)
+	maximum = 0.28998 (at node 65)
+Accepted packet rate average = 0.115783
+	minimum = 0.0687386 (at node 10)
+	maximum = 0.28998 (at node 65)
+Injected flit rate average = 0.115783
+	minimum = 0.0682441 (at node 15)
+	maximum = 0.28998 (at node 65)
+Accepted flit rate average= 0.115783
+	minimum = 0.0687386 (at node 10)
+	maximum = 0.28998 (at node 65)
+Injected packet length average = 1
+Accepted packet length average = 1
+Total in-flight flits = 0 (0 measured)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7239, Row misses: 34, Row conflicts: 313
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 106
+  total_num_read_requests: 7503
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [info] HBM2-CH_0: avg BW utilization 24% (7503 reads, 106 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7266, Row misses: 33, Row conflicts: 311
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 106
+  total_num_read_requests: 7517
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_1: avg BW utilization 24% (7517 reads, 106 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7259, Row misses: 35, Row conflicts: 303
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 104
+  total_num_read_requests: 7513
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_2: avg BW utilization 24% (7513 reads, 104 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7235, Row misses: 33, Row conflicts: 311
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 104
+  total_num_read_requests: 7498
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_3: avg BW utilization 24% (7498 reads, 104 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7254, Row misses: 34, Row conflicts: 307
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 107
+  total_num_read_requests: 7511
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_4: avg BW utilization 24% (7511 reads, 107 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7240, Row misses: 35, Row conflicts: 312
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 105
+  total_num_read_requests: 7508
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_5: avg BW utilization 24% (7508 reads, 105 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7228, Row misses: 36, Row conflicts: 311
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 108
+  total_num_read_requests: 7504
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_6: avg BW utilization 24% (7504 reads, 108 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7263, Row misses: 34, Row conflicts: 307
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 102
+  total_num_read_requests: 7512
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_7: avg BW utilization 24% (7512 reads, 102 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7236, Row misses: 34, Row conflicts: 307
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 103
+  total_num_read_requests: 7501
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_8: avg BW utilization 24% (7501 reads, 103 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7256, Row misses: 34, Row conflicts: 308
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 104
+  total_num_read_requests: 7498
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_9: avg BW utilization 24% (7498 reads, 104 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7253, Row misses: 33, Row conflicts: 305
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 103
+  total_num_read_requests: 7497
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_10: avg BW utilization 24% (7497 reads, 103 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7254, Row misses: 33, Row conflicts: 298
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 104
+  total_num_read_requests: 7505
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_11: avg BW utilization 24% (7505 reads, 104 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7247, Row misses: 36, Row conflicts: 303
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 104
+  total_num_read_requests: 7499
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_12: avg BW utilization 24% (7499 reads, 104 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7236, Row misses: 32, Row conflicts: 313
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 106
+  total_num_read_requests: 7499
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.618] [debug] HBM2-CH_13: avg BW utilization 24% (7499 reads, 106 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.618] [info] Row hits: 7258, Row misses: 33, Row conflicts: 302
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 106
+  total_num_read_requests: 7505
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.619] [debug] HBM2-CH_14: avg BW utilization 24% (7505 reads, 106 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-22 23:01:05.619] [info] Row hits: 7248, Row misses: 36, Row conflicts: 309
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 102
+  total_num_read_requests: 7504
+  memory_system_cycles: 31558
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-22 23:01:05.619] [debug] HBM2-CH_15: avg BW utilization 24% (7504 reads, 102 writes)
+[2026-05-22 23:01:05.619] [info] Simulation time: 1.908879 seconds
+[2026-05-22 23:01:05.619] [info] Total tile: 67, simulated tile per seconds(TPS): 35.874089

@@ -82,7 +82,7 @@ void SimpleInterconnect::pop(uint32_t nid) {
 
 Booksim2Interconnect::Booksim2Interconnect(SimulationConfig config) {
   _config = config;
-  _n_nodes = config.num_cores + config.dram_channels;
+  _n_nodes = config.num_cores * _config.icnt_injection_ports_per_core + config.dram_channels; 
   spdlog::info("Initialize Booksim2"); 
   char* onnxim_path_env = std::getenv("ONNXIM_HOME");
   std::string onnxim_path = onnxim_path_env != NULL?

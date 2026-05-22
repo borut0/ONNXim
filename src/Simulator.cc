@@ -158,6 +158,7 @@ void Simulator::cycle() {
               _icnt->push(port_id, get_dest_node(front), front);
               _cores[core_id]->pop_memory_request();
               _nr_from_core++;
+              _total_mem_requests_ever++;
             }
           }
           // Push response from ICNT. to Core.
@@ -192,6 +193,74 @@ void Simulator::cycle() {
         spdlog::info("[ICNT] Core<-ICNT request {}GB/Sec", ((_memory_req_size*_nr_to_core*(1000/_icnt_period)/_icnt_interval)));
         spdlog::info("[ICNT] ICNT->MEM request {}GB/Sec", ((_memory_req_size*_nr_to_mem*(1000/_icnt_period)/_icnt_interval)));
         spdlog::info("[ICNT] ICNT<-MEM request {}GB/Sec", ((_memory_req_size*_nr_from_mem*(1000/_icnt_period)/_icnt_interval)));
+        
+        // Start modified code for DRAM bandwith utilization 
+        // ------------------------------------------------------------
+        // Actual achieved bandwidth (GB/s)
+        // ------------------------------------------------------------
+        double bw_core_to_icnt =
+            (_memory_req_size * _nr_from_core *
+            (1000.0 / _icnt_period) / _icnt_interval);
+        double bw_icnt_to_core =
+            (_memory_req_size * _nr_to_core *
+            (1000.0 / _icnt_period) / _icnt_interval);
+        double bw_icnt_to_mem =
+            (_memory_req_size * _nr_to_mem *
+            (1000.0 / _icnt_period) / _icnt_interval);
+        double bw_mem_to_icnt =
+            (_memory_req_size * _nr_from_mem *
+            (1000.0 / _icnt_period) / _icnt_interval);
+        // ------------------------------------------------------------
+        // Peak theoretical DRAM bandwidth
+        // ------------------------------------------------------------
+        double max_bw = _config.max_dram_bandwidth();
+        // ------------------------------------------------------------
+        // Utilization (%)
+        // ------------------------------------------------------------
+        double util_core_to_icnt =
+            (bw_core_to_icnt / max_bw) * 100.0;
+        double util_icnt_to_core =
+            (bw_icnt_to_core / max_bw) * 100.0;
+        double util_icnt_to_mem =
+            (bw_icnt_to_mem / max_bw) * 100.0;
+        double util_mem_to_icnt =
+            (bw_mem_to_icnt / max_bw) * 100.0;
+        // ------------------------------------------------------------
+        // Print statistics
+        // ------------------------------------------------------------
+        spdlog::info(
+            "[ICNT] Core->ICNT {:.2f} GB/s ({:.2f}%)",
+            bw_core_to_icnt,
+            util_core_to_icnt);
+        spdlog::info(
+            "[ICNT] Core<-ICNT {:.2f} GB/s ({:.2f}%)",
+            bw_icnt_to_core,
+            util_icnt_to_core);
+        spdlog::info(
+            "[ICNT] ICNT->MEM {:.2f} GB/s ({:.2f}%)",
+            bw_icnt_to_mem,
+            util_icnt_to_mem);
+        spdlog::info(
+            "[ICNT] ICNT<-MEM {:.2f} GB/s ({:.2f}%)",
+            bw_mem_to_icnt,
+            util_mem_to_icnt);
+        // ------------------------------------------------------------
+        // Calculate Total DRAM Bandwidth and Utilization
+        // ------------------------------------------------------------
+        
+        // Total DRAM Bandwidth = Writes to Memory + Reads from Memory
+        double total_dram_bw = bw_icnt_to_mem + bw_mem_to_icnt;
+        
+        // Total DRAM Utilization %
+        double total_dram_util = (total_dram_bw / max_bw) * 100.0;
+        
+        spdlog::info(
+            "[DRAM] TOTAL DRAM BANDWIDTH: {:.2f} GB/s (Utilization: {:.2f}%)", 
+            total_dram_bw, 
+            total_dram_util);
+        // ------------------------------------------------------------
+        // Reset counters
+        // ------------------------------------------------------------
         _nr_from_core=0;
         _nr_to_core=0;
         _nr_to_mem=0;
@@ -201,6 +270,8 @@ void Simulator::cycle() {
     }
   }
   spdlog::info("Simulation Finished at {} cycle {} us", _core_cycles, _core_cycles / (_config.core_freq) );
+  uint64_t total_mem_bytes = _memory_req_size * _total_mem_requests_ever;
+  spdlog::info("[MEMORY_FOOTPRINT] Total Core->L2/DRAM Request Bytes: {}", total_mem_bytes);
   /* Print simulation stats */
   for (int core_id = 0; core_id < _n_cores; core_id++) {
     _cores[core_id]->print_stats();

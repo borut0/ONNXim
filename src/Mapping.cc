@@ -52,44 +52,34 @@ MappingTable MappingTable::parse_mapping_file(
 void MappingTable::gemm_mapping(Mapping::LoopCounts &key) {
   uint32_t dim = _config.core_config[key.target_core].core_height;
   assert(dim == _config.core_config[key.target_core].core_width);
-
   uint32_t dim_I = key.N;
   uint32_t dim_J = key.M;
   uint32_t dim_K = key.C;
-
   auto ceil_div = [](uint32_t a, uint32_t b) {
     return (a + b - 1) / b;
   };
-
   auto pad_up = [&](uint32_t x) {
     return ceil_div(x, dim) * dim;
   };
-
   uint32_t dIp = pad_up(dim_I);
   uint32_t dJp = pad_up(dim_J);
   uint32_t dKp = pad_up(dim_K);
-
   uint32_t max_spad_rows =
     (_config.core_config[key.target_core].spad_size * 1024) /
     (dim * _config.precision * 2);
-
   uint32_t max_acc_rows =
     (_config.core_config[key.target_core].accum_spad_size * 1024) /
     (dim * 4 * 2);
-
   uint32_t acc  = std::max(1u, max_acc_rows / dim);
   uint32_t part = std::max(1u, (max_spad_rows / 2) / dim);
-
   uint32_t sq = std::max(1u, (uint32_t)std::sqrt(acc));
   uint32_t tk = std::max(1u, part / sq);
-
   // ---------------------------
   // Tile sizes (outer)
   // ---------------------------
   uint32_t tI = std::max(1u, std::min(dIp / dim, ceil_div(dim_I, sq * dim)));
   uint32_t tJ = std::max(1u, std::min(dJp / dim, ceil_div(dim_J, sq * dim)));
   uint32_t tK = std::max(1u, std::min(dKp / dim, ceil_div(dim_K, tk * dim)));
-
   // ---------------------------
   // Core utilization fix
   // ---------------------------
@@ -99,28 +89,24 @@ void MappingTable::gemm_mapping(Mapping::LoopCounts &key) {
     if (dim_J >= dim_I) tJ *= inc;
     else                tI *= inc;
   }
-
   // ---------------------------
   // Inner tile sizes
   // ---------------------------
   uint32_t iI = std::max(dim, (dIp / tI / dim) * dim);
   uint32_t iJ = std::max(dim, (dJp / tJ / dim) * dim);
   uint32_t iK = std::max(dim, (dKp / tK / dim) * dim);
-
   // ---------------------------
   // 🔥 CRITICAL: thin matrix fix
   // ---------------------------
   if (dim_I < dim) { iI = dIp; tI = 1; }
   if (dim_J < dim) { iJ = dJp; tJ = 1; }
   if (dim_K < dim) { iK = dKp; tK = 1; }
-
   // ---------------------------
   // Final tile recompute
   // ---------------------------
   tI = std::max(1u, ceil_div(dim_I, iI));
   tJ = std::max(1u, ceil_div(dim_J, iJ));
   tK = std::max(1u, ceil_div(dim_K, iK));
-
   // ---------------------------
   // Store mapping
   // ---------------------------
@@ -128,14 +114,15 @@ void MappingTable::gemm_mapping(Mapping::LoopCounts &key) {
   mapping.total_loop    = {dim_I, dim_K, dim_J, 1, 1, 1, 1};
   mapping.tile_out_loop = {tI, tK, tJ, 1, 1, 1, 1};
   mapping.tile_in_loop  = {iI, iK, iJ, 1, 1, 1, 1};
-
   _mapping_table[key] = mapping;
-
+  spdlog::info("[GEMM] spad_size: {} accum_size: {}", _config.core_config[key.target_core].spad_size * 1024, _config.core_config[key.target_core].accum_spad_size * 1024);
+  spdlog::info("[GEMM] required_sram_size: {} required_accum_size: {}", (iI+iJ)*iK*_config.precision, (iI*iJ)*_config.precision);
   spdlog::info("[GEMM] Used mapping: Total N:{} C:{} M:{} | Outer N:{} C:{} M:{} | Inner N:{} C:{} M:{}",
     dim_I, dim_K, dim_J,
     tI, tK, tJ,
     iI, iK, iJ);
 }
+
 const Mapping& MappingTable::fallback_mapping(Mapping::LoopCounts &key) {
   if (key.P==1 && key.Q==1 && key.S==1 && key.R==1)
     gemm_mapping(key);
