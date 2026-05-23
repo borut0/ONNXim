@@ -1,17 +1,3 @@
-"""
-ONNXim Statistics Plotter
-=========================
-Usage:
-  python plot_statistics.py <directory_with_logs> [--output_dir <output_dir>]
-
-Log files must contain the sequence length somewhere in their filename, e.g.:
-  log_seq_128.txt  |  run_seq1024.log  |  transformer_seqlen_4096.txt
-  (any file whose name contains a number)
-
-The script parses every ONNXim output log in the given directory,
-extracts all instrumented statistics, and writes one PNG per metric.
-"""
-
 import os
 import sys
 import glob
@@ -48,9 +34,26 @@ RE = {
         r"Avg Instructions Per Finished Tile\s+\[([\d.]+)\]"
     ),
 
-    # "[DRAM] TOTAL DRAM BANDWIDTH: 12.34 GB/s (Utilization: 3.45%)"
-    "dram_util": re.compile(r"(?:\[DRAM\]\s*)?TOTAL DRAM BANDWIDTH:\s+([\d.]+)\s+GB/s\s+\(Utilization:\s+([\d.]+)%\)"),
 
+    "row_stats": re.compile(
+        r"Row hits:\s+(\d+),\s+Row misses:\s+(\d+),\s+Row conflicts:\s+(\d+)"
+    ),
+
+    "mem_cycles": re.compile(
+        r"memory_system_cycles:\s+(\d+)"
+    ),
+
+    "total_reads": re.compile(
+        r"total_num_read_requests:\s+(\d+)"
+    ),
+
+    "total_writes": re.compile(
+        r"total_num_write_requests:\s+(\d+)"
+    ),
+
+    "dram_avg_bw": re.compile(
+        r"HBM2-CH_(\d+): avg BW utilization (\d+)%"
+    ),
 
     # "[MEMORY_FOOTPRINT] Total Core->L2/DRAM Request Bytes: 123456789"
     "mem_bytes": re.compile(
@@ -78,19 +81,13 @@ RE = {
         r"\s+Top-2 size\s+(\d+)\s+B\s+\(([\d.]+)%\)"
     ),
 
-    # Ramulator row-access stats (printed by Ramulator itself):
-    # "ramulator.row_hits    : 94000"
-    "row_hits":     re.compile(r"row_hits\s*:\s+(\d+)"),
-    "row_misses":   re.compile(r"row_misses\s*:\s+(\d+)"),
-    "row_conflicts":re.compile(r"row_conflicts\s*:\s+(\d+)"),
-
     # Layer finish lines (printed by scheduler):
     # "Layer p0.layer0.attn.QKVgen finish at 12345"  /  "Total compute time 200"
     "layer_finish": re.compile(r"Layer\s+([\w.\-]+)\s+finish at\s+(\d+)"),
     "compute_time": re.compile(r"Total compute time\s+(\d+)"),
 
     # "[ICNT] ICNT<-MEM {:.2f} GB/s" – DRAM read bandwidth
-    "dram_read_bw": re.compile(r"ICNT<-MEM\s+([\d.]+)\s+GB/s"),
+    "dram_read_bw": re.compile(r"ICNT\s*<\-\s*MEM\s+([\d.]+)\s+GB/s", re.IGNORECASE),
 }
 
 LAYER_BUCKETS = ["QKV Projection", "Attention", "Attn Projection", "FFN FC1", "FFN FC2"]
@@ -138,9 +135,36 @@ def parse_log(path: str) -> dict:
     cur_layer = None
     core_util_seen = {}     # core_id -> dict
     core_idle_seen = {}
+    dram_utils_seen = []
+
+    row_hits = 0
+    row_misses = 0
+    row_conflicts = 0
+
+    total_reads = 0
+    total_writes = 0
+
+    mem_cycles = 0
 
     with open(path, "r", errors="replace") as f:
         for line in f:
+            if m := RE["row_stats"].search(line):
+                row_hits += int(m.group(1))
+                row_misses += int(m.group(2))
+                row_conflicts += int(m.group(3))
+
+            if m := RE["mem_cycles"].search(line):
+                mem_cycles = max(
+                    mem_cycles,
+                    int(m.group(1))
+                )
+            
+            if m := RE["total_reads"].search(line):
+                total_reads += int(m.group(1))
+            
+            if m := RE["total_writes"].search(line):
+                total_writes += int(m.group(1))
+
             # ── Total cycles ──────────────────────────────────────────────
             if m := RE["total_cycles"].search(line):
                 s["total_cycles"] = max(s["total_cycles"], int(m.group(1)))
@@ -148,30 +172,29 @@ def parse_log(path: str) -> dict:
             # ── Core utilisation ──────────────────────────────────────────
             if m := RE["core_util"].search(line):
                 cid = int(m.group(1))
-                if cid not in core_util_seen:
-                    core_util_seen[cid] = {
-                        "sys": float(m.group(2)),
-                        "pe":  float(m.group(3)),
-                        "vec": float(m.group(4)),
-                    }
+                core_util_seen[cid] = {
+                    "sys": float(m.group(2)),
+                    "pe":  float(m.group(3)),
+                    "vec": float(m.group(4)),
+                }
 
             # ── Core idle cycles ──────────────────────────────────────────
             if m := RE["core_idle"].search(line):
                 cid = int(m.group(1))
-                if cid not in core_idle_seen:
-                    core_idle_seen[cid] = {
-                        "mem":  int(m.group(2)),
-                        "core": int(m.group(4)),
-                    }
+                core_idle_seen[cid] = {
+                    "mem":  int(m.group(2)),
+                    "core": int(m.group(4)),
+                }
 
             # ── Avg instr per tile ────────────────────────────────────────
             if m := RE["inst_per_tile"].search(line):
                 s["inst_per_tile"] = max(s["inst_per_tile"], float(m.group(1)))
 
-            # ── DRAM bandwidth ────────────────────────────────────────────
-            if m := RE["dram_util"].search(line):
-                s["dram_bw_gbps"]   = max(s["dram_bw_gbps"],   float(m.group(1)))
-                s["dram_util_pct"]  = max(s["dram_util_pct"],  float(m.group(2)))
+
+            # Derived hit rates# ── HBM Channel Utilization ──────────────────────────────────
+            if m := RE["dram_avg_bw"].search(line):
+                util = float(m.group(2))
+                dram_utils_seen.append(util)
 
             # ── DRAM read bandwidth (ICNT<-MEM) ───────────────────────────
             if m := RE["dram_read_bw"].search(line):
@@ -196,11 +219,6 @@ def parse_log(path: str) -> dict:
                 s["top1_share"] = max(s["top1_share"], float(m.group(2)))
                 s["top2_share"] = max(s["top2_share"], float(m.group(4)))
 
-            # ── Ramulator row access ──────────────────────────────────────
-            if m := RE["row_hits"].search(line):     s["row_hits"]     += int(m.group(1))
-            if m := RE["row_misses"].search(line):   s["row_misses"]   += int(m.group(1))
-            if m := RE["row_conflicts"].search(line):s["row_conflicts"]+= int(m.group(1))
-
             # ── Layer cycles ──────────────────────────────────────────────
             if m := RE["layer_finish"].search(line):
                 cur_layer = m.group(1)
@@ -223,6 +241,38 @@ def parse_log(path: str) -> dict:
         s["mem_idle_pct"]  = 0.0
         s["core_idle_pct"] = 0.0
 
+    # Average DRAM utilization across all HBM channel snapshots
+    if len(dram_utils_seen) > 0:
+        s["dram_util_pct"] = np.mean(dram_utils_seen)
+    else:
+        s["dram_util_pct"] = 0.0
+
+    # Average DRAM activity
+    REQUEST_SIZE = 32       # bytes
+    DRAM_FREQ = 1200e6      # Hz
+
+    if mem_cycles > 0:
+
+        total_bytes = (
+            (total_reads + total_writes) * REQUEST_SIZE)
+
+        total_bw = (
+            total_bytes / mem_cycles) * DRAM_FREQ
+
+        read_bw = (
+            (total_reads * REQUEST_SIZE) / mem_cycles) * DRAM_FREQ
+
+        # Convert to GB/s
+        s["dram_bw_gbps"] = total_bw / 1e9
+        s["dram_read_bw_peak"] = read_bw / 1e9
+
+    else:
+        s["dram_bw_gbps"] = 0.0
+        s["dram_read_bw_peak"] = 0.0
+
+    s["row_hits"] = row_hits
+    s["row_misses"] = row_misses
+    s["row_conflicts"] = row_conflicts
     # Derived hit rates
     s["input_hit_rate"] = s["input_hits"] / max(s["input_hits"] + s["input_misses"], 1)
     s["acc_hit_rate"]   = s["acc_hits"]   / max(s["acc_hits"]   + s["acc_misses"],   1)

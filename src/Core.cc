@@ -64,6 +64,7 @@ void Core::issue(std::unique_ptr<Tile> op) {
   op->status = Tile::Status::RUNNING;
   if (op->skip) {
     op->status = Tile::Status::FINISH;
+    _total_finished_tiles++;
     _finished_tiles.push(std::move(op));
     return;
   }
@@ -85,6 +86,15 @@ std::unique_ptr<Tile> Core::pop_finished_tile() {
 
 void Core::cycle() {
   _core_cycle++;
+
+  if (!_compute_pipeline.empty()) {
+      _stat_matmul_cycle++;
+  }
+
+  if (!_vector_pipeline.empty()) {
+      _stat_vec_compute_cycle++;
+  }
+
   _spad.cycle();
   _acc_spad.cycle();
   for (int tile_iter = 0; tile_iter < _tiles.size(); tile_iter++) {
@@ -223,7 +233,7 @@ bool Core::can_issue_compute(std::unique_ptr<Instruction>& inst) {
 }
 
 void Core::print_stats() {
-  update_stats();
+  //update_stats();
   // actual logic to get avg instruction per tile
   double avg_inst_per_tile = 0.0;
   if (_total_finished_tiles > 0) {
@@ -365,11 +375,8 @@ void Core::finish_compute_pipeline(){
       spdlog::trace("Finished last GEMM {}", inst->spad_id);
       inst->my_tile->inst_finished = true;
     }
-    double compute_size = inst->tile_k * inst->tile_m * inst->tile_n
-                            / (_config.core_config[_id].core_height * _config.core_config[_id].core_width);
     spdlog::trace("Compute size {} tile m {} tile k {} tile n {}", inst->compute_size, inst->tile_m, inst->tile_k, inst->tile_n);
-    spdlog::trace("Compute size {} , compute time {}", compute_size, inst->finish_cycle - inst->start_cycle);
-    _stat_matmul_cycle += compute_size;
+    spdlog::trace("compute time {}", inst->finish_cycle - inst->start_cycle);
     _compute_pipeline.pop();
   }
 }
@@ -403,7 +410,6 @@ void Core::handle_ld_inst_queue() {
   if (!_ld_inst_queue.empty()) {
     std::unique_ptr<Instruction> front = std::move(_ld_inst_queue.front());
     if (front->opcode == Opcode::MOVIN) {
-      bool prefetched = false;
       Sram *buffer;
       int buffer_id;
       if (front->dest_addr >= ACCUM_SPAD_BASE) {
