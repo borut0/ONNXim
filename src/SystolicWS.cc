@@ -52,7 +52,7 @@ void SystolicWS::cycle() {
         }
         if (_compute_pipeline.back()->start_cycle+offset < _core_cycle) {
           front->start_cycle = _core_cycle;
-          _stat_systolic_bubble_cycle += (_core_cycle - _compute_pipeline.back()->start_cycle+offset);
+
         } else
           front->start_cycle = _compute_pipeline.back()->start_cycle+offset;
       } else {
@@ -84,15 +84,30 @@ void SystolicWS::cycle() {
   bool is_idle = _compute_pipeline.empty() && _vector_pipeline.empty();
   bool is_running = running();
   bool is_compute_busy = false;
+
+  uint64_t active_pes = 0;
+  uint64_t total_pes = _config.core_config[_id].core_height * _config.core_config[_id].core_width;
+
   bool is_vector_busy = false;
 
-  if (!_compute_pipeline.empty() && _compute_pipeline.front()->start_cycle <= _core_cycle)
+  if (!_compute_pipeline.empty() && _compute_pipeline.front()->start_cycle <= _core_cycle){
     is_compute_busy = true;
+    Instruction* inst = _compute_pipeline.front().get();
+    uint64_t used_rows =
+        std::min((uint64_t)inst->tile_m,
+                 (uint64_t)_config.core_config[_id].core_height);
+    uint64_t used_cols =
+        std::min((uint64_t)inst->tile_n,
+                 (uint64_t)_config.core_config[_id].core_width);
+    active_pes = used_rows * used_cols;
+    _stat_systolic_active_cycle += active_pes;
+    _stat_systolic_bubble_cycle +=
+        (total_pes - active_pes);
+  }
+
   if (!_vector_pipeline.empty() && _vector_pipeline.front()->start_cycle <= _core_cycle)
     is_vector_busy = true;
 
-  if (is_compute_busy)
-    _stat_systolic_active_cycle++;
   if (is_vector_busy)
     _stat_vec_compute_cycle++;
 

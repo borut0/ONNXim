@@ -1,0 +1,1591 @@
+[2026-05-25 04:19:33.915] [info] CPU 0: Partition 0
+[2026-05-25 04:19:33.915] [info] CPU 1: Partition 0
+[2026-05-25 04:19:33.915] [info] CPU 2: Partition 0
+[2026-05-25 04:19:33.915] [info] CPU 3: Partition 0
+[2026-05-25 04:19:33.916] [info] Running in language mode
+[2026-05-25 04:19:33.916] [info] Simulator Configuration:
+[2026-05-25 04:19:33.916] [info] [Core 0] Systolic Array Throughput: 131072 GFLOPS, Spad size: 32768 KB, Accumulator size: 4096 KB
+[2026-05-25 04:19:33.916] [info] [Core 1] Systolic Array Throughput: 131072 GFLOPS, Spad size: 32768 KB, Accumulator size: 4096 KB
+[2026-05-25 04:19:33.916] [info] [Core 2] Systolic Array Throughput: 131072 GFLOPS, Spad size: 32768 KB, Accumulator size: 4096 KB
+[2026-05-25 04:19:33.916] [info] [Core 3] Systolic Array Throughput: 131072 GFLOPS, Spad size: 32768 KB, Accumulator size: 4096 KB
+[2026-05-25 04:19:33.916] [info] DRAM Bandwidth 614 GB/s
+[2026-05-25 04:19:33.916] [info] Ramulator2 config: /workspace/ONNXim/configs/../configs/ramulator2_configs/HBM2.yaml
+[2026-05-25 04:19:33.921] [info] Initialize Booksim2
+[2026-05-25 04:19:33.921] [info] Config path : /workspace/ONNXim/configs/../configs/booksim2_configs/fly_c64_m16.icnt
+[2026-05-25 04:19:33.923] [info] Register Language Model: tiny_transformer
+[2026-05-25 04:19:33.923] [info] Tensor Parallelsim 1, Pipeline Parallelism 1
+[2026-05-25 04:19:33.923] [info] Weight size: 0.01 GB
+[2026-05-25 04:19:33.923] [info] Simple Language scheduler selected
+[2026-05-25 04:19:33.923] [info] num layer 1 num sim layer 1
+[2026-05-25 04:19:33.923] [info] ======Start Simulation=====
+[2026-05-25 04:19:33.923] [info] Total Memory Usage: 0.01 GB
+[2026-05-25 04:19:33.923] [info] Weight Memory Usage: 0.01 GB
+[2026-05-25 04:19:33.923] [info] KV Memory Usage: 0.00 GB
+[2026-05-25 04:19:33.923] [info] Activation Memory Usage: 0.00 GB
+[2026-05-25 04:19:33.923] [debug] [Gemm] input_shape: [256, 232]
+[2026-05-25 04:19:33.923] [debug] [Gemm] output_shape : [256, 696]
+[2026-05-25 04:19:33.923] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-25 04:19:33.923] [info] [GEMM] required_sram_size: 196608 required_accum_size: 65536
+[2026-05-25 04:19:33.923] [info] [GEMM] Used mapping: Total N:256 C:232 M:696 | Outer N:1 C:1 M:6 | Inner N:256 C:256 M:128
+[2026-05-25 04:19:33.928] [info] [GemmWs] Keys K = 232, N = 256, M = 696
+[2026-05-25 04:19:33.928] [info] [GemmWS]: total 0.08285184 GFLOPs, 0.000799472 GB
+[2026-05-25 04:19:33.928] [info] [GemmWS]: Theoretical time(ms): 0.0013020716096434626 Compute time: 0.0006321093906080932 Memory time: 0.0013020716096434626
+[2026-05-25 04:19:33.928] [debug] [KVCacheConcat] input_token_lengths: [256]
+[2026-05-25 04:19:33.928] [debug] [KVCacheConcat] number of tiles: 1
+[2026-05-25 04:19:33.930] [info] [Attention] total_spad_size_per_head: 326656 B
+[2026-05-25 04:19:33.930] [info] [Attention] total_acc_size_per_head: 655360 B
+[2026-05-25 04:19:33.930] [info] [Attention] q_len: 256, seq_len: 1280, dk: 58, heads per tile 1
+[2026-05-25 04:19:33.930] [info] [Attention] Spad size 16777216
+[2026-05-25 04:19:33.930] [info] [Attention] Accum spad size 2097152
+[2026-05-25 04:19:33.930] [info] Mapping info Total Loop: N1024 C58 M1280 S1 R1 Q1 P1 Tile Out Loop: N4 C1 M1 S1 R1 Q1 P1 Tile In Loop: N256 C58 M1280 S1 R1 Q1 P1
+[2026-05-25 04:19:33.954] [info] [Attention] QK 0.15204352 GFLOPs
+[2026-05-25 04:19:33.954] [info] [Attention] total 0.31719422 GFLOPs, 0.0014254081 GB
+[2026-05-25 04:19:33.954] [info] [Attention] Theoretical time(ms): 0.00392 Compute time: 0.00392 Memory time: 0.0023215115
+[2026-05-25 04:19:33.954] [info] [Attention] QK compute 0.0012ms Softmax compute 0.0016ms SV compute 0.0012ms
+[2026-05-25 04:19:33.954] [debug] [Gemm] input_shape: [256, 232]
+[2026-05-25 04:19:33.954] [debug] [Gemm] output_shape : [256, 232]
+[2026-05-25 04:19:33.954] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-25 04:19:33.954] [info] [GEMM] required_sram_size: 196608 required_accum_size: 65536
+[2026-05-25 04:19:33.954] [info] [GEMM] Used mapping: Total N:256 C:232 M:232 | Outer N:2 C:1 M:1 | Inner N:128 C:256 M:256
+[2026-05-25 04:19:33.955] [info] [GemmWs] Keys K = 232, N = 256, M = 232
+[2026-05-25 04:19:33.955] [info] [GemmWS]: total 0.027617278 GFLOPs, 0.00034568 GB
+[2026-05-25 04:19:33.955] [info] [GemmWS]: Theoretical time(ms): 0.0005629967176901118 Compute time: 0.0002107031065179399 Memory time: 0.0005629967176901118
+[2026-05-25 04:19:33.955] [info] [SkipLayerNorm] tokens_per_tile: 32
+[2026-05-25 04:19:33.956] [debug] [Gemm] input_shape: [256, 232]
+[2026-05-25 04:19:33.956] [debug] [Gemm] output_shape : [256, 512]
+[2026-05-25 04:19:33.956] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-25 04:19:33.956] [info] [GEMM] required_sram_size: 196608 required_accum_size: 65536
+[2026-05-25 04:19:33.956] [info] [GEMM] Used mapping: Total N:256 C:232 M:512 | Outer N:1 C:1 M:4 | Inner N:256 C:256 M:128
+[2026-05-25 04:19:33.959] [info] [GemmWs] Keys K = 232, N = 256, M = 512
+[2026-05-25 04:19:33.959] [info] [GemmWS]: total 0.06081741 GFLOPs, 0.000618496 GB
+[2026-05-25 04:19:33.959] [info] [GemmWS]: Theoretical time(ms): 0.0010073224530060543 Compute time: 0.0004640000099698227 Memory time: 0.0010073224530060543
+[2026-05-25 04:19:33.959] [info] [BiasAct] tokens_per_tile: 32
+[2026-05-25 04:19:33.960] [debug] [Gemm] input_shape: [256, 512]
+[2026-05-25 04:19:33.960] [debug] [Gemm] output_shape : [256, 232]
+[2026-05-25 04:19:33.960] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-25 04:19:33.960] [info] [GEMM] required_sram_size: 393216 required_accum_size: 65536
+[2026-05-25 04:19:33.960] [info] [GEMM] Used mapping: Total N:256 C:512 M:232 | Outer N:2 C:1 M:1 | Inner N:128 C:512 M:256
+[2026-05-25 04:19:33.963] [info] [GemmWs] Keys K = 512, N = 256, M = 232
+[2026-05-25 04:19:33.963] [info] [GemmWS]: total 0.060876798 GFLOPs, 0.00061895995 GB
+[2026-05-25 04:19:33.963] [info] [GemmWS]: Theoretical time(ms): 0.0010080781294163899 Compute time: 0.0004644531088615622 Memory time: 0.0010080781294163899
+[2026-05-25 04:19:33.963] [info] [SkipLayerNorm] tokens_per_tile: 32
+[2026-05-25 04:19:33.964] [debug] runnable op, 
+[2026-05-25 04:19:33.964] [info]  Model initialization time: 0.040214 seconds
+[2026-05-25 04:19:33.964] [info] Schedule model: tiny_transformer at 1000 us
+[2026-05-25 04:19:33.964] [info] MODEL tiny_transformer Scheduled, Total Request: 1
+[2026-05-25 04:19:33.964] [info] executable layer count 1
+[2026-05-25 04:19:33.964] [info] Start layer layer0.attn.QKVgen
+[2026-05-25 04:19:33.964] [debug] Layer layer0.attn.QKVgen Core 0 Get Tile at 0
+[2026-05-25 04:19:33.964] [debug] Layer layer0.attn.QKVgen Core 1 Get Tile at 0
+[2026-05-25 04:19:33.964] [debug] Layer layer0.attn.QKVgen Core 2 Get Tile at 0
+[2026-05-25 04:19:33.964] [debug] Layer layer0.attn.QKVgen Core 3 Get Tile at 0
+[2026-05-25 04:19:33.964] [info] HBM2-CH_0: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_1: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_2: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_3: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_4: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_5: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_6: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_7: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_8: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_9: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_10: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_11: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_12: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_13: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_14: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] HBM2-CH_15: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:33.964] [debug] Layer layer0.attn.QKVgen Core 1 Get Tile at 1
+[2026-05-25 04:19:33.964] [debug] Layer layer0.attn.QKVgen Core 2 Get Tile at 1
+[2026-05-25 04:19:34.202] [info] Core [0] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.202] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:34.202] [info] Core [0] : Memory unit idle cycle 651 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.202] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 1000
+[2026-05-25 04:19:34.202] [debug] Core [1] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.202] [debug] Core [1] : issued tile 2 
+[2026-05-25 04:19:34.202] [debug] Core [1] : Memory unit idle cycle 302 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.202] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 1000
+[2026-05-25 04:19:34.202] [debug] Core [2] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.202] [debug] Core [2] : issued tile 2 
+[2026-05-25 04:19:34.202] [debug] Core [2] : Memory unit idle cycle 368 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.202] [debug] Core [2] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 1000
+[2026-05-25 04:19:34.202] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.202] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:34.202] [debug] Core [3] : Memory unit idle cycle 651 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.202] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 1000
+[2026-05-25 04:19:34.380] [info] Core [0] : MatMul active cycle 730 Vector active cycle 0 
+[2026-05-25 04:19:34.380] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:34.380] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.380] [info] Core [0] : PE Utilization(%) 47.50, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 2000
+[2026-05-25 04:19:34.380] [debug] Core [1] : MatMul active cycle 587 Vector active cycle 0 
+[2026-05-25 04:19:34.380] [debug] Core [1] : issued tile 2 
+[2026-05-25 04:19:34.380] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.380] [debug] Core [1] : PE Utilization(%) 33.20, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 2000
+[2026-05-25 04:19:34.380] [debug] Core [2] : MatMul active cycle 672 Vector active cycle 0 
+[2026-05-25 04:19:34.380] [debug] Core [2] : issued tile 2 
+[2026-05-25 04:19:34.380] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.380] [debug] Core [2] : PE Utilization(%) 41.70, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 2000
+[2026-05-25 04:19:34.380] [debug] Core [3] : MatMul active cycle 596 Vector active cycle 0 
+[2026-05-25 04:19:34.380] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:34.380] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.380] [debug] Core [3] : PE Utilization(%) 34.10, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 2000
+[2026-05-25 04:19:34.435] [debug] Layer 18 Core 0 Finish Tile at 2293 Remain tile 6
+[2026-05-25 04:19:34.449] [debug] Layer 18 Core 2 Finish Tile at 2351 Remain tile 5
+[2026-05-25 04:19:34.467] [debug] Layer 18 Core 3 Finish Tile at 2427 Remain tile 4
+[2026-05-25 04:19:34.469] [debug] Layer 18 Core 1 Finish Tile at 2436 Remain tile 3
+[2026-05-25 04:19:34.564] [info] Core [0] : MatMul active cycle 291 Vector active cycle 0 
+[2026-05-25 04:19:34.564] [info] Core [0] : issued tile 0 
+[2026-05-25 04:19:34.564] [info] Core [0] : Memory unit idle cycle 872 Systolic bubble cycle 0 Core idle cycle 146 
+[2026-05-25 04:19:34.564] [info] Core [0] : PE Utilization(%) 29.10, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 3000
+[2026-05-25 04:19:34.564] [debug] Core [1] : MatMul active cycle 969 Vector active cycle 0 
+[2026-05-25 04:19:34.564] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:34.564] [debug] Core [1] : Memory unit idle cycle 872 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.564] [debug] Core [1] : PE Utilization(%) 71.40, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 3000
+[2026-05-25 04:19:34.564] [debug] Core [2] : MatMul active cycle 934 Vector active cycle 0 
+[2026-05-25 04:19:34.564] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:34.564] [debug] Core [2] : Memory unit idle cycle 872 Systolic bubble cycle 3041280 Core idle cycle 0 
+[2026-05-25 04:19:34.564] [debug] Core [2] : PE Utilization(%) 49.34, Systolic Bubble(%) 18.56, Vector Unit Utilization(%) 0.00, Total cycle: 3000
+[2026-05-25 04:19:34.564] [debug] Core [3] : MatMul active cycle 425 Vector active cycle 0 
+[2026-05-25 04:19:34.564] [debug] Core [3] : issued tile 0 
+[2026-05-25 04:19:34.564] [debug] Core [3] : Memory unit idle cycle 872 Systolic bubble cycle 0 Core idle cycle 52 
+[2026-05-25 04:19:34.564] [debug] Core [3] : PE Utilization(%) 42.50, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 3000
+[2026-05-25 04:19:34.580] [debug] Layer 18 Core 2 Finish Tile at 3443 Remain tile 2
+[2026-05-25 04:19:34.583] [debug] Layer 18 Core 1 Finish Tile at 3488 Remain tile 1
+[2026-05-25 04:19:34.583] [info] Layer layer0.attn.QKVgen finish at 3488
+[2026-05-25 04:19:34.583] [info] Total compute time 3488
+[2026-05-25 04:19:34.583] [info] executable layer count 1
+[2026-05-25 04:19:34.583] [info] Start layer layer0.attn.KVccat
+[2026-05-25 04:19:34.583] [debug] Layer layer0.attn.KVccat Core 0 Get Tile at 3489
+[2026-05-25 04:19:34.583] [debug] Layer 20 Core 0 Finish Tile at 3490 Remain tile 1
+[2026-05-25 04:19:34.583] [info] Layer layer0.attn.KVccat finish at 3490
+[2026-05-25 04:19:34.583] [info] Total compute time 2
+[2026-05-25 04:19:34.583] [info] executable layer count 1
+[2026-05-25 04:19:34.583] [info] Start layer layer0.attn.Attention.0
+[2026-05-25 04:19:34.583] [debug] Layer layer0.attn.Attention.0 Core 0 Get Tile at 3490
+[2026-05-25 04:19:34.583] [debug] Layer layer0.attn.Attention.0 Core 1 Get Tile at 3490
+[2026-05-25 04:19:34.583] [debug] Layer layer0.attn.Attention.0 Core 2 Get Tile at 3490
+[2026-05-25 04:19:34.583] [debug] Layer layer0.attn.Attention.0 Core 3 Get Tile at 3490
+[2026-05-25 04:19:34.717] [info] Core [0] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.718] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:34.718] [info] Core [0] : Memory unit idle cycle 491 Systolic bubble cycle 0 Core idle cycle 490 
+[2026-05-25 04:19:34.718] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 4000
+[2026-05-25 04:19:34.718] [debug] Core [1] : MatMul active cycle 486 Vector active cycle 0 
+[2026-05-25 04:19:34.718] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:34.718] [debug] Core [1] : Memory unit idle cycle 423 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.718] [debug] Core [1] : PE Utilization(%) 48.60, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 4000
+[2026-05-25 04:19:34.718] [debug] Core [2] : MatMul active cycle 441 Vector active cycle 0 
+[2026-05-25 04:19:34.718] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:34.718] [debug] Core [2] : Memory unit idle cycle 427 Systolic bubble cycle 4064256 Core idle cycle 0 
+[2026-05-25 04:19:34.718] [debug] Core [2] : PE Utilization(%) 19.29, Systolic Bubble(%) 24.81, Vector Unit Utilization(%) 0.00, Total cycle: 4000
+[2026-05-25 04:19:34.718] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.718] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:34.718] [debug] Core [3] : Memory unit idle cycle 491 Systolic bubble cycle 0 Core idle cycle 490 
+[2026-05-25 04:19:34.718] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 4000
+[2026-05-25 04:19:34.974] [info] Core [0] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.974] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:34.974] [info] Core [0] : Memory unit idle cycle 871 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.974] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 5000
+[2026-05-25 04:19:34.974] [debug] Core [1] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.974] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:34.974] [debug] Core [1] : Memory unit idle cycle 811 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.974] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 5000
+[2026-05-25 04:19:34.974] [debug] Core [2] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.974] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:34.974] [debug] Core [2] : Memory unit idle cycle 871 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.974] [debug] Core [2] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 5000
+[2026-05-25 04:19:34.974] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:34.974] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:34.974] [debug] Core [3] : Memory unit idle cycle 871 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:34.974] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 5000
+[2026-05-25 04:19:35.206] [info] Core [0] : MatMul active cycle 476 Vector active cycle 0 
+[2026-05-25 04:19:35.206] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.206] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.206] [info] Core [0] : PE Utilization(%) 22.10, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 6000
+[2026-05-25 04:19:35.206] [debug] Core [1] : MatMul active cycle 391 Vector active cycle 0 
+[2026-05-25 04:19:35.206] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.206] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.206] [debug] Core [1] : PE Utilization(%) 13.60, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 6000
+[2026-05-25 04:19:35.206] [debug] Core [2] : MatMul active cycle 607 Vector active cycle 0 
+[2026-05-25 04:19:35.206] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.206] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.206] [debug] Core [2] : PE Utilization(%) 35.20, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 6000
+[2026-05-25 04:19:35.206] [debug] Core [3] : MatMul active cycle 580 Vector active cycle 0 
+[2026-05-25 04:19:35.206] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.206] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.206] [debug] Core [3] : PE Utilization(%) 32.50, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 6000
+[2026-05-25 04:19:35.278] [info] Core [0] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:35.278] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.278] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.278] [info] Core [0] : PE Utilization(%) 100.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 7000
+[2026-05-25 04:19:35.279] [debug] Core [1] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:35.279] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.279] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.279] [debug] Core [1] : PE Utilization(%) 100.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 7000
+[2026-05-25 04:19:35.279] [debug] Core [2] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:35.279] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.279] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.279] [debug] Core [2] : PE Utilization(%) 100.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 7000
+[2026-05-25 04:19:35.279] [debug] Core [3] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:35.279] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.279] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.279] [debug] Core [3] : PE Utilization(%) 100.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 7000
+[2026-05-25 04:19:35.285] [info] HBM2-CH_0: BW utilization 54% (4578 reads, 696 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_1: BW utilization 55% (4577 reads, 709 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_2: BW utilization 55% (4577 reads, 705 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_3: BW utilization 55% (4578 reads, 706 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_4: BW utilization 55% (4577 reads, 704 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_5: BW utilization 55% (4578 reads, 703 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_6: BW utilization 55% (4578 reads, 710 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_7: BW utilization 54% (4577 reads, 697 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_8: BW utilization 55% (4577 reads, 710 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_9: BW utilization 55% (4578 reads, 703 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_10: BW utilization 55% (4578 reads, 704 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_11: BW utilization 54% (4577 reads, 701 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_12: BW utilization 55% (4578 reads, 702 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_13: BW utilization 55% (4577 reads, 706 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_14: BW utilization 54% (4577 reads, 702 writes)
+[2026-05-25 04:19:35.285] [debug] HBM2-CH_15: BW utilization 55% (4578 reads, 706 writes)
+[2026-05-25 04:19:35.285] [info] Core [0] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:35.285] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.285] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.285] [info] Core [0] : PE Utilization(%) 100.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 8000
+[2026-05-25 04:19:35.285] [debug] Core [1] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:35.285] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.285] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.285] [debug] Core [1] : PE Utilization(%) 100.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 8000
+[2026-05-25 04:19:35.285] [debug] Core [2] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:35.285] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.285] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.285] [debug] Core [2] : PE Utilization(%) 100.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 8000
+[2026-05-25 04:19:35.285] [debug] Core [3] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:35.285] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.285] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.285] [debug] Core [3] : PE Utilization(%) 100.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 8000
+[2026-05-25 04:19:35.292] [info] Core [0] : MatMul active cycle 593 Vector active cycle 808 
+[2026-05-25 04:19:35.292] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.292] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.292] [info] Core [0] : PE Utilization(%) 59.30, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 80.80, Total cycle: 9000
+[2026-05-25 04:19:35.292] [debug] Core [1] : MatMul active cycle 678 Vector active cycle 640 
+[2026-05-25 04:19:35.292] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.292] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.292] [debug] Core [1] : PE Utilization(%) 67.80, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 64.00, Total cycle: 9000
+[2026-05-25 04:19:35.292] [debug] Core [2] : MatMul active cycle 462 Vector active cycle 1068 
+[2026-05-25 04:19:35.292] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.292] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.292] [debug] Core [2] : PE Utilization(%) 46.20, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 106.80, Total cycle: 9000
+[2026-05-25 04:19:35.292] [debug] Core [3] : MatMul active cycle 489 Vector active cycle 1014 
+[2026-05-25 04:19:35.292] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.292] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.292] [debug] Core [3] : PE Utilization(%) 48.90, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 101.40, Total cycle: 9000
+[2026-05-25 04:19:35.298] [info] Core [0] : MatMul active cycle 324 Vector active cycle 1342 
+[2026-05-25 04:19:35.298] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.298] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 618240 Core idle cycle 0 
+[2026-05-25 04:19:35.298] [info] Core [0] : PE Utilization(%) 3.13, Systolic Bubble(%) 3.77, Vector Unit Utilization(%) 134.20, Total cycle: 10000
+[2026-05-25 04:19:35.298] [debug] Core [1] : MatMul active cycle 239 Vector active cycle 1510 
+[2026-05-25 04:19:35.298] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.298] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.298] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 151.00, Total cycle: 10000
+[2026-05-25 04:19:35.298] [debug] Core [2] : MatMul active cycle 455 Vector active cycle 1082 
+[2026-05-25 04:19:35.298] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.298] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 1792000 Core idle cycle 0 
+[2026-05-25 04:19:35.298] [debug] Core [2] : PE Utilization(%) 9.06, Systolic Bubble(%) 10.94, Vector Unit Utilization(%) 108.20, Total cycle: 10000
+[2026-05-25 04:19:35.298] [debug] Core [3] : MatMul active cycle 428 Vector active cycle 1136 
+[2026-05-25 04:19:35.298] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.298] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 1550080 Core idle cycle 0 
+[2026-05-25 04:19:35.298] [debug] Core [3] : PE Utilization(%) 7.84, Systolic Bubble(%) 9.46, Vector Unit Utilization(%) 113.60, Total cycle: 10000
+[2026-05-25 04:19:35.305] [info] Core [0] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.305] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.305] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.305] [info] Core [0] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 11000
+[2026-05-25 04:19:35.305] [debug] Core [1] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.305] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.305] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 6522880 Core idle cycle 0 
+[2026-05-25 04:19:35.305] [debug] Core [1] : PE Utilization(%) 32.99, Systolic Bubble(%) 39.81, Vector Unit Utilization(%) 0.00, Total cycle: 11000
+[2026-05-25 04:19:35.305] [debug] Core [2] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.305] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.305] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.305] [debug] Core [2] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 11000
+[2026-05-25 04:19:35.305] [debug] Core [3] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.305] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.305] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.305] [debug] Core [3] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 11000
+[2026-05-25 04:19:35.312] [info] Core [0] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:35.312] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.312] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 6424320 Core idle cycle 0 
+[2026-05-25 04:19:35.312] [info] Core [0] : PE Utilization(%) 32.49, Systolic Bubble(%) 39.21, Vector Unit Utilization(%) 0.00, Total cycle: 12000
+[2026-05-25 04:19:35.312] [debug] Core [1] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.312] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.312] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.312] [debug] Core [1] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 12000
+[2026-05-25 04:19:35.312] [debug] Core [2] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:35.312] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.312] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 5250560 Core idle cycle 0 
+[2026-05-25 04:19:35.312] [debug] Core [2] : PE Utilization(%) 26.55, Systolic Bubble(%) 32.05, Vector Unit Utilization(%) 0.00, Total cycle: 12000
+[2026-05-25 04:19:35.312] [debug] Core [3] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:35.312] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.312] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 5492480 Core idle cycle 0 
+[2026-05-25 04:19:35.312] [debug] Core [3] : PE Utilization(%) 27.78, Systolic Bubble(%) 33.52, Vector Unit Utilization(%) 0.00, Total cycle: 12000
+[2026-05-25 04:19:35.318] [info] Core [0] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.318] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.318] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 4614400 Core idle cycle 0 
+[2026-05-25 04:19:35.318] [info] Core [0] : PE Utilization(%) 23.34, Systolic Bubble(%) 28.16, Vector Unit Utilization(%) 0.00, Total cycle: 13000
+[2026-05-25 04:19:35.318] [debug] Core [1] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:35.318] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.318] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 5089280 Core idle cycle 0 
+[2026-05-25 04:19:35.318] [debug] Core [1] : PE Utilization(%) 25.74, Systolic Bubble(%) 31.06, Vector Unit Utilization(%) 0.00, Total cycle: 13000
+[2026-05-25 04:19:35.318] [debug] Core [2] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.318] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.318] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 5788160 Core idle cycle 0 
+[2026-05-25 04:19:35.318] [debug] Core [2] : PE Utilization(%) 29.27, Systolic Bubble(%) 35.33, Vector Unit Utilization(%) 0.00, Total cycle: 13000
+[2026-05-25 04:19:35.318] [debug] Core [3] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.318] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.318] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 5546240 Core idle cycle 0 
+[2026-05-25 04:19:35.318] [debug] Core [3] : PE Utilization(%) 28.05, Systolic Bubble(%) 33.85, Vector Unit Utilization(%) 0.00, Total cycle: 13000
+[2026-05-25 04:19:35.325] [info] Core [0] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.325] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.325] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.325] [info] Core [0] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 14000
+[2026-05-25 04:19:35.325] [debug] Core [1] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.325] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.325] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 5949440 Core idle cycle 0 
+[2026-05-25 04:19:35.325] [debug] Core [1] : PE Utilization(%) 30.09, Systolic Bubble(%) 36.31, Vector Unit Utilization(%) 0.00, Total cycle: 14000
+[2026-05-25 04:19:35.325] [debug] Core [2] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.325] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.325] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.325] [debug] Core [2] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 14000
+[2026-05-25 04:19:35.325] [debug] Core [3] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.325] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.325] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.325] [debug] Core [3] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 14000
+[2026-05-25 04:19:35.332] [info] Core [0] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.332] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.332] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.332] [info] Core [0] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 15000
+[2026-05-25 04:19:35.332] [debug] Core [1] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.332] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.332] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.332] [debug] Core [1] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.00, Total cycle: 15000
+[2026-05-25 04:19:35.332] [debug] Core [2] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:35.332] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.332] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 5824000 Core idle cycle 0 
+[2026-05-25 04:19:35.332] [debug] Core [2] : PE Utilization(%) 29.45, Systolic Bubble(%) 35.55, Vector Unit Utilization(%) 0.00, Total cycle: 15000
+[2026-05-25 04:19:35.332] [debug] Core [3] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:35.332] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.332] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 6065920 Core idle cycle 0 
+[2026-05-25 04:19:35.332] [debug] Core [3] : PE Utilization(%) 30.68, Systolic Bubble(%) 37.02, Vector Unit Utilization(%) 0.00, Total cycle: 15000
+[2026-05-25 04:19:35.339] [info] HBM2-CH_0: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_1: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_2: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_3: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_4: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_5: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_6: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_7: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_8: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_9: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_10: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_11: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_12: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_13: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_14: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [debug] HBM2-CH_15: BW utilization 0% (0 reads, 0 writes)
+[2026-05-25 04:19:35.339] [info] Core [0] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:35.339] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.339] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 4901120 Core idle cycle 0 
+[2026-05-25 04:19:35.339] [info] Core [0] : PE Utilization(%) 24.79, Systolic Bubble(%) 29.91, Vector Unit Utilization(%) 0.00, Total cycle: 16000
+[2026-05-25 04:19:35.339] [debug] Core [1] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:35.339] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.339] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 5662720 Core idle cycle 0 
+[2026-05-25 04:19:35.339] [debug] Core [1] : PE Utilization(%) 28.64, Systolic Bubble(%) 34.56, Vector Unit Utilization(%) 0.00, Total cycle: 16000
+[2026-05-25 04:19:35.339] [debug] Core [2] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.339] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.339] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 5214720 Core idle cycle 0 
+[2026-05-25 04:19:35.339] [debug] Core [2] : PE Utilization(%) 26.37, Systolic Bubble(%) 31.83, Vector Unit Utilization(%) 0.00, Total cycle: 16000
+[2026-05-25 04:19:35.339] [debug] Core [3] : MatMul active cycle 999 Vector active cycle 0 
+[2026-05-25 04:19:35.339] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.339] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 4972800 Core idle cycle 0 
+[2026-05-25 04:19:35.339] [debug] Core [3] : PE Utilization(%) 25.15, Systolic Bubble(%) 30.35, Vector Unit Utilization(%) 0.00, Total cycle: 16000
+[2026-05-25 04:19:35.346] [info] Core [0] : MatMul active cycle 999 Vector active cycle 2 
+[2026-05-25 04:19:35.346] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.346] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 6137600 Core idle cycle 0 
+[2026-05-25 04:19:35.346] [info] Core [0] : PE Utilization(%) 31.04, Systolic Bubble(%) 37.46, Vector Unit Utilization(%) 0.20, Total cycle: 17000
+[2026-05-25 04:19:35.346] [debug] Core [1] : MatMul active cycle 999 Vector active cycle 2 
+[2026-05-25 04:19:35.346] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.346] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 5376000 Core idle cycle 0 
+[2026-05-25 04:19:35.346] [debug] Core [1] : PE Utilization(%) 27.19, Systolic Bubble(%) 32.81, Vector Unit Utilization(%) 0.20, Total cycle: 17000
+[2026-05-25 04:19:35.346] [debug] Core [2] : MatMul active cycle 999 Vector active cycle 2 
+[2026-05-25 04:19:35.346] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.346] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.346] [debug] Core [2] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.20, Total cycle: 17000
+[2026-05-25 04:19:35.346] [debug] Core [3] : MatMul active cycle 999 Vector active cycle 2 
+[2026-05-25 04:19:35.346] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.346] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 6666240 Core idle cycle 0 
+[2026-05-25 04:19:35.346] [debug] Core [3] : PE Utilization(%) 33.71, Systolic Bubble(%) 40.69, Vector Unit Utilization(%) 0.20, Total cycle: 17000
+[2026-05-25 04:19:35.347] [debug] Layer 24 Core 2 Finish Tile at 17215 Remain tile 4
+[2026-05-25 04:19:35.350] [debug] Layer 24 Core 3 Finish Tile at 17242 Remain tile 3
+[2026-05-25 04:19:35.365] [debug] Layer 24 Core 0 Finish Tile at 17346 Remain tile 2
+[2026-05-25 04:19:35.377] [debug] Layer 24 Core 1 Finish Tile at 17431 Remain tile 1
+[2026-05-25 04:19:35.377] [info] Layer layer0.attn.Attention.0 finish at 17431
+[2026-05-25 04:19:35.377] [info] Total compute time 13941
+[2026-05-25 04:19:35.377] [info] executable layer count 1
+[2026-05-25 04:19:35.377] [info] Start layer layer0.attn.Atccat
+[2026-05-25 04:19:35.377] [debug] Layer layer0.attn.Atccat Core 1 Get Tile at 17431
+[2026-05-25 04:19:35.377] [debug] Layer 26 Core 1 Finish Tile at 17432 Remain tile 1
+[2026-05-25 04:19:35.377] [info] Layer layer0.attn.Atccat finish at 17432
+[2026-05-25 04:19:35.377] [info] Total compute time 1
+[2026-05-25 04:19:35.377] [info] executable layer count 1
+[2026-05-25 04:19:35.377] [info] Start layer layer0.attn.proj
+[2026-05-25 04:19:35.377] [debug] Layer layer0.attn.proj Core 1 Get Tile at 17432
+[2026-05-25 04:19:35.377] [debug] Layer layer0.attn.proj Core 2 Get Tile at 17432
+[2026-05-25 04:19:35.473] [info] Core [0] : MatMul active cycle 335 Vector active cycle 16 
+[2026-05-25 04:19:35.473] [info] Core [0] : issued tile 0 
+[2026-05-25 04:19:35.473] [info] Core [0] : Memory unit idle cycle 928 Systolic bubble cycle 3001600 Core idle cycle 0 
+[2026-05-25 04:19:35.473] [info] Core [0] : PE Utilization(%) 15.18, Systolic Bubble(%) 18.32, Vector Unit Utilization(%) 1.60, Total cycle: 18000
+[2026-05-25 04:19:35.473] [debug] Core [1] : MatMul active cycle 420 Vector active cycle 16 
+[2026-05-25 04:19:35.473] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.473] [debug] Core [1] : Memory unit idle cycle 600 Systolic bubble cycle 3763200 Core idle cycle 0 
+[2026-05-25 04:19:35.473] [debug] Core [1] : PE Utilization(%) 19.03, Systolic Bubble(%) 22.97, Vector Unit Utilization(%) 1.60, Total cycle: 18000
+[2026-05-25 04:19:35.473] [debug] Core [2] : MatMul active cycle 204 Vector active cycle 16 
+[2026-05-25 04:19:35.473] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.473] [debug] Core [2] : Memory unit idle cycle 600 Systolic bubble cycle 1827840 Core idle cycle 0 
+[2026-05-25 04:19:35.473] [debug] Core [2] : PE Utilization(%) 9.24, Systolic Bubble(%) 11.16, Vector Unit Utilization(%) 1.60, Total cycle: 18000
+[2026-05-25 04:19:35.473] [debug] Core [3] : MatMul active cycle 231 Vector active cycle 16 
+[2026-05-25 04:19:35.473] [debug] Core [3] : issued tile 0 
+[2026-05-25 04:19:35.473] [debug] Core [3] : Memory unit idle cycle 928 Systolic bubble cycle 2069760 Core idle cycle 357 
+[2026-05-25 04:19:35.473] [debug] Core [3] : PE Utilization(%) 10.47, Systolic Bubble(%) 12.63, Vector Unit Utilization(%) 1.60, Total cycle: 18000
+[2026-05-25 04:19:35.530] [info] Core [0] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:35.530] [info] Core [0] : issued tile 0 
+[2026-05-25 04:19:35.530] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 569 
+[2026-05-25 04:19:35.530] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 19000
+[2026-05-25 04:19:35.530] [debug] Core [1] : MatMul active cycle 609 Vector active cycle 0 
+[2026-05-25 04:19:35.530] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.530] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.530] [debug] Core [1] : PE Utilization(%) 35.40, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 19000
+[2026-05-25 04:19:35.530] [debug] Core [2] : MatMul active cycle 760 Vector active cycle 0 
+[2026-05-25 04:19:35.530] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.530] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.530] [debug] Core [2] : PE Utilization(%) 50.50, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 19000
+[2026-05-25 04:19:35.530] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:35.530] [debug] Core [3] : issued tile 0 
+[2026-05-25 04:19:35.530] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 1000 
+[2026-05-25 04:19:35.530] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 19000
+[2026-05-25 04:19:35.550] [debug] Layer 28 Core 2 Finish Tile at 19263 Remain tile 2
+[2026-05-25 04:19:35.558] [debug] Layer 28 Core 1 Finish Tile at 19414 Remain tile 1
+[2026-05-25 04:19:35.558] [info] Layer layer0.attn.proj finish at 19414
+[2026-05-25 04:19:35.558] [info] Total compute time 1982
+[2026-05-25 04:19:35.558] [info] executable layer count 1
+[2026-05-25 04:19:35.558] [info] Start layer layer0.attn.ln
+[2026-05-25 04:19:35.558] [debug] Layer layer0.attn.ln Core 1 Get Tile at 19414
+[2026-05-25 04:19:35.558] [debug] Layer layer0.attn.ln Core 2 Get Tile at 19414
+[2026-05-25 04:19:35.558] [debug] Layer layer0.attn.ln Core 3 Get Tile at 19414
+[2026-05-25 04:19:35.558] [debug] Layer layer0.attn.ln Core 0 Get Tile at 19415
+[2026-05-25 04:19:35.558] [debug] Layer layer0.attn.ln Core 1 Get Tile at 19415
+[2026-05-25 04:19:35.558] [debug] Layer layer0.attn.ln Core 2 Get Tile at 19415
+[2026-05-25 04:19:35.558] [debug] Layer layer0.attn.ln Core 3 Get Tile at 19415
+[2026-05-25 04:19:35.558] [debug] Layer layer0.attn.ln Core 0 Get Tile at 19416
+[2026-05-25 04:19:35.660] [debug] Layer 30 Core 2 Finish Tile at 19853 Remain tile 8
+[2026-05-25 04:19:35.664] [debug] Layer 30 Core 0 Finish Tile at 19867 Remain tile 7
+[2026-05-25 04:19:35.675] [debug] Layer 30 Core 3 Finish Tile at 19911 Remain tile 6
+[2026-05-25 04:19:35.695] [info] Core [0] : MatMul active cycle 0 Vector active cycle 12 
+[2026-05-25 04:19:35.695] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.695] [info] Core [0] : Memory unit idle cycle 855 Systolic bubble cycle 0 Core idle cycle 415 
+[2026-05-25 04:19:35.695] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 1.20, Total cycle: 20000
+[2026-05-25 04:19:35.695] [debug] Core [1] : MatMul active cycle 412 Vector active cycle 0 
+[2026-05-25 04:19:35.695] [debug] Core [1] : issued tile 2 
+[2026-05-25 04:19:35.695] [debug] Core [1] : Memory unit idle cycle 764 Systolic bubble cycle 786432 Core idle cycle 0 
+[2026-05-25 04:19:35.695] [debug] Core [1] : PE Utilization(%) 36.40, Systolic Bubble(%) 4.80, Vector Unit Utilization(%) 0.00, Total cycle: 20000
+[2026-05-25 04:19:35.695] [debug] Core [2] : MatMul active cycle 261 Vector active cycle 12 
+[2026-05-25 04:19:35.695] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.695] [debug] Core [2] : Memory unit idle cycle 735 Systolic bubble cycle 786432 Core idle cycle 33 
+[2026-05-25 04:19:35.695] [debug] Core [2] : PE Utilization(%) 21.30, Systolic Bubble(%) 4.80, Vector Unit Utilization(%) 1.20, Total cycle: 20000
+[2026-05-25 04:19:35.695] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 12 
+[2026-05-25 04:19:35.695] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.695] [debug] Core [3] : Memory unit idle cycle 855 Systolic bubble cycle 0 Core idle cycle 414 
+[2026-05-25 04:19:35.695] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 1.20, Total cycle: 20000
+[2026-05-25 04:19:35.714] [debug] Layer 30 Core 3 Finish Tile at 20140 Remain tile 5
+[2026-05-25 04:19:35.714] [debug] Layer 30 Core 0 Finish Tile at 20143 Remain tile 4
+[2026-05-25 04:19:35.717] [debug] Layer 30 Core 2 Finish Tile at 20163 Remain tile 3
+[2026-05-25 04:19:35.727] [debug] Layer 30 Core 1 Finish Tile at 20219 Remain tile 2
+[2026-05-25 04:19:35.727] [debug] Layer 30 Core 1 Finish Tile at 20222 Remain tile 1
+[2026-05-25 04:19:35.727] [info] Layer layer0.attn.ln finish at 20222
+[2026-05-25 04:19:35.727] [info] Total compute time 808
+[2026-05-25 04:19:35.727] [info] executable layer count 1
+[2026-05-25 04:19:35.727] [info] Start layer layer0.ffn.fc1
+[2026-05-25 04:19:35.727] [debug] Layer layer0.ffn.fc1 Core 1 Get Tile at 20222
+[2026-05-25 04:19:35.727] [debug] Layer layer0.ffn.fc1 Core 2 Get Tile at 20222
+[2026-05-25 04:19:35.727] [debug] Layer layer0.ffn.fc1 Core 3 Get Tile at 20222
+[2026-05-25 04:19:35.727] [debug] Layer layer0.ffn.fc1 Core 0 Get Tile at 20223
+[2026-05-25 04:19:35.921] [info] Core [0] : MatMul active cycle 0 Vector active cycle 12 
+[2026-05-25 04:19:35.921] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:35.921] [info] Core [0] : Memory unit idle cycle 623 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.921] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 1.20, Total cycle: 21000
+[2026-05-25 04:19:35.921] [debug] Core [1] : MatMul active cycle 0 Vector active cycle 24 
+[2026-05-25 04:19:35.921] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:35.921] [debug] Core [1] : Memory unit idle cycle 594 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.921] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 2.40, Total cycle: 21000
+[2026-05-25 04:19:35.921] [debug] Core [2] : MatMul active cycle 0 Vector active cycle 12 
+[2026-05-25 04:19:35.921] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:35.921] [debug] Core [2] : Memory unit idle cycle 623 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.921] [debug] Core [2] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 1.20, Total cycle: 21000
+[2026-05-25 04:19:35.921] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 12 
+[2026-05-25 04:19:35.921] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:35.921] [debug] Core [3] : Memory unit idle cycle 623 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:35.921] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 1.20, Total cycle: 21000
+[2026-05-25 04:19:36.101] [info] Core [0] : MatMul active cycle 453 Vector active cycle 0 
+[2026-05-25 04:19:36.101] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:36.101] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.101] [info] Core [0] : PE Utilization(%) 19.80, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 22000
+[2026-05-25 04:19:36.101] [debug] Core [1] : MatMul active cycle 229 Vector active cycle 0 
+[2026-05-25 04:19:36.101] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:36.101] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.101] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 22000
+[2026-05-25 04:19:36.101] [debug] Core [2] : MatMul active cycle 474 Vector active cycle 0 
+[2026-05-25 04:19:36.101] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:36.101] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.101] [debug] Core [2] : PE Utilization(%) 21.90, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 22000
+[2026-05-25 04:19:36.101] [debug] Core [3] : MatMul active cycle 531 Vector active cycle 0 
+[2026-05-25 04:19:36.101] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:36.101] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.101] [debug] Core [3] : PE Utilization(%) 27.60, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 22000
+[2026-05-25 04:19:36.136] [debug] Layer 32 Core 3 Finish Tile at 22492 Remain tile 4
+[2026-05-25 04:19:36.141] [debug] Layer 32 Core 2 Finish Tile at 22549 Remain tile 3
+[2026-05-25 04:19:36.145] [debug] Layer 32 Core 0 Finish Tile at 22570 Remain tile 2
+[2026-05-25 04:19:36.187] [debug] Layer 32 Core 1 Finish Tile at 22794 Remain tile 1
+[2026-05-25 04:19:36.187] [info] Layer layer0.ffn.fc1 finish at 22794
+[2026-05-25 04:19:36.187] [info] Total compute time 2572
+[2026-05-25 04:19:36.187] [info] executable layer count 1
+[2026-05-25 04:19:36.187] [info] Start layer layer0.ffn.act
+[2026-05-25 04:19:36.187] [debug] Layer layer0.ffn.act Core 1 Get Tile at 22794
+[2026-05-25 04:19:36.187] [debug] Layer layer0.ffn.act Core 2 Get Tile at 22794
+[2026-05-25 04:19:36.187] [debug] Layer layer0.ffn.act Core 3 Get Tile at 22794
+[2026-05-25 04:19:36.187] [debug] Layer layer0.ffn.act Core 0 Get Tile at 22795
+[2026-05-25 04:19:36.187] [debug] Layer layer0.ffn.act Core 1 Get Tile at 22795
+[2026-05-25 04:19:36.187] [debug] Layer layer0.ffn.act Core 2 Get Tile at 22795
+[2026-05-25 04:19:36.187] [debug] Layer layer0.ffn.act Core 3 Get Tile at 22795
+[2026-05-25 04:19:36.188] [debug] Layer layer0.ffn.act Core 0 Get Tile at 22796
+[2026-05-25 04:19:36.235] [info] Core [0] : MatMul active cycle 568 Vector active cycle 0 
+[2026-05-25 04:19:36.235] [info] Core [0] : issued tile 2 
+[2026-05-25 04:19:36.235] [info] Core [0] : Memory unit idle cycle 740 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.235] [info] Core [0] : PE Utilization(%) 56.80, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 23000
+[2026-05-25 04:19:36.235] [debug] Core [1] : MatMul active cycle 792 Vector active cycle 0 
+[2026-05-25 04:19:36.235] [debug] Core [1] : issued tile 2 
+[2026-05-25 04:19:36.235] [debug] Core [1] : Memory unit idle cycle 740 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.235] [debug] Core [1] : PE Utilization(%) 76.60, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 23000
+[2026-05-25 04:19:36.235] [debug] Core [2] : MatMul active cycle 547 Vector active cycle 0 
+[2026-05-25 04:19:36.235] [debug] Core [2] : issued tile 2 
+[2026-05-25 04:19:36.235] [debug] Core [2] : Memory unit idle cycle 740 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.235] [debug] Core [2] : PE Utilization(%) 54.70, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 23000
+[2026-05-25 04:19:36.235] [debug] Core [3] : MatMul active cycle 490 Vector active cycle 0 
+[2026-05-25 04:19:36.235] [debug] Core [3] : issued tile 2 
+[2026-05-25 04:19:36.235] [debug] Core [3] : Memory unit idle cycle 740 Systolic bubble cycle 0 Core idle cycle 45 
+[2026-05-25 04:19:36.235] [debug] Core [3] : PE Utilization(%) 49.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 23000
+[2026-05-25 04:19:36.293] [debug] Layer 34 Core 2 Finish Tile at 23258 Remain tile 8
+[2026-05-25 04:19:36.303] [debug] Layer 34 Core 3 Finish Tile at 23303 Remain tile 7
+[2026-05-25 04:19:36.312] [debug] Layer 34 Core 0 Finish Tile at 23340 Remain tile 6
+[2026-05-25 04:19:36.368] [debug] Layer 34 Core 1 Finish Tile at 23601 Remain tile 5
+[2026-05-25 04:19:36.375] [debug] Layer 34 Core 2 Finish Tile at 23639 Remain tile 4
+[2026-05-25 04:19:36.379] [debug] Layer 34 Core 3 Finish Tile at 23661 Remain tile 3
+[2026-05-25 04:19:36.385] [debug] Layer 34 Core 0 Finish Tile at 23688 Remain tile 2
+[2026-05-25 04:19:36.439] [info] HBM2-CH_0: BW utilization 49% (3039 reads, 1721 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_1: BW utilization 49% (3037 reads, 1713 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_2: BW utilization 49% (3037 reads, 1715 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_3: BW utilization 49% (3039 reads, 1726 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_4: BW utilization 49% (3035 reads, 1724 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_5: BW utilization 49% (3039 reads, 1725 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_6: BW utilization 49% (3039 reads, 1723 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_7: BW utilization 49% (3037 reads, 1718 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_8: BW utilization 49% (3039 reads, 1719 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_9: BW utilization 49% (3039 reads, 1726 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_10: BW utilization 49% (3039 reads, 1722 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_11: BW utilization 49% (3039 reads, 1717 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_12: BW utilization 49% (3039 reads, 1720 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_13: BW utilization 49% (3039 reads, 1711 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_14: BW utilization 49% (3039 reads, 1720 writes)
+[2026-05-25 04:19:36.439] [debug] HBM2-CH_15: BW utilization 49% (3039 reads, 1720 writes)
+[2026-05-25 04:19:36.439] [debug] Layer 34 Core 1 Finish Tile at 23995 Remain tile 1
+[2026-05-25 04:19:36.439] [info] Layer layer0.ffn.act finish at 23995
+[2026-05-25 04:19:36.439] [info] Total compute time 1201
+[2026-05-25 04:19:36.439] [info] executable layer count 1
+[2026-05-25 04:19:36.439] [info] Start layer layer0.ffn.fc2
+[2026-05-25 04:19:36.439] [debug] Layer layer0.ffn.fc2 Core 1 Get Tile at 23995
+[2026-05-25 04:19:36.439] [debug] Layer layer0.ffn.fc2 Core 2 Get Tile at 23995
+[2026-05-25 04:19:36.441] [info] Core [0] : MatMul active cycle 0 Vector active cycle 32 
+[2026-05-25 04:19:36.441] [info] Core [0] : issued tile 0 
+[2026-05-25 04:19:36.441] [info] Core [0] : Memory unit idle cycle 872 Systolic bubble cycle 0 Core idle cycle 28 
+[2026-05-25 04:19:36.441] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 3.20, Total cycle: 24000
+[2026-05-25 04:19:36.441] [debug] Core [1] : MatMul active cycle 0 Vector active cycle 32 
+[2026-05-25 04:19:36.441] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:36.441] [debug] Core [1] : Memory unit idle cycle 930 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.441] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 3.20, Total cycle: 24000
+[2026-05-25 04:19:36.441] [debug] Core [2] : MatMul active cycle 0 Vector active cycle 32 
+[2026-05-25 04:19:36.441] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:36.441] [debug] Core [2] : Memory unit idle cycle 868 Systolic bubble cycle 0 Core idle cycle 26 
+[2026-05-25 04:19:36.441] [debug] Core [2] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 3.20, Total cycle: 24000
+[2026-05-25 04:19:36.441] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 32 
+[2026-05-25 04:19:36.441] [debug] Core [3] : issued tile 0 
+[2026-05-25 04:19:36.441] [debug] Core [3] : Memory unit idle cycle 872 Systolic bubble cycle 0 Core idle cycle 30 
+[2026-05-25 04:19:36.441] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 3.20, Total cycle: 24000
+[2026-05-25 04:19:36.605] [info] Core [0] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:36.605] [info] Core [0] : issued tile 0 
+[2026-05-25 04:19:36.605] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 1000 
+[2026-05-25 04:19:36.605] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 25000
+[2026-05-25 04:19:36.605] [debug] Core [1] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:36.605] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:36.605] [debug] Core [1] : Memory unit idle cycle 221 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.605] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 25000
+[2026-05-25 04:19:36.605] [debug] Core [2] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:36.605] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:36.605] [debug] Core [2] : Memory unit idle cycle 282 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.605] [debug] Core [2] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 25000
+[2026-05-25 04:19:36.605] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:36.605] [debug] Core [3] : issued tile 0 
+[2026-05-25 04:19:36.605] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 1000 
+[2026-05-25 04:19:36.605] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 25000
+[2026-05-25 04:19:36.728] [info] Core [0] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:36.728] [info] Core [0] : issued tile 0 
+[2026-05-25 04:19:36.728] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 1000 
+[2026-05-25 04:19:36.728] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 26000
+[2026-05-25 04:19:36.728] [debug] Core [1] : MatMul active cycle 270 Vector active cycle 0 
+[2026-05-25 04:19:36.728] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:36.728] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.728] [debug] Core [1] : PE Utilization(%) 1.50, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 26000
+[2026-05-25 04:19:36.728] [debug] Core [2] : MatMul active cycle 475 Vector active cycle 0 
+[2026-05-25 04:19:36.728] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:36.728] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:36.728] [debug] Core [2] : PE Utilization(%) 22.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 26000
+[2026-05-25 04:19:36.728] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:36.728] [debug] Core [3] : issued tile 0 
+[2026-05-25 04:19:36.728] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 1000 
+[2026-05-25 04:19:36.728] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 26000
+[2026-05-25 04:19:36.753] [info] Core [0] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:36.753] [info] Core [0] : issued tile 0 
+[2026-05-25 04:19:36.753] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 1000 
+[2026-05-25 04:19:36.753] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 27000
+[2026-05-25 04:19:36.753] [debug] Core [1] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:36.753] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:36.753] [debug] Core [1] : Memory unit idle cycle 936 Systolic bubble cycle 764928 Core idle cycle 0 
+[2026-05-25 04:19:36.753] [debug] Core [1] : PE Utilization(%) 95.33, Systolic Bubble(%) 4.67, Vector Unit Utilization(%) 0.00, Total cycle: 27000
+[2026-05-25 04:19:36.753] [debug] Core [2] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:36.753] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:36.753] [debug] Core [2] : Memory unit idle cycle 936 Systolic bubble cycle 1394688 Core idle cycle 0 
+[2026-05-25 04:19:36.753] [debug] Core [2] : PE Utilization(%) 91.49, Systolic Bubble(%) 8.51, Vector Unit Utilization(%) 0.00, Total cycle: 27000
+[2026-05-25 04:19:36.753] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:36.753] [debug] Core [3] : issued tile 0 
+[2026-05-25 04:19:36.753] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 0 Core idle cycle 1000 
+[2026-05-25 04:19:36.753] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 27000
+[2026-05-25 04:19:36.754] [debug] Layer 36 Core 2 Finish Tile at 27060 Remain tile 2
+[2026-05-25 04:19:36.763] [debug] Layer 36 Core 1 Finish Tile at 27265 Remain tile 1
+[2026-05-25 04:19:36.763] [info] Layer layer0.ffn.fc2 finish at 27265
+[2026-05-25 04:19:36.763] [info] Total compute time 3270
+[2026-05-25 04:19:36.763] [info] executable layer count 1
+[2026-05-25 04:19:36.763] [info] Start layer layer0.ffn.ln
+[2026-05-25 04:19:36.763] [debug] Layer layer0.ffn.ln Core 1 Get Tile at 27265
+[2026-05-25 04:19:36.763] [debug] Layer layer0.ffn.ln Core 2 Get Tile at 27265
+[2026-05-25 04:19:36.763] [debug] Layer layer0.ffn.ln Core 3 Get Tile at 27265
+[2026-05-25 04:19:36.763] [debug] Layer layer0.ffn.ln Core 0 Get Tile at 27266
+[2026-05-25 04:19:36.763] [debug] Layer layer0.ffn.ln Core 1 Get Tile at 27266
+[2026-05-25 04:19:36.763] [debug] Layer layer0.ffn.ln Core 2 Get Tile at 27266
+[2026-05-25 04:19:36.764] [debug] Layer layer0.ffn.ln Core 3 Get Tile at 27266
+[2026-05-25 04:19:36.764] [debug] Layer layer0.ffn.ln Core 0 Get Tile at 27267
+[2026-05-25 04:19:36.858] [debug] Layer 38 Core 2 Finish Tile at 27675 Remain tile 8
+[2026-05-25 04:19:36.865] [debug] Layer 38 Core 3 Finish Tile at 27703 Remain tile 7
+[2026-05-25 04:19:36.887] [debug] Layer 38 Core 0 Finish Tile at 27801 Remain tile 6
+[2026-05-25 04:19:36.910] [debug] Layer 38 Core 2 Finish Tile at 27941 Remain tile 5
+[2026-05-25 04:19:36.910] [debug] Layer 38 Core 1 Finish Tile at 27942 Remain tile 4
+[2026-05-25 04:19:36.913] [debug] Layer 38 Core 3 Finish Tile at 27960 Remain tile 3
+[2026-05-25 04:19:36.916] [debug] Layer 38 Core 0 Finish Tile at 27977 Remain tile 2
+[2026-05-25 04:19:36.921] [info] Core [0] : MatMul active cycle 0 Vector active cycle 24 
+[2026-05-25 04:19:36.921] [info] Core [0] : issued tile 0 
+[2026-05-25 04:19:36.921] [info] Core [0] : Memory unit idle cycle 831 Systolic bubble cycle 0 Core idle cycle 266 
+[2026-05-25 04:19:36.921] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 2.40, Total cycle: 28000
+[2026-05-25 04:19:36.921] [debug] Core [1] : MatMul active cycle 263 Vector active cycle 22 
+[2026-05-25 04:19:36.921] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:36.921] [debug] Core [1] : Memory unit idle cycle 799 Systolic bubble cycle 807936 Core idle cycle 0 
+[2026-05-25 04:19:36.921] [debug] Core [1] : PE Utilization(%) 21.37, Systolic Bubble(%) 4.93, Vector Unit Utilization(%) 2.20, Total cycle: 28000
+[2026-05-25 04:19:36.921] [debug] Core [2] : MatMul active cycle 58 Vector active cycle 24 
+[2026-05-25 04:19:36.921] [debug] Core [2] : issued tile 0 
+[2026-05-25 04:19:36.921] [debug] Core [2] : Memory unit idle cycle 770 Systolic bubble cycle 178176 Core idle cycle 94 
+[2026-05-25 04:19:36.921] [debug] Core [2] : PE Utilization(%) 4.71, Systolic Bubble(%) 1.09, Vector Unit Utilization(%) 2.40, Total cycle: 28000
+[2026-05-25 04:19:36.921] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 24 
+[2026-05-25 04:19:36.921] [debug] Core [3] : issued tile 0 
+[2026-05-25 04:19:36.921] [debug] Core [3] : Memory unit idle cycle 826 Systolic bubble cycle 0 Core idle cycle 265 
+[2026-05-25 04:19:36.921] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 2.40, Total cycle: 28000
+[2026-05-25 04:19:36.935] [debug] Layer 38 Core 1 Finish Tile at 28088 Remain tile 1
+[2026-05-25 04:19:36.935] [info] Layer layer0.ffn.ln finish at 28088
+[2026-05-25 04:19:36.935] [info] Total compute time 823
+[2026-05-25 04:19:36.935] [info] Model[tiny_transformer] Request: 0 us, Start: 0 us, finish:28 us, Current Cycle:28088
+[2026-05-25 04:19:36.935] [info] No total_seq_len!
+[2026-05-25 04:19:36.936] [info] Total Memory Usage: 0.01 GB
+[2026-05-25 04:19:36.936] [info] Weight Memory Usage: 0.01 GB
+[2026-05-25 04:19:36.936] [info] KV Memory Usage: 0.00 GB
+[2026-05-25 04:19:36.936] [info] Activation Memory Usage: 0.00 GB
+[2026-05-25 04:19:36.936] [debug] [Gemm] input_shape: [1, 232]
+[2026-05-25 04:19:36.936] [debug] [Gemm] output_shape : [1, 696]
+[2026-05-25 04:19:36.936] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-25 04:19:36.936] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-25 04:19:36.936] [info] [GEMM] Used mapping: Total N:1 C:232 M:696 | Outer N:1 C:1 M:6 | Inner N:128 C:256 M:128
+[2026-05-25 04:19:36.937] [info] [GemmWs] Keys K = 232, N = 1, M = 696
+[2026-05-25 04:19:36.937] [info] [GemmWS]: total 0.00032364 GFLOPs, 0.000326192 GB
+[2026-05-25 04:19:36.937] [info] [GemmWS]: Theoretical time(ms): 0.0005312573421178968 Compute time: 2.469177307062864e-06 Memory time: 0.0005312573421178968
+[2026-05-25 04:19:36.937] [debug] [KVCacheConcat] input_token_lengths: [1]
+[2026-05-25 04:19:36.937] [debug] [KVCacheConcat] number of tiles: 1
+[2026-05-25 04:19:36.937] [info] [Attention] total_spad_size_per_head: 297540 B
+[2026-05-25 04:19:36.937] [info] [Attention] total_acc_size_per_head: 2564 B
+[2026-05-25 04:19:36.937] [info] [Attention] q_len: 1, seq_len: 1282, dk: 58, heads per tile 1
+[2026-05-25 04:19:36.937] [info] [Attention] Spad size 16777216
+[2026-05-25 04:19:36.937] [info] [Attention] Accum spad size 2097152
+[2026-05-25 04:19:36.937] [info] Mapping info Total Loop: N4 C58 M1282 S1 R1 Q1 P1 Tile Out Loop: N4 C1 M1 S1 R1 Q1 P1 Tile In Loop: N1 C58 M1282 S1 R1 Q1 P1
+[2026-05-25 04:19:36.955] [info] [Attention] QK 0.000594848 GFLOPs
+[2026-05-25 04:19:36.955] [info] [Attention] total 0.001240976 GFLOPs, 0.001190624 GB
+[2026-05-25 04:19:36.955] [info] [Attention] Theoretical time(ms): 0.0019391271 Compute time: 1.5336427e-05 Memory time: 0.0019391271
+[2026-05-25 04:19:36.955] [info] [Attention] QK compute 0.0000ms Softmax compute 0.0000ms SV compute 0.0000ms
+[2026-05-25 04:19:36.955] [debug] [Gemm] input_shape: [1, 232]
+[2026-05-25 04:19:36.955] [debug] [Gemm] output_shape : [1, 232]
+[2026-05-25 04:19:36.955] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-25 04:19:36.955] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-25 04:19:36.955] [info] [GEMM] Used mapping: Total N:1 C:232 M:232 | Outer N:1 C:1 M:2 | Inner N:128 C:256 M:128
+[2026-05-25 04:19:36.955] [info] [GemmWs] Keys K = 232, N = 1, M = 232
+[2026-05-25 04:19:36.955] [info] [GemmWS]: total 0.00010787999 GFLOPs, 0.000109040004 GB
+[2026-05-25 04:19:36.955] [info] [GemmWS]: Theoretical time(ms): 0.00017758958392732893 Compute time: 8.230590098357027e-07 Memory time: 0.00017758958392732893
+[2026-05-25 04:19:36.955] [info] [SkipLayerNorm] tokens_per_tile: 1
+[2026-05-25 04:19:36.955] [debug] [Gemm] input_shape: [1, 232]
+[2026-05-25 04:19:36.955] [debug] [Gemm] output_shape : [1, 512]
+[2026-05-25 04:19:36.955] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-25 04:19:36.955] [info] [GEMM] required_sram_size: 131072 required_accum_size: 32768
+[2026-05-25 04:19:36.955] [info] [GEMM] Used mapping: Total N:1 C:232 M:512 | Outer N:1 C:1 M:4 | Inner N:128 C:256 M:128
+[2026-05-25 04:19:36.956] [info] [GemmWs] Keys K = 232, N = 1, M = 512
+[2026-05-25 04:19:36.956] [info] [GemmWS]: total 0.000237568 GFLOPs, 0.000239056 GB
+[2026-05-25 04:19:36.956] [info] [GemmWS]: Theoretical time(ms): 0.0003893420057465846 Compute time: 1.81250003894462e-06 Memory time: 0.0003893420057465846
+[2026-05-25 04:19:36.956] [info] [BiasAct] tokens_per_tile: 1
+[2026-05-25 04:19:36.956] [debug] [Gemm] input_shape: [1, 512]
+[2026-05-25 04:19:36.956] [debug] [Gemm] output_shape : [1, 232]
+[2026-05-25 04:19:36.956] [info] [GEMM] spad_size: 33554432 accum_size: 4194304
+[2026-05-25 04:19:36.956] [info] [GEMM] required_sram_size: 262144 required_accum_size: 32768
+[2026-05-25 04:19:36.956] [info] [GEMM] Used mapping: Total N:1 C:512 M:232 | Outer N:1 C:1 M:2 | Inner N:128 C:512 M:128
+[2026-05-25 04:19:36.957] [info] [GemmWs] Keys K = 512, N = 1, M = 232
+[2026-05-25 04:19:36.957] [info] [GemmWS]: total 0.00023779999 GFLOPs, 0.00023952 GB
+[2026-05-25 04:19:36.957] [info] [GemmWS]: Theoretical time(ms): 0.00039009771057862963 Compute time: 1.8142699564904774e-06 Memory time: 0.00039009771057862963
+[2026-05-25 04:19:36.957] [info] [SkipLayerNorm] tokens_per_tile: 1
+[2026-05-25 04:19:36.957] [debug] runnable op, 
+[2026-05-25 04:19:36.957] [info]  Model initialization time: 0.021675 seconds
+[2026-05-25 04:19:36.957] [info] Schedule model: tiny_transformer at 28090000 us
+[2026-05-25 04:19:36.957] [info] MODEL tiny_transformer Scheduled, Total Request: 1
+[2026-05-25 04:19:36.957] [info] executable layer count 1
+[2026-05-25 04:19:36.957] [info] Start layer layer0.attn.QKVgen
+[2026-05-25 04:19:36.957] [debug] Layer layer0.attn.QKVgen Core 0 Get Tile at 28089
+[2026-05-25 04:19:36.957] [debug] Layer layer0.attn.QKVgen Core 1 Get Tile at 28089
+[2026-05-25 04:19:36.957] [debug] Layer layer0.attn.QKVgen Core 2 Get Tile at 28089
+[2026-05-25 04:19:36.957] [debug] Layer layer0.attn.QKVgen Core 3 Get Tile at 28089
+[2026-05-25 04:19:36.958] [debug] Layer layer0.attn.QKVgen Core 0 Get Tile at 28090
+[2026-05-25 04:19:36.958] [debug] Layer layer0.attn.QKVgen Core 3 Get Tile at 28090
+[2026-05-25 04:19:37.117] [info] Core [0] : MatMul active cycle 211 Vector active cycle 0 
+[2026-05-25 04:19:37.117] [info] Core [0] : issued tile 2 
+[2026-05-25 04:19:37.117] [info] Core [0] : Memory unit idle cycle 825 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:37.117] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 29000
+[2026-05-25 04:19:37.117] [debug] Core [1] : MatMul active cycle 194 Vector active cycle 2 
+[2026-05-25 04:19:37.117] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.117] [debug] Core [1] : Memory unit idle cycle 853 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:37.117] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.20, Total cycle: 29000
+[2026-05-25 04:19:37.117] [debug] Core [2] : MatMul active cycle 272 Vector active cycle 0 
+[2026-05-25 04:19:37.117] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.117] [debug] Core [2] : Memory unit idle cycle 882 Systolic bubble cycle 276352 Core idle cycle 0 
+[2026-05-25 04:19:37.117] [debug] Core [2] : PE Utilization(%) 0.01, Systolic Bubble(%) 1.69, Vector Unit Utilization(%) 0.00, Total cycle: 29000
+[2026-05-25 04:19:37.117] [debug] Core [3] : MatMul active cycle 241 Vector active cycle 0 
+[2026-05-25 04:19:37.117] [debug] Core [3] : issued tile 2 
+[2026-05-25 04:19:37.117] [debug] Core [3] : Memory unit idle cycle 764 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:37.117] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 29000
+[2026-05-25 04:19:37.119] [debug] Layer 43 Core 2 Finish Tile at 29371 Remain tile 6
+[2026-05-25 04:19:37.120] [debug] Layer 43 Core 3 Finish Tile at 29402 Remain tile 5
+[2026-05-25 04:19:37.120] [debug] Layer 43 Core 0 Finish Tile at 29432 Remain tile 4
+[2026-05-25 04:19:37.120] [debug] Layer 43 Core 1 Finish Tile at 29449 Remain tile 3
+[2026-05-25 04:19:37.122] [debug] Layer 43 Core 3 Finish Tile at 29658 Remain tile 2
+[2026-05-25 04:19:37.122] [debug] Layer 43 Core 0 Finish Tile at 29688 Remain tile 1
+[2026-05-25 04:19:37.122] [info] Layer layer0.attn.QKVgen finish at 29688
+[2026-05-25 04:19:37.122] [info] Total compute time 1599
+[2026-05-25 04:19:37.122] [info] executable layer count 1
+[2026-05-25 04:19:37.122] [info] Start layer layer0.attn.KVccat
+[2026-05-25 04:19:37.122] [debug] Layer layer0.attn.KVccat Core 2 Get Tile at 29688
+[2026-05-25 04:19:37.122] [debug] Layer 45 Core 2 Finish Tile at 29689 Remain tile 1
+[2026-05-25 04:19:37.122] [info] Layer layer0.attn.KVccat finish at 29689
+[2026-05-25 04:19:37.122] [info] Total compute time 1
+[2026-05-25 04:19:37.122] [info] executable layer count 1
+[2026-05-25 04:19:37.122] [info] Start layer layer0.attn.Attention.0
+[2026-05-25 04:19:37.122] [debug] Layer layer0.attn.Attention.0 Core 2 Get Tile at 29689
+[2026-05-25 04:19:37.122] [debug] Layer layer0.attn.Attention.0 Core 3 Get Tile at 29689
+[2026-05-25 04:19:37.122] [debug] Layer layer0.attn.Attention.0 Core 0 Get Tile at 29690
+[2026-05-25 04:19:37.122] [debug] Layer layer0.attn.Attention.0 Core 1 Get Tile at 29690
+[2026-05-25 04:19:37.199] [info] Core [0] : MatMul active cycle 686 Vector active cycle 0 
+[2026-05-25 04:19:37.199] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.199] [info] Core [0] : Memory unit idle cycle 689 Systolic bubble cycle 10454784 Core idle cycle 0 
+[2026-05-25 04:19:37.199] [info] Core [0] : PE Utilization(%) 0.39, Systolic Bubble(%) 63.81, Vector Unit Utilization(%) 0.00, Total cycle: 30000
+[2026-05-25 04:19:37.199] [debug] Core [1] : MatMul active cycle 447 Vector active cycle 0 
+[2026-05-25 04:19:37.199] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.199] [debug] Core [1] : Memory unit idle cycle 690 Systolic bubble cycle 6274816 Core idle cycle 224 
+[2026-05-25 04:19:37.199] [debug] Core [1] : PE Utilization(%) 0.30, Systolic Bubble(%) 38.30, Vector Unit Utilization(%) 0.00, Total cycle: 30000
+[2026-05-25 04:19:37.199] [debug] Core [2] : MatMul active cycle 369 Vector active cycle 0 
+[2026-05-25 04:19:37.199] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.199] [debug] Core [2] : Memory unit idle cycle 689 Systolic bubble cycle 5998464 Core idle cycle 301 
+[2026-05-25 04:19:37.199] [debug] Core [2] : PE Utilization(%) 0.29, Systolic Bubble(%) 36.61, Vector Unit Utilization(%) 0.00, Total cycle: 30000
+[2026-05-25 04:19:37.199] [debug] Core [3] : MatMul active cycle 656 Vector active cycle 0 
+[2026-05-25 04:19:37.199] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.199] [debug] Core [3] : Memory unit idle cycle 688 Systolic bubble cycle 10436352 Core idle cycle 14 
+[2026-05-25 04:19:37.199] [debug] Core [3] : PE Utilization(%) 0.50, Systolic Bubble(%) 63.70, Vector Unit Utilization(%) 0.00, Total cycle: 30000
+[2026-05-25 04:19:37.434] [info] Core [0] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:37.434] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.434] [info] Core [0] : Memory unit idle cycle 727 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:37.434] [info] Core [0] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 31000
+[2026-05-25 04:19:37.434] [debug] Core [1] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:37.434] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.434] [debug] Core [1] : Memory unit idle cycle 727 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:37.434] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 31000
+[2026-05-25 04:19:37.434] [debug] Core [2] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:37.434] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.434] [debug] Core [2] : Memory unit idle cycle 728 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:37.434] [debug] Core [2] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 31000
+[2026-05-25 04:19:37.434] [debug] Core [3] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:37.434] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.434] [debug] Core [3] : Memory unit idle cycle 728 Systolic bubble cycle 0 Core idle cycle 0 
+[2026-05-25 04:19:37.434] [debug] Core [3] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 31000
+[2026-05-25 04:19:37.658] [info] HBM2-CH_0: BW utilization 53% (4634 reads, 542 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_1: BW utilization 54% (4652 reads, 539 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_2: BW utilization 53% (4641 reads, 536 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_3: BW utilization 54% (4647 reads, 539 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_4: BW utilization 54% (4663 reads, 542 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_5: BW utilization 53% (4632 reads, 537 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_6: BW utilization 53% (4638 reads, 539 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_7: BW utilization 53% (4636 reads, 538 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_8: BW utilization 54% (4654 reads, 537 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_9: BW utilization 53% (4626 reads, 538 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_10: BW utilization 53% (4632 reads, 540 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_11: BW utilization 53% (4640 reads, 540 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_12: BW utilization 53% (4637 reads, 540 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_13: BW utilization 53% (4622 reads, 536 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_14: BW utilization 54% (4658 reads, 539 writes)
+[2026-05-25 04:19:37.658] [debug] HBM2-CH_15: BW utilization 53% (4609 reads, 538 writes)
+[2026-05-25 04:19:37.660] [info] Core [0] : MatMul active cycle 669 Vector active cycle 0 
+[2026-05-25 04:19:37.660] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.660] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 6729984 Core idle cycle 0 
+[2026-05-25 04:19:37.660] [info] Core [0] : PE Utilization(%) 0.32, Systolic Bubble(%) 41.08, Vector Unit Utilization(%) 0.00, Total cycle: 32000
+[2026-05-25 04:19:37.660] [debug] Core [1] : MatMul active cycle 695 Vector active cycle 0 
+[2026-05-25 04:19:37.660] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.660] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 7152640 Core idle cycle 0 
+[2026-05-25 04:19:37.660] [debug] Core [1] : PE Utilization(%) 0.34, Systolic Bubble(%) 43.66, Vector Unit Utilization(%) 0.00, Total cycle: 32000
+[2026-05-25 04:19:37.660] [debug] Core [2] : MatMul active cycle 724 Vector active cycle 0 
+[2026-05-25 04:19:37.660] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.660] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 7624064 Core idle cycle 0 
+[2026-05-25 04:19:37.660] [debug] Core [2] : PE Utilization(%) 0.37, Systolic Bubble(%) 46.53, Vector Unit Utilization(%) 0.00, Total cycle: 32000
+[2026-05-25 04:19:37.660] [debug] Core [3] : MatMul active cycle 680 Vector active cycle 0 
+[2026-05-25 04:19:37.660] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.660] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 6908800 Core idle cycle 0 
+[2026-05-25 04:19:37.660] [debug] Core [3] : PE Utilization(%) 0.33, Systolic Bubble(%) 42.17, Vector Unit Utilization(%) 0.00, Total cycle: 32000
+[2026-05-25 04:19:37.706] [info] Core [0] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:37.706] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.706] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 16256504 Core idle cycle 0 
+[2026-05-25 04:19:37.706] [info] Core [0] : PE Utilization(%) 0.78, Systolic Bubble(%) 99.22, Vector Unit Utilization(%) 0.00, Total cycle: 33000
+[2026-05-25 04:19:37.706] [debug] Core [1] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:37.706] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.706] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 16259780 Core idle cycle 0 
+[2026-05-25 04:19:37.706] [debug] Core [1] : PE Utilization(%) 0.76, Systolic Bubble(%) 99.24, Vector Unit Utilization(%) 0.00, Total cycle: 33000
+[2026-05-25 04:19:37.706] [debug] Core [2] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:37.706] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.706] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 16263434 Core idle cycle 0 
+[2026-05-25 04:19:37.706] [debug] Core [2] : PE Utilization(%) 0.74, Systolic Bubble(%) 99.26, Vector Unit Utilization(%) 0.00, Total cycle: 33000
+[2026-05-25 04:19:37.706] [debug] Core [3] : MatMul active cycle 1000 Vector active cycle 0 
+[2026-05-25 04:19:37.706] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.706] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 16257890 Core idle cycle 0 
+[2026-05-25 04:19:37.706] [debug] Core [3] : PE Utilization(%) 0.77, Systolic Bubble(%) 99.23, Vector Unit Utilization(%) 0.00, Total cycle: 33000
+[2026-05-25 04:19:37.712] [info] Core [0] : MatMul active cycle 984 Vector active cycle 14 
+[2026-05-25 04:19:37.713] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.713] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 7745468 Core idle cycle 0 
+[2026-05-25 04:19:37.713] [info] Core [0] : PE Utilization(%) 0.13, Systolic Bubble(%) 47.27, Vector Unit Utilization(%) 1.40, Total cycle: 34000
+[2026-05-25 04:19:37.713] [debug] Core [1] : MatMul active cycle 984 Vector active cycle 14 
+[2026-05-25 04:19:37.713] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.713] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 7744012 Core idle cycle 0 
+[2026-05-25 04:19:37.713] [debug] Core [1] : PE Utilization(%) 0.13, Systolic Bubble(%) 47.27, Vector Unit Utilization(%) 1.40, Total cycle: 34000
+[2026-05-25 04:19:37.713] [debug] Core [2] : MatMul active cycle 984 Vector active cycle 14 
+[2026-05-25 04:19:37.713] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.713] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 7742388 Core idle cycle 0 
+[2026-05-25 04:19:37.713] [debug] Core [2] : PE Utilization(%) 0.14, Systolic Bubble(%) 47.26, Vector Unit Utilization(%) 1.40, Total cycle: 34000
+[2026-05-25 04:19:37.713] [debug] Core [3] : MatMul active cycle 984 Vector active cycle 14 
+[2026-05-25 04:19:37.713] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.713] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 7744852 Core idle cycle 0 
+[2026-05-25 04:19:37.713] [debug] Core [3] : PE Utilization(%) 0.13, Systolic Bubble(%) 47.27, Vector Unit Utilization(%) 1.40, Total cycle: 34000
+[2026-05-25 04:19:37.719] [info] Core [0] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.719] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.719] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.719] [info] Core [0] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 35000
+[2026-05-25 04:19:37.719] [debug] Core [1] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.719] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.719] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.719] [debug] Core [1] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 35000
+[2026-05-25 04:19:37.719] [debug] Core [2] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.719] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.719] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.719] [debug] Core [2] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 35000
+[2026-05-25 04:19:37.719] [debug] Core [3] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.719] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.719] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.719] [debug] Core [3] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 35000
+[2026-05-25 04:19:37.726] [info] Core [0] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.726] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.726] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.726] [info] Core [0] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 36000
+[2026-05-25 04:19:37.726] [debug] Core [1] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.726] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.726] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.726] [debug] Core [1] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 36000
+[2026-05-25 04:19:37.726] [debug] Core [2] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.726] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.726] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.726] [debug] Core [2] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 36000
+[2026-05-25 04:19:37.726] [debug] Core [3] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.726] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.726] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.726] [debug] Core [3] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 36000
+[2026-05-25 04:19:37.733] [info] Core [0] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.733] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.733] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.733] [info] Core [0] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 37000
+[2026-05-25 04:19:37.733] [debug] Core [1] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.733] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.733] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.733] [debug] Core [1] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 37000
+[2026-05-25 04:19:37.733] [debug] Core [2] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.733] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.733] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.733] [debug] Core [2] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 37000
+[2026-05-25 04:19:37.733] [debug] Core [3] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.733] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.733] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.733] [debug] Core [3] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 37000
+[2026-05-25 04:19:37.739] [info] Core [0] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.739] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.739] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 8293608 Core idle cycle 0 
+[2026-05-25 04:19:37.739] [info] Core [0] : PE Utilization(%) 0.18, Systolic Bubble(%) 50.62, Vector Unit Utilization(%) 0.00, Total cycle: 38000
+[2026-05-25 04:19:37.739] [debug] Core [1] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.739] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.739] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.739] [debug] Core [1] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 38000
+[2026-05-25 04:19:37.739] [debug] Core [2] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.739] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.739] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 7967088 Core idle cycle 0 
+[2026-05-25 04:19:37.739] [debug] Core [2] : PE Utilization(%) 0.17, Systolic Bubble(%) 48.63, Vector Unit Utilization(%) 0.00, Total cycle: 38000
+[2026-05-25 04:19:37.739] [debug] Core [3] : MatMul active cycle 998 Vector active cycle 0 
+[2026-05-25 04:19:37.739] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.739] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 8114022 Core idle cycle 0 
+[2026-05-25 04:19:37.739] [debug] Core [3] : PE Utilization(%) 0.18, Systolic Bubble(%) 49.52, Vector Unit Utilization(%) 0.00, Total cycle: 38000
+[2026-05-25 04:19:37.744] [debug] Layer 49 Core 2 Finish Tile at 38741 Remain tile 4
+[2026-05-25 04:19:37.744] [debug] Layer 49 Core 1 Finish Tile at 38770 Remain tile 3
+[2026-05-25 04:19:37.745] [debug] Layer 49 Core 3 Finish Tile at 38785 Remain tile 2
+[2026-05-25 04:19:37.745] [debug] Layer 49 Core 0 Finish Tile at 38796 Remain tile 1
+[2026-05-25 04:19:37.745] [info] Layer layer0.attn.Attention.0 finish at 38796
+[2026-05-25 04:19:37.745] [info] Total compute time 9107
+[2026-05-25 04:19:37.745] [info] executable layer count 1
+[2026-05-25 04:19:37.745] [info] Start layer layer0.attn.Atccat
+[2026-05-25 04:19:37.745] [debug] Layer layer0.attn.Atccat Core 3 Get Tile at 38796
+[2026-05-25 04:19:37.745] [debug] Layer 51 Core 3 Finish Tile at 38797 Remain tile 1
+[2026-05-25 04:19:37.745] [info] Layer layer0.attn.Atccat finish at 38797
+[2026-05-25 04:19:37.745] [info] Total compute time 1
+[2026-05-25 04:19:37.745] [info] executable layer count 1
+[2026-05-25 04:19:37.745] [info] Start layer layer0.attn.proj
+[2026-05-25 04:19:37.745] [debug] Layer layer0.attn.proj Core 3 Get Tile at 38797
+[2026-05-25 04:19:37.745] [debug] Layer layer0.attn.proj Core 0 Get Tile at 38798
+[2026-05-25 04:19:37.775] [info] Core [0] : MatMul active cycle 791 Vector active cycle 4 
+[2026-05-25 04:19:37.775] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.775] [info] Core [0] : Memory unit idle cycle 902 Systolic bubble cycle 8424216 Core idle cycle 0 
+[2026-05-25 04:19:37.775] [info] Core [0] : PE Utilization(%) 0.18, Systolic Bubble(%) 51.42, Vector Unit Utilization(%) 0.40, Total cycle: 39000
+[2026-05-25 04:19:37.775] [debug] Core [1] : MatMul active cycle 765 Vector active cycle 4 
+[2026-05-25 04:19:37.775] [debug] Core [1] : issued tile 0 
+[2026-05-25 04:19:37.775] [debug] Core [1] : Memory unit idle cycle 999 Systolic bubble cycle 8326260 Core idle cycle 198 
+[2026-05-25 04:19:37.775] [debug] Core [1] : PE Utilization(%) 0.18, Systolic Bubble(%) 50.82, Vector Unit Utilization(%) 0.40, Total cycle: 39000
+[2026-05-25 04:19:37.775] [debug] Core [2] : MatMul active cycle 736 Vector active cycle 4 
+[2026-05-25 04:19:37.775] [debug] Core [2] : issued tile 0 
+[2026-05-25 04:19:37.775] [debug] Core [2] : Memory unit idle cycle 999 Systolic bubble cycle 7852806 Core idle cycle 227 
+[2026-05-25 04:19:37.775] [debug] Core [2] : PE Utilization(%) 0.17, Systolic Bubble(%) 47.93, Vector Unit Utilization(%) 0.40, Total cycle: 39000
+[2026-05-25 04:19:37.775] [debug] Core [3] : MatMul active cycle 780 Vector active cycle 4 
+[2026-05-25 04:19:37.775] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.775] [debug] Core [3] : Memory unit idle cycle 881 Systolic bubble cycle 8424216 Core idle cycle 0 
+[2026-05-25 04:19:37.775] [debug] Core [3] : PE Utilization(%) 0.18, Systolic Bubble(%) 51.42, Vector Unit Utilization(%) 0.40, Total cycle: 39000
+[2026-05-25 04:19:37.787] [debug] Layer 53 Core 0 Finish Tile at 39737 Remain tile 2
+[2026-05-25 04:19:37.787] [debug] Layer 53 Core 3 Finish Tile at 39772 Remain tile 1
+[2026-05-25 04:19:37.788] [info] Layer layer0.attn.proj finish at 39772
+[2026-05-25 04:19:37.788] [info] Total compute time 975
+[2026-05-25 04:19:37.788] [info] executable layer count 1
+[2026-05-25 04:19:37.788] [info] Start layer layer0.attn.ln
+[2026-05-25 04:19:37.788] [debug] Layer layer0.attn.ln Core 0 Get Tile at 39773
+[2026-05-25 04:19:37.788] [debug] Layer 55 Core 0 Finish Tile at 39828 Remain tile 1
+[2026-05-25 04:19:37.788] [info] Layer layer0.attn.ln finish at 39828
+[2026-05-25 04:19:37.788] [info] Total compute time 56
+[2026-05-25 04:19:37.788] [info] executable layer count 1
+[2026-05-25 04:19:37.788] [info] Start layer layer0.ffn.fc1
+[2026-05-25 04:19:37.788] [debug] Layer layer0.ffn.fc1 Core 0 Get Tile at 39828
+[2026-05-25 04:19:37.788] [debug] Layer layer0.ffn.fc1 Core 1 Get Tile at 39828
+[2026-05-25 04:19:37.788] [debug] Layer layer0.ffn.fc1 Core 2 Get Tile at 39828
+[2026-05-25 04:19:37.788] [debug] Layer layer0.ffn.fc1 Core 3 Get Tile at 39828
+[2026-05-25 04:19:37.826] [info] HBM2-CH_0: BW utilization 5% (560 reads, 2 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_1: BW utilization 5% (549 reads, 3 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_2: BW utilization 5% (563 reads, 3 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_3: BW utilization 5% (553 reads, 1 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_4: BW utilization 5% (536 reads, 3 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_5: BW utilization 5% (560 reads, 2 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_6: BW utilization 5% (556 reads, 3 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_7: BW utilization 5% (560 reads, 4 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_8: BW utilization 5% (558 reads, 3 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_9: BW utilization 5% (568 reads, 1 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_10: BW utilization 5% (560 reads, 2 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_11: BW utilization 5% (570 reads, 4 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_12: BW utilization 5% (559 reads, 2 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_13: BW utilization 6% (588 reads, 3 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_14: BW utilization 5% (544 reads, 3 writes)
+[2026-05-25 04:19:37.826] [debug] HBM2-CH_15: BW utilization 6% (578 reads, 2 writes)
+[2026-05-25 04:19:37.830] [info] Core [0] : MatMul active cycle 641 Vector active cycle 12 
+[2026-05-25 04:19:37.830] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.830] [info] Core [0] : Memory unit idle cycle 879 Systolic bubble cycle 6284080 Core idle cycle 4 
+[2026-05-25 04:19:37.830] [info] Core [0] : PE Utilization(%) 0.25, Systolic Bubble(%) 38.35, Vector Unit Utilization(%) 1.20, Total cycle: 40000
+[2026-05-25 04:19:37.830] [debug] Core [1] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:37.830] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.830] [debug] Core [1] : Memory unit idle cycle 883 Systolic bubble cycle 0 Core idle cycle 828 
+[2026-05-25 04:19:37.830] [debug] Core [1] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 40000
+[2026-05-25 04:19:37.830] [debug] Core [2] : MatMul active cycle 0 Vector active cycle 0 
+[2026-05-25 04:19:37.830] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.830] [debug] Core [2] : Memory unit idle cycle 883 Systolic bubble cycle 0 Core idle cycle 828 
+[2026-05-25 04:19:37.830] [debug] Core [2] : PE Utilization(%) 0.00, Systolic Bubble(%) 0.00, Vector Unit Utilization(%) 0.00, Total cycle: 40000
+[2026-05-25 04:19:37.830] [debug] Core [3] : MatMul active cycle 641 Vector active cycle 0 
+[2026-05-25 04:19:37.830] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.830] [debug] Core [3] : Memory unit idle cycle 882 Systolic bubble cycle 6274816 Core idle cycle 11 
+[2026-05-25 04:19:37.830] [debug] Core [3] : PE Utilization(%) 0.30, Systolic Bubble(%) 38.30, Vector Unit Utilization(%) 0.00, Total cycle: 40000
+[2026-05-25 04:19:37.908] [info] Core [0] : MatMul active cycle 601 Vector active cycle 0 
+[2026-05-25 04:19:37.908] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.908] [info] Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 5624576 Core idle cycle 0 
+[2026-05-25 04:19:37.908] [info] Core [0] : PE Utilization(%) 0.27, Systolic Bubble(%) 34.33, Vector Unit Utilization(%) 0.00, Total cycle: 41000
+[2026-05-25 04:19:37.908] [debug] Core [1] : MatMul active cycle 621 Vector active cycle 0 
+[2026-05-25 04:19:37.908] [debug] Core [1] : issued tile 1 
+[2026-05-25 04:19:37.908] [debug] Core [1] : Memory unit idle cycle 1000 Systolic bubble cycle 5949696 Core idle cycle 0 
+[2026-05-25 04:19:37.908] [debug] Core [1] : PE Utilization(%) 0.29, Systolic Bubble(%) 36.31, Vector Unit Utilization(%) 0.00, Total cycle: 41000
+[2026-05-25 04:19:37.908] [debug] Core [2] : MatMul active cycle 613 Vector active cycle 0 
+[2026-05-25 04:19:37.908] [debug] Core [2] : issued tile 1 
+[2026-05-25 04:19:37.908] [debug] Core [2] : Memory unit idle cycle 1000 Systolic bubble cycle 5819648 Core idle cycle 0 
+[2026-05-25 04:19:37.908] [debug] Core [2] : PE Utilization(%) 0.28, Systolic Bubble(%) 35.52, Vector Unit Utilization(%) 0.00, Total cycle: 41000
+[2026-05-25 04:19:37.908] [debug] Core [3] : MatMul active cycle 616 Vector active cycle 0 
+[2026-05-25 04:19:37.908] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.908] [debug] Core [3] : Memory unit idle cycle 1000 Systolic bubble cycle 5868416 Core idle cycle 0 
+[2026-05-25 04:19:37.908] [debug] Core [3] : PE Utilization(%) 0.28, Systolic Bubble(%) 35.82, Vector Unit Utilization(%) 0.00, Total cycle: 41000
+[2026-05-25 04:19:37.908] [debug] Layer 57 Core 1 Finish Tile at 41022 Remain tile 4
+[2026-05-25 04:19:37.908] [debug] Layer 57 Core 3 Finish Tile at 41027 Remain tile 3
+[2026-05-25 04:19:37.908] [debug] Layer 57 Core 2 Finish Tile at 41030 Remain tile 2
+[2026-05-25 04:19:37.909] [debug] Layer 57 Core 0 Finish Tile at 41042 Remain tile 1
+[2026-05-25 04:19:37.909] [info] Layer layer0.ffn.fc1 finish at 41042
+[2026-05-25 04:19:37.909] [info] Total compute time 1214
+[2026-05-25 04:19:37.909] [info] executable layer count 1
+[2026-05-25 04:19:37.909] [info] Start layer layer0.ffn.act
+[2026-05-25 04:19:37.909] [debug] Layer layer0.ffn.act Core 1 Get Tile at 41042
+[2026-05-25 04:19:37.910] [debug] Layer 59 Core 1 Finish Tile at 41087 Remain tile 1
+[2026-05-25 04:19:37.910] [info] Layer layer0.ffn.act finish at 41087
+[2026-05-25 04:19:37.910] [info] Total compute time 45
+[2026-05-25 04:19:37.910] [info] executable layer count 1
+[2026-05-25 04:19:37.910] [info] Start layer layer0.ffn.fc2
+[2026-05-25 04:19:37.910] [debug] Layer layer0.ffn.fc2 Core 3 Get Tile at 41087
+[2026-05-25 04:19:37.910] [debug] Layer layer0.ffn.fc2 Core 0 Get Tile at 41088
+[2026-05-25 04:19:37.997] [info] Core [0] : MatMul active cycle 304 Vector active cycle 0 
+[2026-05-25 04:19:37.997] [info] Core [0] : issued tile 1 
+[2026-05-25 04:19:37.997] [info] Core [0] : Memory unit idle cycle 788 Systolic bubble cycle 796760 Core idle cycle 29 
+[2026-05-25 04:19:37.997] [info] Core [0] : PE Utilization(%) 0.04, Systolic Bubble(%) 4.86, Vector Unit Utilization(%) 0.00, Total cycle: 42000
+[2026-05-25 04:19:37.997] [debug] Core [1] : MatMul active cycle 20 Vector active cycle 4 
+[2026-05-25 04:19:37.997] [debug] Core [1] : issued tile 0 
+[2026-05-25 04:19:37.997] [debug] Core [1] : Memory unit idle cycle 993 Systolic bubble cycle 325120 Core idle cycle 301 
+[2026-05-25 04:19:37.997] [debug] Core [1] : PE Utilization(%) 0.02, Systolic Bubble(%) 1.98, Vector Unit Utilization(%) 0.40, Total cycle: 42000
+[2026-05-25 04:19:37.997] [debug] Core [2] : MatMul active cycle 28 Vector active cycle 0 
+[2026-05-25 04:19:37.997] [debug] Core [2] : issued tile 0 
+[2026-05-25 04:19:37.997] [debug] Core [2] : Memory unit idle cycle 999 Systolic bubble cycle 455168 Core idle cycle 953 
+[2026-05-25 04:19:37.997] [debug] Core [2] : PE Utilization(%) 0.02, Systolic Bubble(%) 2.78, Vector Unit Utilization(%) 0.00, Total cycle: 42000
+[2026-05-25 04:19:37.997] [debug] Core [3] : MatMul active cycle 293 Vector active cycle 0 
+[2026-05-25 04:19:37.997] [debug] Core [3] : issued tile 1 
+[2026-05-25 04:19:37.997] [debug] Core [3] : Memory unit idle cycle 740 Systolic bubble cycle 617728 Core idle cycle 31 
+[2026-05-25 04:19:37.997] [debug] Core [3] : PE Utilization(%) 0.03, Systolic Bubble(%) 3.77, Vector Unit Utilization(%) 0.00, Total cycle: 42000
+[2026-05-25 04:19:38.001] [debug] Layer 61 Core 3 Finish Tile at 42631 Remain tile 2
+[2026-05-25 04:19:38.001] [debug] Layer 61 Core 0 Finish Tile at 42635 Remain tile 1
+[2026-05-25 04:19:38.001] [info] Layer layer0.ffn.fc2 finish at 42635
+[2026-05-25 04:19:38.001] [info] Total compute time 1548
+[2026-05-25 04:19:38.001] [info] executable layer count 1
+[2026-05-25 04:19:38.001] [info] Start layer layer0.ffn.ln
+[2026-05-25 04:19:38.001] [debug] Layer layer0.ffn.ln Core 2 Get Tile at 42635
+[2026-05-25 04:19:38.002] [debug] Layer 63 Core 2 Finish Tile at 42688 Remain tile 1
+[2026-05-25 04:19:38.002] [info] Layer layer0.ffn.ln finish at 42688
+[2026-05-25 04:19:38.002] [info] Total compute time 53
+[2026-05-25 04:19:38.002] [info] Model[tiny_transformer] Request: 28 us, Start: 28 us, finish:42 us, Current Cycle:42688
+[2026-05-25 04:19:38.002] [info] Request 0 completed in 42688 cycles
+[2026-05-25 04:19:38.002] [info] No total_seq_len!
+[2026-05-25 04:19:38.002] [info] Simulation Finished at 42707 cycle 42 us
+[2026-05-25 04:19:38.002] [info] [MEMORY_FOOTPRINT] Total Core->L2/DRAM Request Bytes: 8506944
+[2026-05-25 04:19:38.002] [info] Runtime Instructions [153] Avg Instructions Per Finished Tile [9.00]
+[2026-05-25 04:19:38.002] [info] Core [0] : MatMul active cycle 22640 Vector active cycle 2278 
+[2026-05-25 04:19:38.002] [info] Core [0] : Memory unit idle cycle 38544 Systolic bubble cycle 140207244 Core idle cycle 4947 
+[2026-05-25 04:19:38.002] [info] Core [0] : PE Utilization(%) 15.66, Systolic Bubble(%) 20.04, Vector Unit Utilization(%) 5.33, Total cycle: 42707
+[2026-05-25 04:19:38.002] [info] [Core 0] Input SRAM Hit Rate: 30.97% (16310 hits, 36350 misses)
+[2026-05-25 04:19:38.002] [info] [Core 0] Accumulator SRAM Hit Rate: 1.50% (369 hits, 24187 misses)
+[2026-05-25 04:19:38.002] [info] [Core 0] Average Core->L2 Request Size: 29934.10 bytes
+[2026-05-25 04:19:38.002] [info] [Core 0] Object Histogram: Top-1 size 59392 B (26.90%), Top-2 size 148736 B (16.84%)
+[2026-05-25 04:19:38.002] [info] Core [0] : Systolic Inst Issue Count : 62
+[2026-05-25 04:19:38.002] [info] Core [0] : Systolic PRELOAD Issue Count : 62
+[2026-05-25 04:19:38.002] [info] Runtime Instructions [169] Avg Instructions Per Finished Tile [9.94]
+[2026-05-25 04:19:38.002] [info] Core [1] : MatMul active cycle 25054 Vector active cycle 2270 
+[2026-05-25 04:19:38.002] [info] Core [1] : Memory unit idle cycle 37137 Systolic bubble cycle 131955972 Core idle cycle 1551 
+[2026-05-25 04:19:38.002] [info] Core [1] : PE Utilization(%) 21.89, Systolic Bubble(%) 18.86, Vector Unit Utilization(%) 5.32, Total cycle: 42707
+[2026-05-25 04:19:38.002] [info] [Core 1] Input SRAM Hit Rate: 25.81% (17743 hits, 51011 misses)
+[2026-05-25 04:19:38.002] [info] [Core 1] Accumulator SRAM Hit Rate: 1.49% (375 hits, 24855 misses)
+[2026-05-25 04:19:38.002] [info] [Core 1] Average Core->L2 Request Size: 37123.82 bytes
+[2026-05-25 04:19:38.002] [info] [Core 1] Object Histogram: Top-1 size 59392 B (31.04%), Top-2 size 32768 B (15.81%)
+[2026-05-25 04:19:38.002] [info] Core [1] : Systolic Inst Issue Count : 70
+[2026-05-25 04:19:38.002] [info] Core [1] : Systolic PRELOAD Issue Count : 70
+[2026-05-25 04:19:38.002] [info] Runtime Instructions [169] Avg Instructions Per Finished Tile [9.94]
+[2026-05-25 04:19:38.002] [info] Core [2] : MatMul active cycle 25059 Vector active cycle 2266 
+[2026-05-25 04:19:38.002] [info] Core [2] : Memory unit idle cycle 37272 Systolic bubble cycle 139061508 Core idle cycle 2462 
+[2026-05-25 04:19:38.002] [info] Core [2] : PE Utilization(%) 20.89, Systolic Bubble(%) 19.87, Vector Unit Utilization(%) 5.31, Total cycle: 42707
+[2026-05-25 04:19:38.002] [info] [Core 2] Input SRAM Hit Rate: 29.82% (19080 hits, 44912 misses)
+[2026-05-25 04:19:38.002] [info] [Core 2] Accumulator SRAM Hit Rate: 1.52% (375 hits, 24329 misses)
+[2026-05-25 04:19:38.002] [info] [Core 2] Average Core->L2 Request Size: 36110.81 bytes
+[2026-05-25 04:19:38.002] [info] [Core 2] Object Histogram: Top-1 size 59392 B (29.46%), Top-2 size 32768 B (13.54%)
+[2026-05-25 04:19:38.002] [info] Core [2] : Systolic Inst Issue Count : 70
+[2026-05-25 04:19:38.002] [info] Core [2] : Systolic PRELOAD Issue Count : 70
+[2026-05-25 04:19:38.002] [info] Runtime Instructions [148] Avg Instructions Per Finished Tile [9.25]
+[2026-05-25 04:19:38.002] [info] Core [3] : MatMul active cycle 22644 Vector active cycle 2266 
+[2026-05-25 04:19:38.002] [info] Core [3] : Memory unit idle cycle 38412 Systolic bubble cycle 140244356 Core idle cycle 5709 
+[2026-05-25 04:19:38.002] [info] Core [3] : PE Utilization(%) 15.66, Systolic Bubble(%) 20.04, Vector Unit Utilization(%) 5.31, Total cycle: 42707
+[2026-05-25 04:19:38.002] [info] [Core 3] Input SRAM Hit Rate: 31.06% (16136 hits, 35817 misses)
+[2026-05-25 04:19:38.002] [info] [Core 3] Accumulator SRAM Hit Rate: 1.50% (369 hits, 24152 misses)
+[2026-05-25 04:19:38.002] [info] [Core 3] Average Core->L2 Request Size: 32752.00 bytes
+[2026-05-25 04:19:38.002] [info] [Core 3] Object Histogram: Top-1 size 59392 B (32.38%), Top-2 size 148736 B (16.22%)
+[2026-05-25 04:19:38.002] [info] Core [3] : Systolic Inst Issue Count : 62
+[2026-05-25 04:19:38.002] [info] Core [3] : Systolic PRELOAD Issue Count : 62
+Class 0:
+Packet latency average = 299.345
+	minimum = 7
+	maximum = 2257
+Network latency average = 289.645
+	minimum = 7
+	maximum = 2135
+Slowest packet = 33929
+Flit latency average = 289.645
+	minimum = 7
+	maximum = 2135
+Slowest flit = 124691
+Fragmentation average = 0
+	minimum = 0
+	maximum = 0
+Injected packet rate average = 0.15562
+	minimum = 0.0805489 (at node 15)
+	maximum = 0.389421 (at node 68)
+Accepted packet rate average = 0.15562
+	minimum = 0.0803147 (at node 5)
+	maximum = 0.389421 (at node 68)
+Injected flit rate average = 0.15562
+	minimum = 0.0805489 (at node 15)
+	maximum = 0.389421 (at node 68)
+Accepted flit rate average= 0.15562
+	minimum = 0.0803147 (at node 5)
+	maximum = 0.389421 (at node 68)
+Injected packet length average = 1
+Accepted packet length average = 1
+Total in-flight flits = 0 (0 measured)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.002] [info] Row hits: 15609, Row misses: 60, Row conflicts: 869
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2966
+  total_num_read_requests: 13635
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.002] [info] HBM2-CH_0: avg BW utilization 32% (13635 reads, 2966 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.002] [info] Row hits: 15643, Row misses: 65, Row conflicts: 835
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2972
+  total_num_read_requests: 13653
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.002] [debug] HBM2-CH_1: avg BW utilization 32% (13653 reads, 2972 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.002] [info] Row hits: 15659, Row misses: 57, Row conflicts: 827
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2967
+  total_num_read_requests: 13653
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_2: avg BW utilization 32% (13653 reads, 2967 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15639, Row misses: 62, Row conflicts: 849
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2977
+  total_num_read_requests: 13636
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_3: avg BW utilization 32% (13636 reads, 2977 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15649, Row misses: 62, Row conflicts: 868
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2981
+  total_num_read_requests: 13650
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_4: avg BW utilization 32% (13650 reads, 2981 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15619, Row misses: 62, Row conflicts: 847
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2972
+  total_num_read_requests: 13635
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_5: avg BW utilization 32% (13635 reads, 2972 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15681, Row misses: 52, Row conflicts: 809
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2980
+  total_num_read_requests: 13633
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_6: avg BW utilization 32% (13633 reads, 2980 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15620, Row misses: 64, Row conflicts: 849
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2964
+  total_num_read_requests: 13646
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_7: avg BW utilization 32% (13646 reads, 2964 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15662, Row misses: 55, Row conflicts: 844
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2976
+  total_num_read_requests: 13655
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_8: avg BW utilization 32% (13655 reads, 2976 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15624, Row misses: 59, Row conflicts: 851
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2973
+  total_num_read_requests: 13635
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_9: avg BW utilization 32% (13635 reads, 2973 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15640, Row misses: 53, Row conflicts: 841
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2973
+  total_num_read_requests: 13632
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_10: avg BW utilization 32% (13632 reads, 2973 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15650, Row misses: 65, Row conflicts: 835
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2969
+  total_num_read_requests: 13651
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_11: avg BW utilization 32% (13651 reads, 2969 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15621, Row misses: 64, Row conflicts: 859
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2969
+  total_num_read_requests: 13634
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_12: avg BW utilization 32% (13634 reads, 2969 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15617, Row misses: 60, Row conflicts: 864
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2964
+  total_num_read_requests: 13656
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_13: avg BW utilization 32% (13656 reads, 2964 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15680, Row misses: 59, Row conflicts: 818
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2972
+  total_num_read_requests: 13656
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_14: avg BW utilization 32% (13656 reads, 2972 writes)
+Frontend:
+  impl: GEM5
+
+[2026-05-25 04:19:38.003] [info] Row hits: 15627, Row misses: 62, Row conflicts: 840
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 0
+  total_num_write_requests: 2971
+  total_num_read_requests: 13636
+  memory_system_cycles: 51268
+  DRAM:
+    impl: HBM2
+  AddrMapper:
+    impl: RoBaRaCoCh
+  Controller:
+    impl: Generic
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+
+[2026-05-25 04:19:38.003] [debug] HBM2-CH_15: avg BW utilization 32% (13636 reads, 2971 writes)
+[2026-05-25 04:19:38.003] [info] Simulation time: 4.088019 seconds
+[2026-05-25 04:19:38.003] [info] Total tile: 67, simulated tile per seconds(TPS): 16.595251

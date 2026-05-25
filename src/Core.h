@@ -99,4 +99,9 @@ class Core {
   uint64_t _total_object_bytes = 0;
   uint64_t _total_objects = 0;
   std::map<uint64_t, uint64_t> _object_size_byte_counts;
+
+
+  //for gemm util
+  uint64_t _stat_total_theoretical_pe_cycles = 0;
+  uint64_t _stat_total_actual_compute_cycles = 0;
 };

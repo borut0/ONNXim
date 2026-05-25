@@ -256,10 +256,33 @@ void Core::print_stats() {
       "Core idle cycle {} ",
       _id, _stat_tot_memory_idle_cycle, _stat_tot_systolic_bubble_cycle, _stat_tot_idle_cycle);
 
-  spdlog::info("Core [{}] : Systolic Array Utilization(%) {:.2f} ({:.2f}% PE util), Vector Unit Utilization(%) {:.2f}, Total cycle: {}",
-      _id, static_cast<float>(_stat_tot_systolic_active_cycle * 100) / _core_cycle,
-      static_cast<float>(_stat_tot_matmul_cycle * 100) / _core_cycle,
-      static_cast<float>(_stat_tot_vec_compute_cycle * 100) / _core_cycle, _core_cycle);
+  uint64_t total_pes =
+    _config.core_config[_id].core_height *
+    _config.core_config[_id].core_width;
+
+  float pe_util =
+      static_cast<float>(_stat_tot_systolic_active_cycle * 100.0) /
+      (total_pes * _core_cycle);
+
+  float bubble_util =
+      static_cast<float>(_stat_tot_systolic_bubble_cycle * 100.0) /
+      (total_pes * _core_cycle);
+
+  float vec_util =
+      static_cast<float>(_stat_tot_vec_compute_cycle * 100.0) /
+      _core_cycle;
+
+  spdlog::info(
+      "Core [{}] : PE Utilization(%) {:.2f}, "
+      "Systolic Bubble(%) {:.2f}, "
+      "Vector Unit Utilization(%) {:.2f}, "
+      "Total cycle: {}",
+      _id,
+      pe_util,
+      bubble_util,
+      vec_util,
+      _core_cycle);
+
   
   // NEW: Calculate and print SRAM hit rates
   uint64_t spad_hits = _spad.get_hit_count();
@@ -339,10 +362,34 @@ void Core::print_current_stats() {
       "Core [{}] : Memory unit idle cycle {} Systolic bubble cycle {} "
       "Core idle cycle {} ",
       _id, _stat_memory_idle_cycle, _stat_systolic_bubble_cycle, _stat_idle_cycle);
-  spdlog::log(level,"Core [{}] : Systolic Array Utilization(%) {:.2f} ({:.2f}% PE util), Vector Unit Utilization(%) {:.2f}, Total cycle: {}",
-      _id, static_cast<float>(_stat_systolic_active_cycle * 100) / _config.core_print_interval,
-      static_cast<float>(_stat_matmul_cycle * 100) / _config.core_print_interval,
-      static_cast<float>(_stat_vec_compute_cycle * 100) / _config.core_print_interval, _core_cycle);
+    
+  uint64_t total_pes =
+    _config.core_config[_id].core_height *
+    _config.core_config[_id].core_width;
+
+  float pe_util =
+      static_cast<float>(_stat_systolic_active_cycle * 100.0) /
+      (total_pes * _config.core_print_interval);
+
+  float bubble_util =
+      static_cast<float>(_stat_systolic_bubble_cycle * 100.0) /
+      (total_pes * _config.core_print_interval);
+
+  float vec_util =
+      static_cast<float>(_stat_vec_compute_cycle * 100.0) /
+      _config.core_print_interval;
+
+  spdlog::log(
+      level,
+      "Core [{}] : PE Utilization(%) {:.2f}, "
+      "Systolic Bubble(%) {:.2f}, "
+      "Vector Unit Utilization(%) {:.2f}, "
+      "Total cycle: {}",
+      _id,
+      pe_util,
+      bubble_util,
+      vec_util,
+      _core_cycle);
   update_stats();
 }
 
@@ -375,7 +422,15 @@ void Core::finish_compute_pipeline(){
       spdlog::trace("Finished last GEMM {}", inst->spad_id);
       inst->my_tile->inst_finished = true;
     }
+
     spdlog::trace("Compute size {} tile m {} tile k {} tile n {}", inst->compute_size, inst->tile_m, inst->tile_k, inst->tile_n);
+
+    uint64_t pe_count =_config.core_config[_id].core_height * _config.core_config[_id].core_width;
+
+    uint64_t total_mac_ops = (uint64_t)inst->tile_m * inst->tile_n * inst->tile_k;
+    double ideal_cycles = (double)total_mac_ops / pe_count;
+    double actual_cycles = inst->finish_cycle - inst->start_cycle;
+
     spdlog::trace("compute time {}", inst->finish_cycle - inst->start_cycle);
     _compute_pipeline.pop();
   }

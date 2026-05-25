@@ -15,11 +15,12 @@ RE = {
     # "Simulation Finished at 12345 cycle 12 us"
     "total_cycles": re.compile(r"Simulation Finished at (\d+) cycle"),
 
-    # "Core [0] : Systolic Array Utilization(%) 45.00 (38.00% PE util), Vector Unit Utilization(%) 12.00, Total cycle: 99999"
     "core_util": re.compile(
-        r"Core\s+\[(\d+)\].*?Systolic Array Utilization\(%\)\s+([\d.]+)"
-        r".*?\(([\d.]+)%\s+PE util\).*?Vector Unit Utilization\(%\)\s+([\d.]+)"
-        r".*?Total cycle:\s+(\d+)"
+        r"Core\s+\[(\d+)\]\s*:\s*"
+        r"PE Utilization\(%\)\s+([\d.]+),\s*"
+        r"Systolic Bubble\(%\)\s+([\d.]+),\s*"
+        r"Vector Unit Utilization\(%\)\s+([\d.]+),\s*"
+        r"Total cycle:\s+(\d+)"
     ),
 
     # "Core [0] : Memory unit idle cycle 1000 Systolic bubble cycle 500 Core idle cycle 200"
@@ -136,6 +137,8 @@ def parse_log(path: str) -> dict:
     core_util_seen = {}     # core_id -> dict
     core_idle_seen = {}
     dram_utils_seen = []
+    inst_per_tile_vals = []
+    req_sizes = []
 
     row_hits = 0
     row_misses = 0
@@ -173,10 +176,11 @@ def parse_log(path: str) -> dict:
             if m := RE["core_util"].search(line):
                 cid = int(m.group(1))
                 core_util_seen[cid] = {
-                    "sys": float(m.group(2)),
-                    "pe":  float(m.group(3)),
-                    "vec": float(m.group(4)),
+                    "pe":     float(m.group(2)),
+                    "bubble": float(m.group(3)),
+                    "vec":    float(m.group(4)),
                 }
+                
 
             # ── Core idle cycles ──────────────────────────────────────────
             if m := RE["core_idle"].search(line):
@@ -188,7 +192,7 @@ def parse_log(path: str) -> dict:
 
             # ── Avg instr per tile ────────────────────────────────────────
             if m := RE["inst_per_tile"].search(line):
-                s["inst_per_tile"] = max(s["inst_per_tile"], float(m.group(1)))
+                inst_per_tile_vals.append(float(m.group(1)))
 
 
             # Derived hit rates# ── HBM Channel Utilization ──────────────────────────────────
@@ -214,7 +218,7 @@ def parse_log(path: str) -> dict:
 
             # ── Avg request size & object histogram ───────────────────────
             if m := RE["avg_req_size"].search(line):
-                s["avg_req_size"] = max(s["avg_req_size"], float(m.group(2)))
+                req_sizes.append(float(m.group(2)))
             if m := RE["obj_hist"].search(line):
                 s["top1_share"] = max(s["top1_share"], float(m.group(2)))
                 s["top2_share"] = max(s["top2_share"], float(m.group(4)))
@@ -227,14 +231,55 @@ def parse_log(path: str) -> dict:
                 s[bucket] += int(m.group(1))
                 cur_layer = None
 
+    if req_sizes:
+        s["avg_req_size"] = np.mean(req_sizes)
+
+    if inst_per_tile_vals:
+        s["inst_per_tile"] = np.mean(inst_per_tile_vals)
+
     # Aggregate per-core util (use core 0 or average)
     if core_util_seen:
-        s["sys_util"] = np.mean([v["sys"] for v in core_util_seen.values()])
-        s["pe_util"]  = np.mean([v["pe"]  for v in core_util_seen.values()])
-        s["vec_util"] = np.mean([v["vec"] for v in core_util_seen.values()])
+        for cid, vals in core_util_seen.items():
+            # SA util = 100 - bubble
+            sa_util = 100.0 - vals["bubble"]
+
+            s[f"core{cid}_sys_util"] = sa_util
+            s[f"core{cid}_pe_util"]  = vals["pe"]
+            s[f"core{cid}_vec_util"] = vals["vec"]
+            s[f"core{cid}_bubble"]   = vals["bubble"]
+
+        s["sys_util"] = np.mean([
+            100.0 - v["bubble"]
+            for v in core_util_seen.values()
+        ])
+
+        s["pe_util"] = np.mean([
+            v["pe"]
+            for v in core_util_seen.values()
+        ])
+
+        s["vec_util"] = np.mean([
+            v["vec"]
+            for v in core_util_seen.values()
+        ])
+
+        s["bubble_util"] = np.mean([
+            v["bubble"]
+            for v in core_util_seen.values()
+        ])
+
     if core_idle_seen and s["total_cycles"] > 0:
         avg_mem  = np.mean([v["mem"]  for v in core_idle_seen.values()])
         avg_core = np.mean([v["core"] for v in core_idle_seen.values()])
+
+        for cid, vals in core_idle_seen.items():
+            s[f"core{cid}_mem_idle_pct"] = (
+            vals["mem"] / s["total_cycles"] * 100.0
+            )
+            s[f"core{cid}_core_idle_pct"] = (
+                vals["core"] / s["total_cycles"] * 100.0
+            )
+
         s["mem_idle_pct"]  = avg_mem  / s["total_cycles"] * 100.0
         s["core_idle_pct"] = avg_core / s["total_cycles"] * 100.0
     else:
@@ -321,11 +366,34 @@ def plot_all(df: pd.DataFrame, seqs: list, out_dir: str):
     print(f"\nWriting plots to: {os.path.abspath(out_dir)}")
 
     # ── 1. Total Cycles ───────────────────────────────────────────────────────
+    #fig, ax = plt.subplots(figsize=(10, 5))
+    #_line(ax, x, df["total_cycles"], color="steelblue")
+    #_setup(ax, seqs)
+    #ax.set_ylabel("Total Cycles")
+    #ax.set_title("Total Cycles vs Sequence Length")
+    #_save(fig, "01_total_cycles.png", out_dir)
+
+    # ── 1. Total Cycles ───────────────────────────────────────────────────────
     fig, ax = plt.subplots(figsize=(10, 5))
-    _line(ax, x, df["total_cycles"], color="steelblue")
+
+    _line(
+        ax,
+        x,
+        df["total_cycles"],
+        color="steelblue",
+        logy=True
+    )
+
     _setup(ax, seqs)
-    ax.set_ylabel("Total Cycles")
+
+    ax.yaxis.set_major_formatter(
+        ticker.FuncFormatter(lambda y, _: f"{int(y):,}")
+    )
+
+    ax.set_ylabel("Total Cycles (log scale)")
+
     ax.set_title("Total Cycles vs Sequence Length")
+
     _save(fig, "01_total_cycles.png", out_dir)
 
     # ── 2. Systolic Array Utilization ─────────────────────────────────────────
@@ -476,6 +544,73 @@ def plot_all(df: pd.DataFrame, seqs: list, out_dir: str):
     _save(fig, "15_layer_cycle_pct.png", out_dir)
 
 
+    styles = ["-", "--", "-.", ":"]
+    fig, ax = plt.subplots(figsize=(12, 6))
+    for cid in range(4):
+        col = f"core{cid}_pe_util"
+
+        if col in df.columns:
+            _line(ax, x, df[col], label=f"Core {cid}", linestyle=styles[cid])
+
+    _setup(ax, seqs)
+
+    ax.set_ylabel("PE Utilization (%)")
+    ax.set_title("Per-Core PE Utilization vs Sequence Length")
+    ax.legend()
+    _save(fig, "per_core_pe_util.png", out_dir)
+
+# ── 17. Per-Core Systolic Array Utilization ────────────────
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    styles = ["-", "--", "-.", ":"]
+
+    for cid in range(4):
+        col = f"core{cid}_sys_util"
+
+        if col in df.columns:
+            _line(
+                ax,
+                x,
+                df[col],
+                label=f"Core {cid}",
+                linestyle=styles[cid])
+
+    _setup(ax, seqs)
+    ax.set_ylabel("Systolic Array Utilization (%)")
+    ax.set_title("Per-Core Systolic Array Utilization vs Sequence Length")
+    ax.legend()
+    _save(fig, "17_per_core_systolic_util.png", out_dir)
+
+    # ── 18. Per-Core Core Idle vs Sequence Length ─────────────
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+
+    styles = ["-", "--", "-.", ":"]
+
+    for cid in range(4):
+
+        col = f"core{cid}_core_idle_pct"
+
+        if col in df.columns:
+
+            _line(
+                ax,
+                x,
+                df[col],
+                label=f"Core {cid}",
+                linestyle=styles[cid]
+            )
+
+    _setup(ax, seqs)
+
+    ax.set_ylabel("Core Idle (%)")
+    ax.set_title("Per-Core Core Idle vs Sequence Length")
+
+    ax.legend()
+
+    _save(fig, "18_per_core_core_idle.png", out_dir)
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Main
 # ─────────────────────────────────────────────────────────────────────────────
@@ -507,7 +642,6 @@ def main():
 
     print(f"\nParsed {len(df)} run(s). Generating plots …")
     plot_all(df, seqs, args.output_dir)
-    print("\nDone — 15 plots generated.")
 
 
 if __name__ == "__main__":
