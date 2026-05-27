@@ -32,7 +32,7 @@ LAYER_COLORS = [
 
 # Metrics exposed in plots  (key → y-axis label)
 METRIC_LABELS = {
-    "mem_idle_pct":  "Memory Unit Idle (%)",
+    "dram_idle_pct": "DRAM Idle (%)",
     "pe_util_pct":   "PE Util (%)",
     "vec_util_pct":  "Vector Unit Util (%)",
     "core_idle_pct": "Core Idle (%)",
@@ -58,6 +58,10 @@ RE_UTIL   = re.compile(
     r"Total cycle:\s*(\d+)"
 )
 
+RE_DRAM_IDLE = re.compile(
+    r"DRAM:\s*Idle\s*([\d.]+)%"
+)
+
 
 # ── Parser ─────────────────────────────────────────────────────────────
 def parse_log(path: str):
@@ -73,7 +77,8 @@ def parse_log(path: str):
     records  = []
     staged   = {}          # core → partial record
     current_layer = "unknown"
-    pass_idx = 0
+    pass_idx = -1
+    current_dram_idle = 0
 
     with open(path) as f:
         for raw in f:
@@ -105,6 +110,11 @@ def parse_log(path: str):
                 })
                 continue
 
+            m = RE_DRAM_IDLE.search(line)
+            if m:
+                current_dram_idle = float(m.group(1))
+                continue
+
             # ── util + total cycle  (self-contained trigger) ───────────
             m = RE_UTIL.search(line)
             if m:
@@ -116,7 +126,7 @@ def parse_log(path: str):
 
                 s = staged.get(core, {})
                 # window size = 10 cycles (fixed by simulator)
-                window = 10
+                window = 50
 
                 records.append({
                     "core":          core,
@@ -129,6 +139,7 @@ def parse_log(path: str):
                     "bubble_pct": min(bubble, 100),
                     "pe_util_pct":   min(pe_util,  100),
                     "vec_util_pct":  min(vec_util, 100),
+                    "dram_idle_pct": current_dram_idle,
                 })
                 staged.pop(core, None)
 
@@ -229,7 +240,7 @@ def plot_all_metrics_single_pass(records, model, pass_id, out_path):
     fig, axes = plt.subplots(n, 1, figsize=(26, 5 * n), sharex=True)
     if n == 1:
         axes = [axes]
-    fig.suptitle(f"{model}  —  {phase_title}  (All Metrics)", y=1.002)
+    fig.suptitle(f"{model}  —  Pass {pass_id}: {phase_title}  (All Metrics)", y=1.002)
 
     for ax, metric in zip(axes, metrics):
         _shade_layers(ax, spans_base, cmap)
@@ -332,8 +343,8 @@ def plot_pass_comparison(records, model, pa, pb, out_path):
                   for i, l in enumerate(all_layers)}
 
     PHASE = {0: "Prompt Phase", 1: "Token Generation Phase"}
-    label_a = PHASE.get(pa, f"Pass {pa}")
-    label_b = PHASE.get(pb, f"Pass {pb}")
+    label_a = f"Pass {pa}: {PHASE.get(pa, f'Pass {pa}')}"
+    label_b = f"Pass {pb}: {PHASE.get(pb, f'Pass {pb}')}"
 
     n      = len(metrics)
     cores  = sorted(set(r["core"] for r in records))

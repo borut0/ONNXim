@@ -1,2 +1,2 @@
 time,prompt_length,target_length,cached_length
-0,2048,2,1024
+0,2048,2,0

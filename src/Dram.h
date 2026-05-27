@@ -69,6 +69,11 @@ class DramRamulator : public Dram {
 
   std::vector<uint64_t> _total_processed_requests;
   std::vector<uint64_t> _processed_requests;
+
+
+  //for dram idleness
+  uint64_t _dram_busy_cycles;
+  uint64_t _outstanding_requests;
 };
 
 class DramRamulator2 : public Dram {
@@ -89,5 +94,8 @@ class DramRamulator2 : public Dram {
   int _tx_ch_log2;
   int _tx_log2;
   int _req_size;
+
+  //for dram2 idleness
+  uint64_t _outstanding_requests;
 };
 #endif

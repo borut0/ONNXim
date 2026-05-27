@@ -65,6 +65,11 @@ DramRamulator::DramRamulator(SimulationConfig config)
   _n_ch = config.dram_channels;
   _config = config;
   _cycles = 0;
+
+  // for dram idleness
+  _dram_busy_cycles = 0;
+  _outstanding_requests = 0;
+
   _total_processed_requests.resize(_n_ch);
   _processed_requests.resize(_n_ch);
   for (int ch = 0; ch < _n_ch; ch++) {
@@ -76,6 +81,8 @@ DramRamulator::DramRamulator(SimulationConfig config)
 bool DramRamulator::running() { return false; }
 
 void DramRamulator::cycle() {
+  if (_outstanding_requests > 0)
+    _dram_busy_cycles++;
   _mem->tick();
   _cycles++;
   int interval = _config.dram_print_interval? _config.dram_print_interval: INT32_MAX;
@@ -96,6 +103,9 @@ bool DramRamulator::is_full(uint32_t cid, MemoryAccess* request) {
 }
 
 void DramRamulator::push(uint32_t cid, MemoryAccess* request) {
+  //for dram idleness
+  _outstanding_requests++;
+
   const addr_type atomic_bytes = _mem->getAtomicBytes();
   const addr_type target_addr = request->dram_address;
   // align address
@@ -116,11 +126,21 @@ MemoryAccess* DramRamulator::top(uint32_t cid) {
 
 void DramRamulator::pop(uint32_t cid) {
   assert(!is_empty(cid));
+
+  //for dram idleness
+  assert(_outstanding_requests > 0);
+  _outstanding_requests--;
+
   _mem->pop(cid);
   _processed_requests[cid]++;
 }
 
 void DramRamulator::print_stat() {
+
+  float dram_idle = _cycles ? 100.0f * (_cycles - _dram_busy_cycles) / _cycles : 0.0f;
+
+  spdlog::info("DRAM: Idle {:.2f}%", dram_idle);
+
   uint32_t total_reqs = 0;
   for (int ch = 0; ch < _n_ch; ch++) {
     _total_processed_requests[ch] += _processed_requests[ch];
@@ -137,6 +157,11 @@ DramRamulator2::DramRamulator2(SimulationConfig config) {
   _n_ch = config.dram_channels;
   _req_size = config.dram_req_size;
   _config = config;
+
+  // for dram2 idleness
+  _cycles = 0;
+  _outstanding_requests = 0;
+
   _mem.resize(_n_ch);
   for (int ch = 0; ch < _n_ch; ch++) {
     _mem[ch] = std::make_unique<NDPSim::Ramulator2>(
@@ -151,8 +176,36 @@ bool DramRamulator2::running() {
 }
 
 void DramRamulator2::cycle() {
+
+  static uint64_t window_cycles = 0;
+  static uint64_t window_busy = 0;
+
+  if (_outstanding_requests > 0) {
+    window_busy++;
+  }
+
   for (int ch = 0; ch < _n_ch; ch++) {
     _mem[ch]->cycle();
+  }
+
+  _cycles++;
+  window_cycles++;
+
+  const uint64_t WINDOW = 50;
+
+  if (window_cycles >= WINDOW) {
+
+    float dram_idle =
+        100.0f * (window_cycles - window_busy)
+        / window_cycles;
+
+    spdlog::info(
+        "DRAM: Idle {:.2f}%",
+        dram_idle
+    );
+
+    window_cycles = 0;
+    window_busy = 0;
   }
 }
 
@@ -161,6 +214,7 @@ bool DramRamulator2::is_full(uint32_t cid, MemoryAccess* request) {
 }
 
 void DramRamulator2::push(uint32_t cid, MemoryAccess* request) {
+  _outstanding_requests++;
   addr_type atomic_bytes =_config.dram_req_size;
   addr_type target_addr = request->dram_address;
   // align address
@@ -190,6 +244,10 @@ MemoryAccess* DramRamulator2::top(uint32_t cid) {
 
 void DramRamulator2::pop(uint32_t cid) {
   assert(!is_empty(cid));
+
+  assert(_outstanding_requests > 0);
+  _outstanding_requests--;
+
   NDPSim::mem_fetch* mf = _mem[cid]->return_queue_pop();
   delete mf;
 }

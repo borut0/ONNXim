@@ -373,29 +373,6 @@ def plot_all(df: pd.DataFrame, seqs: list, out_dir: str):
     #ax.set_title("Total Cycles vs Sequence Length")
     #_save(fig, "01_total_cycles.png", out_dir)
 
-    # ── 1. Total Cycles ───────────────────────────────────────────────────────
-    fig, ax = plt.subplots(figsize=(10, 5))
-
-    _line(
-        ax,
-        x,
-        df["total_cycles"],
-        color="steelblue",
-        logy=True
-    )
-
-    _setup(ax, seqs)
-
-    ax.yaxis.set_major_formatter(
-        ticker.FuncFormatter(lambda y, _: f"{int(y):,}")
-    )
-
-    ax.set_ylabel("Total Cycles (log scale)")
-
-    ax.set_title("Total Cycles vs Sequence Length")
-
-    _save(fig, "01_total_cycles.png", out_dir)
-
     # ── 2. Systolic Array Utilization ─────────────────────────────────────────
     fig, ax = plt.subplots(figsize=(10, 5))
     _line(ax, x, df["sys_util"], label="Systolic Array Util", color="royalblue")
