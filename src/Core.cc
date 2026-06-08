@@ -86,15 +86,6 @@ std::unique_ptr<Tile> Core::pop_finished_tile() {
 
 void Core::cycle() {
   _core_cycle++;
-
-  if (!_compute_pipeline.empty()) {
-      _stat_matmul_cycle++;
-  }
-
-  if (!_vector_pipeline.empty()) {
-      _stat_vec_compute_cycle++;
-  }
-
   _spad.cycle();
   _acc_spad.cycle();
   for (int tile_iter = 0; tile_iter < _tiles.size(); tile_iter++) {
@@ -256,31 +247,25 @@ void Core::print_stats() {
       "Core idle cycle {} ",
       _id, _stat_tot_memory_idle_cycle, _stat_tot_systolic_bubble_cycle, _stat_tot_idle_cycle);
 
-  uint64_t total_pes =
-    _config.core_config[_id].core_height *
-    _config.core_config[_id].core_width;
+    float sa_util = static_cast<float>(_stat_tot_systolic_active_cycle) * 100.0 / _core_cycle;
 
-  float pe_util =
-      static_cast<float>(_stat_tot_systolic_active_cycle * 100.0) /
-      (total_pes * _core_cycle);
+    float pe_util = static_cast<float>(_stat_tot_matmul_cycle) * 100.0 / _core_cycle;
 
-  float bubble_util =
-      static_cast<float>(_stat_tot_systolic_bubble_cycle * 100.0) /
-      (total_pes * _core_cycle);
+  float bubble_util = static_cast<float>(_stat_tot_systolic_bubble_cycle * 100.0) / _core_cycle;
 
-  float vec_util =
-      static_cast<float>(_stat_tot_vec_compute_cycle * 100.0) /
-      _core_cycle;
+  float vec_util = static_cast<float>(_stat_tot_vec_compute_cycle * 100.0) / _core_cycle;
 
   spdlog::info(
       "Core [{}] : PE Utilization(%) {:.2f}, "
       "Systolic Bubble(%) {:.2f}, "
       "Vector Unit Utilization(%) {:.2f}, "
+      "Systolic Array Utilization(%) {:.2f}, "
       "Total cycle: {}",
       _id,
       pe_util,
       bubble_util,
       vec_util,
+      sa_util,
       _core_cycle);
 
   
@@ -363,17 +348,16 @@ void Core::print_current_stats() {
       "Core idle cycle {} ",
       _id, _stat_memory_idle_cycle, _stat_systolic_bubble_cycle, _stat_idle_cycle);
     
-  uint64_t total_pes =
-    _config.core_config[_id].core_height *
-    _config.core_config[_id].core_width;
+  float sa_util = static_cast<float>(_stat_tot_systolic_active_cycle) * 100.0 / _config.core_print_interval;
 
   float pe_util =
-      static_cast<float>(_stat_systolic_active_cycle * 100.0) /
-      (total_pes * _config.core_print_interval);
+    static_cast<float>(_stat_matmul_cycle) *
+    100.0 /
+    _config.core_print_interval;
 
   float bubble_util =
       static_cast<float>(_stat_systolic_bubble_cycle * 100.0) /
-      (total_pes * _config.core_print_interval);
+      (_config.core_print_interval);
 
   float vec_util =
       static_cast<float>(_stat_vec_compute_cycle * 100.0) /
@@ -384,11 +368,13 @@ void Core::print_current_stats() {
       "Core [{}] : PE Utilization(%) {:.2f}, "
       "Systolic Bubble(%) {:.2f}, "
       "Vector Unit Utilization(%) {:.2f}, "
+      "Systolic Array Utilization(%) {:.2f}, "
       "Total cycle: {}",
       _id,
       pe_util,
       bubble_util,
       vec_util,
+      sa_util,
       _core_cycle);
   update_stats();
 }
@@ -423,15 +409,11 @@ void Core::finish_compute_pipeline(){
       inst->my_tile->inst_finished = true;
     }
 
+    double compute_size = (double)inst->tile_k * inst->tile_m * inst->tile_n
+                            / (_config.core_config[_id].core_height * _config.core_config[_id].core_width);
     spdlog::trace("Compute size {} tile m {} tile k {} tile n {}", inst->compute_size, inst->tile_m, inst->tile_k, inst->tile_n);
-
-    uint64_t pe_count =_config.core_config[_id].core_height * _config.core_config[_id].core_width;
-
-    uint64_t total_mac_ops = (uint64_t)inst->tile_m * inst->tile_n * inst->tile_k;
-    double ideal_cycles = (double)total_mac_ops / pe_count;
-    double actual_cycles = inst->finish_cycle - inst->start_cycle;
-
-    spdlog::trace("compute time {}", inst->finish_cycle - inst->start_cycle);
+    spdlog::trace("Compute size {} , compute time {}", compute_size, inst->finish_cycle - inst->start_cycle);
+    _stat_matmul_cycle += compute_size;
     _compute_pipeline.pop();
   }
 }
