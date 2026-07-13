@@ -1,0 +1,13 @@
+Model,Load,SA Idle %,Vector Idle %,MC Idle %,NoC Idle %
+ResNet18,Low,53.64,100, 94.14, 94.55
+ResNet18,Medium,21.32,100, 91.64, 91.31
+ResNet18,Heavy,18.48,100, 91.38, 91.05
+OPT-125M,Low,70.98,99.79, 29.58, 28.05
+OPT-125M,Medium,69.09,99.70, 31.66, 30.00
+OPT-125M,Heavy,68.89,99.70, 31.92, 30.24
+Llama3-8B,Low,73.11,99.98, 11.36, 10.92
+Llama3-8B,Medium,72.99,99.96, 10.93, 10.47
+Llama3-8B,Heavy,72.63,99.96, 11.60, 11.15
+OPT-66B,Low,72.17,99.99, 6.38, 6.16
+OPT-66B,Medium,72.04,99.98,,
+OPT-66B,Heavy,71.56,99.98,,

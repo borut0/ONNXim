@@ -104,6 +104,32 @@ void SystolicWS::cycle() {
 
   if (!is_running)
     _stat_idle_cycle++;
+  
+  // Systolic idle tracking
+  bool sa_idle = !is_compute_busy;
+
+  if (sa_idle && !_sa_was_idle) {
+    _sa_idle_start = _core_cycle;
+    _sa_was_idle = true;
+  }
+  else if (!sa_idle && _sa_was_idle) {
+    _sa_idle_intervals.push_back(
+        _core_cycle - _sa_idle_start);
+    _sa_was_idle = false;
+  }
+
+// Vector idle tracking
+  bool vec_idle = !is_vector_busy;
+
+  if (vec_idle && !_vec_was_idle) {
+    _vec_idle_start = _core_cycle;
+    _vec_was_idle = true;
+  }
+  else if (!vec_idle && _vec_was_idle) {
+    _vec_idle_intervals.push_back(
+        _core_cycle - _vec_idle_start);
+    _vec_was_idle = false;
+  }
   Core::cycle();
 }
 
@@ -168,9 +194,30 @@ cycle_type SystolicWS::get_vector_compute_cycles(std::unique_ptr<Instruction>& i
 }
 
 void SystolicWS::print_stats() {
+  // for analysis
+  if (_sa_was_idle) {
+    _sa_idle_intervals.push_back(
+        _core_cycle - _sa_idle_start);
+    _sa_was_idle = false;
+  }
+
+  if (_vec_was_idle) {
+    _vec_idle_intervals.push_back(
+        _core_cycle - _vec_idle_start);
+    _vec_was_idle = false;
+  }
+  // end analysis
   Core::print_stats();
   spdlog::info("Core [{}] : Systolic Inst Issue Count : {}", _id,
                _stat_systolic_inst_issue_count);
   spdlog::info("Core [{}] : Systolic PRELOAD Issue Count : {}", _id,
                _stat_systolic_preload_issue_count);
+  
+  // print anayliss result
+
+  for(auto interval : _sa_idle_intervals)
+      spdlog::info("SA idle = {}", interval);
+
+  for(auto interval : _vec_idle_intervals)
+      spdlog::info("Vector idle = {}", interval);
 }
